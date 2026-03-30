@@ -1,8 +1,10 @@
+---
+name: finishing-development-branch
+description: >
+  Trigger this skill when implementation is complete and all tests pass, when ready to merge a feature branch, create a PR, or clean up after development. Use whenever you hear "ship it," "ready to merge," "branch is done," or "create a PR." Activate at the end of any feature, bugfix, or chore branch lifecycle to ensure proper verification, option presentation, and worktree cleanup.
+---
+
 # Finishing a Development Branch
-
-## Description
-
-Structured 5-step workflow for completing development branches. Ensures tests pass, presents completion options, and handles cleanup.
 
 ## When to Use
 
@@ -10,6 +12,12 @@ Structured 5-step workflow for completing development branches. Ensures tests pa
 - After all tests pass
 - Ready to merge or create PR
 - Cleaning up after development
+
+## When NOT to Use
+
+- Work is still in progress and not all planned changes have been implemented
+- Tests are failing and need to be fixed before the branch can be finalized
+- Uncommitted changes remain that have not been staged or committed yet
 
 ---
 
@@ -273,3 +281,9 @@ Never:
 - Leave orphaned worktrees
 
 ---
+
+## Related Skills
+
+- `methodology/requesting-code-review` - Use before finishing the branch to get review feedback, especially for Option 2 (Create PR)
+- `methodology/verification-before-completion` - Run verification checks before claiming the branch is ready to finish
+- `methodology/executing-plans` - If the branch was created from an execution plan, return to the plan to mark tasks complete

@@ -335,16 +335,34 @@ For strict TDD enforcement (no production code without failing test):
 Enable mandatory verification before completion claims:
 - Reference: `.claude/skills/methodology/verification-before-completion/SKILL.md`
 
-### Available Methodology Skills
+### Available Skills
 
 | Category | Skills |
 |----------|--------|
-| Planning | brainstorming, writing-plans, executing-plans |
-| Testing | test-driven-development, verification-before-completion, testing-anti-patterns |
-| Debugging | systematic-debugging, root-cause-tracing, defense-in-depth |
-| Collaboration | dispatching-parallel-agents, requesting-code-review, receiving-code-review, finishing-development-branch |
+| **Languages** | python, typescript, javascript |
+| **Frameworks** | fastapi, django, nextjs, react |
+| **Databases** | postgresql, mongodb |
+| **DevOps** | docker, github-actions |
+| **Frontend** | tailwind, shadcn-ui |
+| **Security** | owasp |
+| **API** | openapi |
+| **Testing** | pytest, vitest |
+| **Optimization** | token-efficient |
+| **Developer Patterns** | error-handling, state-management, logging, caching, api-client, authentication |
+| **Methodology - Planning** | brainstorming, writing-plans, executing-plans |
+| **Methodology - Testing** | test-driven-development, verification-before-completion, testing-anti-patterns |
+| **Methodology - Debugging** | systematic-debugging, root-cause-tracing, defense-in-depth |
+| **Methodology - Collaboration** | dispatching-parallel-agents, requesting-code-review, receiving-code-review, finishing-development-branch |
+| **Methodology - Reasoning** | sequential-thinking |
 
-Skills location: `.claude/skills/methodology/`
+Skills location: `.claude/skills/`
+
+Each skill includes:
+- YAML frontmatter with trigger description
+- "When to Use" / "When NOT to Use" sections
+- Core patterns with code examples
+- Best practices and common pitfalls
+- Bundled reference docs, templates, and scripts
 
 ### Sequential Thinking
 
@@ -436,6 +454,10 @@ pnpm install
 
 ## Kit Version
 
-- **Claude Kit Version**: 2.0.0
-- **Last Updated**: 2025-01-29
+- **Claude Kit Version**: 3.0.0
+- **Last Updated**: 2026-03-30
 - **Compatible with**: Claude Code 1.0+
+- **Total Skills**: 38 (with YAML frontmatter, bundled resources)
+- **Total Commands**: 27+
+- **Total Agents**: 20
+- **Behavioral Modes**: 7

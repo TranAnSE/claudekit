@@ -1,8 +1,10 @@
+---
+name: test-driven-development
+description: >
+  Trigger this skill whenever writing new features, fixing bugs, or changing any behavior in production code. Activate for keywords like "implement", "add feature", "fix bug", "write code", "build", "create endpoint", "add functionality", or any task that will result in production code changes. Also trigger when the user asks to refactor existing code, when tests need to be written, or when someone says "TDD". This skill should be the default for ALL implementation work -- no production code without a failing test first.
+---
+
 # Test-Driven Development (TDD)
-
-## Description
-
-Strict test-driven development methodology requiring tests before implementation. The fundamental practice: "If you didn't watch the test fail, you don't know if it tests the right thing."
 
 ## When to Use
 
@@ -11,11 +13,11 @@ Strict test-driven development methodology requiring tests before implementation
 - Refactoring (ensure tests exist before changing)
 - Any behavior change
 
-## When NOT to Use (Requires Explicit Approval)
+## When NOT to Use
 
-- Throwaway prototypes
-- Generated/scaffolded code
-- Pure configuration changes
+- Prototyping or throwaway code with explicit user approval to skip tests
+- Configuration-only changes (e.g., environment variables, CI config, linter rules)
+- Documentation updates that do not affect runtime behavior
 
 ---
 
@@ -241,3 +243,11 @@ This is faster than:
 7. Ship again
 
 ---
+
+## Related Skills
+
+- `methodology/verification-before-completion` -- Ensures tests are actually run and passing before claiming work is done
+- `methodology/testing-anti-patterns` -- Avoid common testing mistakes that undermine TDD effectiveness
+- `testing/pytest` -- Python-specific testing patterns and best practices for TDD
+- `testing/vitest` -- TypeScript/JavaScript-specific testing patterns and best practices for TDD
+- `methodology/writing-plans` — Planning implementation tasks for TDD workflow

@@ -1,8 +1,10 @@
+---
+name: sequential-thinking
+description: >
+  Trigger this skill for any complex problem requiring careful step-by-step reasoning, evidence collection, and confidence tracking. Use when debugging has multiple possible causes, when making architecture decisions with trade-offs, during security analysis or audits, for performance investigations, or whenever decisions need explicit documentation. Activate aggressively for any scenario where jumping to conclusions would be risky or where the reasoning chain matters as much as the answer.
+---
+
 # Sequential Thinking
-
-## Description
-
-Step-by-step reasoning methodology with explicit evidence collection and confidence tracking. Use for complex problems requiring careful analysis and documented decision-making.
 
 ## When to Use
 
@@ -12,6 +14,12 @@ Step-by-step reasoning methodology with explicit evidence collection and confide
 - Performance investigation
 - Any problem with multiple possible causes
 - When decisions need documentation
+
+## When NOT to Use
+
+- Simple straightforward tasks where the answer is obvious and well-known
+- Mechanical code changes like renames, formatting, or boilerplate generation
+- When the MCP sequential-thinking server is unavailable and structured tool support is needed
 
 ---
 
@@ -243,3 +251,9 @@ needsMoreThoughts: If more analysis needed
 - Performance investigations
 
 ---
+
+## Related Skills
+
+- `methodology/brainstorming` - Use brainstorming for open-ended creative exploration; use sequential thinking when you need structured evidence-based analysis
+- `methodology/root-cause-tracing` - Complements sequential thinking by providing the tracing methodology to follow during evidence gathering steps
+- `methodology/systematic-debugging` - Use systematic debugging for the overall debugging framework; sequential thinking adds rigorous documentation and confidence tracking

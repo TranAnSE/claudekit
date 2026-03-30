@@ -1,8 +1,10 @@
+---
+name: testing-anti-patterns
+description: >
+  Trigger this skill whenever writing, reviewing, or debugging tests. Activate for keywords like "mock", "stub", "test helper", "flaky test", "test passes but bug ships", "false positive", "test coverage", or when tests seem unreliable. Also trigger when reviewing test code in PRs, when tests pass but production breaks, when someone proposes heavy mocking, or when test failures are intermittent. If any test smells wrong or feels like it is not actually verifying real behavior, this skill applies.
+---
+
 # Testing Anti-Patterns
-
-## Description
-
-Common testing mistakes that create false confidence in test suites. Learn to recognize and avoid these patterns that make tests pass while failing to verify actual behavior.
 
 ## When to Use
 
@@ -10,6 +12,12 @@ Common testing mistakes that create false confidence in test suites. Learn to re
 - Reviewing test code
 - Debugging flaky or unreliable tests
 - When tests pass but bugs still ship
+
+## When NOT to Use
+
+- Writing production code that is not test-related
+- Test framework configuration or setup (e.g., jest.config, vitest.config)
+- Performance testing or load testing scenarios
 
 ---
 
@@ -256,3 +264,9 @@ Mocks should never:
 - Create false confidence
 
 ---
+
+## Related Skills
+
+- `methodology/test-driven-development` -- TDD naturally prevents most testing anti-patterns by requiring tests before implementation
+- `testing/pytest` -- Python-specific testing best practices that complement anti-pattern awareness
+- `testing/vitest` -- TypeScript/JavaScript-specific testing best practices that complement anti-pattern awareness

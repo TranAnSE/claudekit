@@ -1,8 +1,10 @@
+---
+name: token-efficient
+description: >
+  Use this skill when optimizing token usage, reducing response verbosity, or working in high-volume development sessions. Trigger for any mention of token savings, cost optimization, concise output, compressed responses, or the --format=concise/ultra flags. Also applies during repetitive tasks, quick iterations, simple clear requests, or when the user activates token-efficient mode. This is a cross-cutting optimization that applies to all other skills.
+---
+
 # Token Optimization
-
-## Description
-
-Patterns and techniques for reducing token usage while maintaining response quality. Achieve 30-70% cost savings through strategic output compression.
 
 ## When to Use
 
@@ -11,6 +13,12 @@ Patterns and techniques for reducing token usage while maintaining response qual
 - Simple, clear requests
 - Cost-sensitive projects
 - Quick iterations
+
+## When NOT to Use
+
+- Learning or educational contexts where verbose explanations help the user understand concepts
+- Debugging complex issues where detailed analysis and step-by-step reasoning matter
+- Security reviews or architecture discussions where thoroughness is more important than brevity
 
 ---
 
@@ -196,3 +204,7 @@ Monthly savings: ~7.5M tokens
    - Review needed → Full output
 
 ---
+
+## Related Skills
+
+- All skills — this is a cross-cutting optimization that can be combined with any other skill to reduce token usage while maintaining response quality

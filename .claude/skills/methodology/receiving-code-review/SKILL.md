@@ -1,8 +1,10 @@
+---
+name: receiving-code-review
+description: >
+  Trigger this skill whenever code review feedback is received, whether from human reviewers, automated tools, or PR comments. Use when processing review comments, handling review rejections, iterating on feedback cycles, or deciding how to prioritize critical vs minor issues. Activate aggressively any time review feedback arrives -- categorize, prioritize, fix critical issues first, and re-request review with a clear summary of changes made.
+---
+
 # Receiving Code Review
-
-## Description
-
-Workflow for processing code review feedback effectively. Prioritize issues, apply fixes, and iterate until approval.
 
 ## When to Use
 
@@ -10,6 +12,12 @@ Workflow for processing code review feedback effectively. Prioritize issues, app
 - Processing automated review results
 - Handling reviewer comments on PRs
 - Iterating after code review rejection
+
+## When NOT to Use
+
+- Self-review of your own code where an independent perspective is what you actually need
+- Initial implementation before any review has been requested or received
+- Design or brainstorming phase where feedback is about ideas, not code
 
 ---
 
@@ -256,3 +264,9 @@ If review requires 3+ cycles:
 ```
 
 ---
+
+## Related Skills
+
+- `methodology/requesting-code-review` - Companion skill for initiating reviews with proper context before feedback is received
+- `methodology/systematic-debugging` - Use systematic debugging techniques when review feedback reveals bugs that need investigation
+- `methodology/verification-before-completion` - After addressing review feedback, verify all fixes before claiming completion

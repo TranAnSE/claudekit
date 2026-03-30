@@ -1,8 +1,10 @@
+---
+name: requesting-code-review
+description: >
+  Trigger this skill after completing any task, implementing a feature, fixing a critical bug, or before merging to a main branch. Use whenever code is ready for feedback, when unsure about an implementation approach, or when changes touch security, authentication, or data handling. Activate before any PR creation or branch merge to ensure reviewers have complete context, clear scope, and focused areas of concern.
+---
+
 # Requesting Code Review
-
-## Description
-
-Workflow for initiating code reviews with clear scope, context, and expectations. Ensures reviewers have everything needed for effective feedback.
 
 ## When to Use
 
@@ -11,6 +13,12 @@ Workflow for initiating code reviews with clear scope, context, and expectations
 - Before merging to main branch
 - When unsure about implementation approach
 - After fixing critical bugs
+
+## When NOT to Use
+
+- Mid-implementation work where the code is still incomplete and likely to change significantly
+- Research or exploration tasks where you are prototyping and not producing production code
+- Trivial one-line fixes like typo corrections or version bumps that carry no risk
 
 ---
 
@@ -237,3 +245,9 @@ Reviewer will return:
 See `receiving-code-review` skill for detailed guidance.
 
 ---
+
+## Related Skills
+
+- `methodology/receiving-code-review` - Companion skill for processing and acting on review feedback after it is received
+- `methodology/verification-before-completion` - Run verification checks before requesting review to ensure code is actually ready
+- `methodology/finishing-development-branch` - Use after review approval to complete the branch merge/PR workflow

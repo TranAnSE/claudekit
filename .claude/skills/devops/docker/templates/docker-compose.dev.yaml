@@ -1,0 +1,100 @@
+# =============================================================================
+# Development Docker Compose
+# Usage:
+#   docker compose -f docker-compose.dev.yaml up
+#   docker compose -f docker-compose.dev.yaml down -v   # remove volumes too
+# =============================================================================
+
+services:
+  # ---------------------------------------------------------------------------
+  # Application
+  # ---------------------------------------------------------------------------
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder  # Use the build stage for dev (includes dev deps)
+    ports:
+      - "${APP_PORT:-3000}:3000"
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/app_dev
+      REDIS_URL: redis://redis:6379/0
+    volumes:
+      # Mount source code for hot-reload. Exclude node_modules.
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    # Override CMD for development (hot-reload).
+    command: ["pnpm", "dev"]
+    # For Python:
+    # command: ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "3000", "--reload"]
+
+  # ---------------------------------------------------------------------------
+  # PostgreSQL
+  # ---------------------------------------------------------------------------
+  postgres:
+    image: postgres:17-alpine
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app_dev
+    volumes:
+      # Persist data across restarts.
+      - postgres_data:/var/lib/postgresql/data
+      # Run init scripts on first start.
+      # - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ---------------------------------------------------------------------------
+  # Redis
+  # ---------------------------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    # Persist data to disk every 60 seconds if at least 1 key changed.
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+
+  # ---------------------------------------------------------------------------
+  # Optional: pgAdmin (database GUI)
+  # ---------------------------------------------------------------------------
+  # pgadmin:
+  #   image: dpage/pgadmin4:latest
+  #   ports:
+  #     - "5050:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: admin@local.dev
+  #     PGADMIN_DEFAULT_PASSWORD: admin
+  #   depends_on:
+  #     - postgres
+
+  # ---------------------------------------------------------------------------
+  # Optional: Mailpit (email testing)
+  # ---------------------------------------------------------------------------
+  # mailpit:
+  #   image: axllent/mailpit:latest
+  #   ports:
+  #     - "8025:8025"   # Web UI
+  #     - "1025:1025"   # SMTP
+
+volumes:
+  postgres_data:
+  redis_data:

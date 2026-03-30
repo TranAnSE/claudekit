@@ -1,8 +1,10 @@
+---
+name: systematic-debugging
+description: >
+  Trigger this skill whenever encountering ANY bug, error, test failure, or unexpected behavior. Activate for keywords like "bug", "error", "failing", "broken", "doesn't work", "unexpected", "crash", "exception", "TypeError", "undefined", stack traces, or any error message. Also trigger when tests fail unexpectedly, when behavior differs from expectations, when investigating production incidents, or when flaky/intermittent issues appear. ALWAYS investigate root cause before proposing fixes -- never guess at solutions.
+---
+
 # Systematic Debugging
-
-## Description
-
-Four-phase debugging methodology centered on finding root causes before implementing fixes. The foundational principle: **"NO FIXES WITHOUT ROOT CAUSE INVESTIGATION FIRST"**
 
 ## When to Use
 
@@ -11,6 +13,12 @@ Four-phase debugging methodology centered on finding root causes before implemen
 - Tests failing unexpectedly
 - Intermittent/flaky issues
 - Complex multi-component failures
+
+## When NOT to Use
+
+- Known issues with documented fixes already available in the codebase or runbook
+- Simple typo or syntax errors that are immediately obvious from the error message
+- Configuration issues where the fix is simply updating an environment variable or config value
 
 ---
 
@@ -256,3 +264,9 @@ Before declaring fixed:
 - [ ] Fix explained (can articulate why it works)
 
 ---
+
+## Related Skills
+
+- `methodology/root-cause-tracing` -- Deep-dive technique for tracing issues back through complex dependency chains
+- `methodology/defense-in-depth` -- Add defensive layers to prevent similar bugs from recurring
+- `methodology/verification-before-completion` -- Ensures the fix is actually verified with evidence before claiming the bug is resolved

@@ -1,8 +1,10 @@
+---
+name: dispatching-parallel-agents
+description: >
+  Trigger this skill when facing 3 or more independent failures across different domains, when multiple subsystems are broken with no shared state, or when test failures span unrelated modules. Use whenever you see independent bugs in auth, cart, user, or other separate domains that can be fixed concurrently. Activate aggressively for any scenario where parallel work would reduce total resolution time without creating merge conflicts.
+---
+
 # Dispatching Parallel Agents
-
-## Description
-
-Pattern for handling multiple independent failures by dispatching concurrent agents. Use when 3+ independent problems exist across different domains that can be solved in parallel.
 
 ## When to Use
 
@@ -13,10 +15,9 @@ Pattern for handling multiple independent failures by dispatching concurrent age
 
 ## When NOT to Use
 
-- Related failures (fixing one solves others)
-- Exploratory debugging (need full context)
-- Problems require shared understanding
-- Sequential dependencies exist
+- Tasks with shared state or sequential dependencies where one fix affects another
+- Single-file changes that don't benefit from parallelization overhead
+- Sequential workflows where each step depends on the output of the previous step
 
 ---
 
@@ -258,3 +259,8 @@ After parallel completion:
 - [ ] Changes integrated successfully
 
 ---
+
+## Related Skills
+
+- `methodology/executing-plans` - Use executing-plans when tasks are sequential; use dispatching-parallel-agents when tasks are independent and can run concurrently
+- `methodology/writing-plans` - Write a plan first to identify which tasks are independent before dispatching parallel agents

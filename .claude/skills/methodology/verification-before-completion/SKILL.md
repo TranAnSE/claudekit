@@ -1,8 +1,10 @@
+---
+name: verification-before-completion
+description: >
+  Trigger this skill whenever about to claim ANY work is complete, fixed, passing, or done. Activate whenever you are tempted to say "done", "fixed", "tests pass", "build succeeds", "deployed", or any completion claim. Also trigger before committing code, before creating PRs, before responding to the user that a task is finished, or when reviewing agent-produced work. This is mandatory -- NEVER claim completion without running verification commands and reading their output. Evidence before assertions, always.
+---
+
 # Verification Before Completion
-
-## Description
-
-Mandatory verification process before claiming any task is complete. This skill enforces evidence-based completion rather than assumption-based claims.
 
 ## When to Use
 
@@ -11,6 +13,12 @@ Mandatory verification process before claiming any task is complete. This skill 
 - Before claiming bug is fixed
 - Before marking any task complete
 - Before declaring success to user
+
+## When NOT to Use
+
+- Mid-task progress updates where you are reporting interim status, not claiming completion
+- Research or exploration tasks where the output is knowledge, not code
+- Design or brainstorming phases where no verifiable artifacts have been produced yet
 
 ---
 
@@ -260,3 +268,9 @@ Use before claiming completion:
 ```
 
 ---
+
+## Related Skills
+
+- `methodology/test-driven-development` -- TDD naturally produces verifiable work; verification confirms the TDD cycle was followed correctly
+- `methodology/systematic-debugging` -- After debugging, verification ensures the fix actually resolves the issue
+- `methodology/requesting-code-review` -- Verification should happen before requesting review to avoid wasting reviewer time on broken code

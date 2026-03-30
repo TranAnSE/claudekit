@@ -1,8 +1,10 @@
+---
+name: root-cause-tracing
+description: >
+  Trigger this skill whenever a bug manifests far from its origin, when stack traces show multiple layers of indirection, or when data corruption appears with no obvious source. Use for any scenario involving "it was already wrong by the time it got here," deep execution stack errors, constraint violations caused by upstream failures, or mysterious data state issues. Always prefer this over surface-level fixes when the error location differs from the bug location.
+---
+
 # Root Cause Tracing
-
-## Description
-
-Debugging technique for bugs that manifest deep in execution stacks. Systematically trace backward through the call chain to identify the original trigger, rather than fixing symptoms at the point of failure.
 
 ## When to Use
 
@@ -11,6 +13,12 @@ Debugging technique for bugs that manifest deep in execution stacks. Systematica
 - Need to identify which code path triggers failures
 - Stack traces show multiple levels of indirection
 - "It was already wrong by the time it got here"
+
+## When NOT to Use
+
+- Surface-level UI bugs where the cause and effect are co-located
+- Known issues with documented fixes already available in the codebase or issue tracker
+- Performance optimization work where profiling tools are more appropriate than tracing
 
 ---
 
@@ -228,3 +236,9 @@ Fixing at the source:
 - [ ] Test proves fix works
 
 ---
+
+## Related Skills
+
+- `methodology/systematic-debugging` - General debugging methodology; use root-cause-tracing when the bug location differs from the error location
+- `methodology/defense-in-depth` - After tracing the root cause, apply multi-layer validation to make the bug structurally impossible
+- `methodology/sequential-thinking` - Use sequential thinking to systematically document evidence and hypotheses during complex tracing sessions

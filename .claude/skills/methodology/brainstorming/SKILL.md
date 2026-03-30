@@ -1,8 +1,10 @@
+---
+name: brainstorming
+description: >
+  Trigger this skill whenever the user wants to design, explore, or ideate on ANY new feature, architecture decision, or unclear requirement. Activate for keywords like "brainstorm", "design", "explore", "what if", "how should we", "options for", "trade-offs", or any open-ended question about implementation approach. Also trigger when requirements are vague, ambiguous, or when multiple valid solutions exist -- err on the side of brainstorming before jumping into code.
+---
+
 # Brainstorming
-
-## Description
-
-Interactive design refinement methodology for turning rough ideas into fully-formed designs through collaborative dialogue. Use this skill during creative development phases before implementation begins.
 
 ## When to Use
 
@@ -14,9 +16,9 @@ Interactive design refinement methodology for turning rough ideas into fully-for
 
 ## When NOT to Use
 
-- Clear "mechanical" processes with known implementation
-- Simple bug fixes with obvious solutions
-- Tasks with explicit requirements already defined
+- Executing already-approved plans -- use `executing-plans` instead
+- Simple bug fixes with obvious solutions -- jump straight to fixing
+- Mechanical refactoring where the approach is already clear
 
 ---
 
@@ -188,3 +190,8 @@ For informed technology choices:
 ```
 
 ---
+
+## Related Skills
+
+- `methodology/writing-plans` -- After brainstorming produces a validated design, use writing-plans to create a detailed implementation plan
+- `methodology/sequential-thinking` -- For complex problems that benefit from structured step-by-step reasoning during the brainstorming process

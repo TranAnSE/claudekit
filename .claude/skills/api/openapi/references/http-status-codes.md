@@ -1,0 +1,175 @@
+# HTTP Status Codes for REST APIs
+
+Quick reference for selecting the correct HTTP status code in REST API responses.
+
+---
+
+## 2xx Success
+
+| Code | Name | When to Use |
+|------|------|-------------|
+| `200` | OK | General success. GET returns data, PUT/PATCH returns updated resource. |
+| `201` | Created | POST successfully created a resource. Include `Location` header. |
+| `202` | Accepted | Request accepted for async processing. Return a job/task ID. |
+| `204` | No Content | DELETE success or PUT/PATCH with no response body needed. |
+
+**Guidelines:**
+- `200` is the default success response for GET, PUT, PATCH
+- `201` must be used when a new resource is created (POST)
+- `204` is preferred for DELETE (no body to return)
+- `202` signals "we got it, processing later" -- return a status URL
+
+```json
+// 201 Created response
+{
+  "id": "usr_abc123",
+  "name": "Jane Doe",
+  "created_at": "2025-01-15T10:30:00Z"
+}
+// Header: Location: /api/v1/users/usr_abc123
+```
+
+---
+
+## 3xx Redirection
+
+| Code | Name | When to Use |
+|------|------|-------------|
+| `301` | Moved Permanently | Resource URL changed permanently. Clients should update bookmarks. |
+| `302` | Found | Temporary redirect. Original URL still valid. |
+| `304` | Not Modified | Conditional GET -- resource unchanged since `If-None-Match`/`If-Modified-Since`. |
+| `307` | Temporary Redirect | Like 302 but preserves HTTP method. Use for API redirects. |
+| `308` | Permanent Redirect | Like 301 but preserves HTTP method. |
+
+**Guidelines:**
+- Prefer `307`/`308` over `302`/`301` in APIs (method preservation)
+- `304` reduces bandwidth when clients cache responses
+- Always include `Location` header with redirect responses
+
+---
+
+## 4xx Client Errors
+
+| Code | Name | When to Use |
+|------|------|-------------|
+| `400` | Bad Request | Malformed syntax, invalid JSON, failed validation. |
+| `401` | Unauthorized | Missing or invalid authentication credentials. |
+| `403` | Forbidden | Authenticated but lacks permission for this resource. |
+| `404` | Not Found | Resource does not exist at this URL. |
+| `405` | Method Not Allowed | HTTP method not supported on this endpoint. |
+| `409` | Conflict | Request conflicts with current state (duplicate, version mismatch). |
+| `410` | Gone | Resource existed but has been permanently deleted. |
+| `415` | Unsupported Media Type | Content-Type header not supported. |
+| `422` | Unprocessable Entity | Valid JSON but semantically invalid (business rule violation). |
+| `429` | Too Many Requests | Rate limit exceeded. Include `Retry-After` header. |
+
+**Guidelines:**
+- `400` for structural issues (bad JSON, missing required fields)
+- `422` for business logic failures (email already taken, invalid state transition)
+- `401` means "who are you?" -- `403` means "I know who you are, but no"
+- `409` for optimistic locking failures and unique constraint violations
+- `429` must include `Retry-After` header with seconds until retry
+
+```json
+// 422 Unprocessable Entity
+{
+  "error": {
+    "code": "VALIDATION_ERROR",
+    "message": "Request validation failed",
+    "details": [
+      { "field": "email", "message": "Email already registered" },
+      { "field": "age", "message": "Must be 18 or older" }
+    ]
+  }
+}
+```
+
+```json
+// 429 Too Many Requests
+// Header: Retry-After: 60
+{
+  "error": {
+    "code": "RATE_LIMITED",
+    "message": "Rate limit exceeded. Try again in 60 seconds."
+  }
+}
+```
+
+---
+
+## 5xx Server Errors
+
+| Code | Name | When to Use |
+|------|------|-------------|
+| `500` | Internal Server Error | Unhandled exception. Generic server failure. |
+| `501` | Not Implemented | Endpoint exists but functionality not built yet. |
+| `502` | Bad Gateway | Upstream service returned invalid response. |
+| `503` | Service Unavailable | Server overloaded or in maintenance. Include `Retry-After`. |
+| `504` | Gateway Timeout | Upstream service did not respond in time. |
+
+**Guidelines:**
+- `500` should never expose stack traces in production
+- `503` should include `Retry-After` header and a maintenance message
+- Log all 5xx errors with request context for debugging
+- Return a consistent error body format for all 5xx responses
+
+```json
+// 500 Internal Server Error (production)
+{
+  "error": {
+    "code": "INTERNAL_ERROR",
+    "message": "An unexpected error occurred. Please try again.",
+    "request_id": "req_7f3a9b2c"
+  }
+}
+```
+
+---
+
+## Decision Flowchart
+
+```
+Request received
+  |
+  +-- Is it valid syntax? -- NO --> 400 Bad Request
+  |
+  +-- Is caller authenticated? -- NO --> 401 Unauthorized
+  |
+  +-- Is caller authorized? -- NO --> 403 Forbidden
+  |
+  +-- Does resource exist? -- NO --> 404 Not Found
+  |
+  +-- Is it rate-limited? -- YES --> 429 Too Many Requests
+  |
+  +-- Does it pass business rules? -- NO --> 422 Unprocessable Entity
+  |
+  +-- Any conflicts? -- YES --> 409 Conflict
+  |
+  +-- Server error? -- YES --> 500 Internal Server Error
+  |
+  +-- Success!
+       GET    --> 200 OK
+       POST   --> 201 Created
+       PUT    --> 200 OK
+       PATCH  --> 200 OK
+       DELETE --> 204 No Content
+```
+
+---
+
+## Standard Error Response Format
+
+Use a consistent structure across all error responses:
+
+```json
+{
+  "error": {
+    "code": "MACHINE_READABLE_CODE",
+    "message": "Human-readable description",
+    "details": [],
+    "request_id": "req_..."
+  }
+}
+```
+
+*Reference: [RFC 9110 - HTTP Semantics](https://httpwg.org/specs/rfc9110.html), [RFC 9457 - Problem Details](https://www.rfc-editor.org/rfc/rfc9457)*

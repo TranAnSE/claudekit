@@ -1,8 +1,10 @@
+---
+name: writing-plans
+description: >
+  Trigger this skill whenever a multi-step implementation task needs to be broken down before coding begins. Activate for keywords like "plan", "break down", "implementation steps", "task list", "how to implement", "write a plan", or when a feature spans multiple files or components. Also trigger when handing off work to another developer, when the user says "let's plan this out", or when a task is complex enough that jumping straight to code would be risky. If in doubt, plan first.
+---
+
 # Writing Plans
-
-## Description
-
-Generate comprehensive implementation plans with bite-sized tasks for engineers with minimal codebase familiarity. This skill bridges design completion and engineering execution with detailed, actionable steps.
 
 ## When to Use
 
@@ -10,6 +12,12 @@ Generate comprehensive implementation plans with bite-sized tasks for engineers 
 - Before starting implementation
 - When handing off work to another developer
 - For complex features requiring structured approach
+
+## When NOT to Use
+
+- Single-file changes where the path forward is obvious
+- Already has a plan to execute -- use `executing-plans` instead
+- Exploration or research tasks where the goal is learning, not building
 
 ---
 
@@ -275,3 +283,9 @@ mark user as verified in database.
 ```
 
 ---
+
+## Related Skills
+
+- `methodology/brainstorming` -- Use before writing plans when requirements are unclear or need exploration
+- `methodology/executing-plans` -- Use after writing a plan to execute it with subagent-driven development and review gates
+- `methodology/test-driven-development` -- Plans follow TDD principles; reference this skill for strict red-green-refactor enforcement

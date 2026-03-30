@@ -1,8 +1,10 @@
+---
+name: executing-plans
+description: >
+  Trigger this skill whenever there is a written implementation plan ready to execute, or when the user says "execute", "run the plan", "implement the plan", "start building", or references a plan file. Also activate when using subagent-driven development with independent tasks, when the user wants automated execution with quality gates, or when picking up a previously written plan. If a plan document exists and no one is executing it yet, this is the skill to use.
+---
+
 # Executing Plans
-
-## Description
-
-Subagent-driven development pattern for executing detailed implementation plans with quality gates. Uses fresh agents per task and mandatory code review between tasks.
 
 ## When to Use
 
@@ -13,9 +15,9 @@ Subagent-driven development pattern for executing detailed implementation plans 
 
 ## When NOT to Use
 
-- Plan needs review first (use brainstorming)
-- Tasks are tightly coupled and need shared context
-- Plan requires revision during execution
+- No plan exists yet -- use `writing-plans` first to create one
+- Single-task work that does not need sequential execution or review gates
+- Research or exploration where the goal is learning, not building
 
 ---
 
@@ -257,3 +259,9 @@ Before declaring plan execution complete:
 - [ ] Ready for `finishing-development-branch`
 
 ---
+
+## Related Skills
+
+- `methodology/writing-plans` -- Use to create the plan before executing it
+- `methodology/dispatching-parallel-agents` -- For coordinating multiple independent agents when plan tasks allow parallelism
+- `methodology/verification-before-completion` -- Ensures each task and the final result are properly verified before claiming completion

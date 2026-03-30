@@ -1,8 +1,10 @@
+---
+name: defense-in-depth
+description: >
+  Trigger this skill after fixing any data-related bug, when building validation for critical data paths, or when a single validation point has already failed in production. Use whenever you hear "it slipped through," "the check was bypassed," or "it worked in tests but not production." Apply aggressively to any scenario involving data integrity, input validation across layers, or preventing bug recurrence through structural guarantees rather than single-point fixes.
+---
+
 # Defense-in-Depth
-
-## Description
-
-Multi-layer validation strategy that makes bugs structurally impossible rather than merely fixed. After finding and fixing a bug's root cause, implement validation at every layer data passes through.
 
 ## When to Use
 
@@ -11,6 +13,12 @@ Multi-layer validation strategy that makes bugs structurally impossible rather t
 - Preventing bug recurrence
 - Building robust systems
 - When single validation points have failed
+
+## When NOT to Use
+
+- Greenfield prototyping where speed matters more than robustness and requirements are still fluid
+- Non-data-related bugs such as logic errors, race conditions, or algorithmic mistakes
+- UI styling issues where visual correctness is the concern, not data integrity
 
 ---
 
@@ -283,3 +291,9 @@ After fixing any bug:
 - [ ] Bug is structurally impossible, not just fixed
 
 ---
+
+## Related Skills
+
+- `methodology/root-cause-tracing` - Use before defense-in-depth to find the actual source of the bug before adding multi-layer validation
+- `methodology/systematic-debugging` - General debugging methodology that pairs with defense-in-depth for comprehensive bug resolution
+- `security/owasp` - Security-specific validation patterns that complement defense-in-depth for security-sensitive code paths

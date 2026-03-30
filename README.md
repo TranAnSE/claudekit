@@ -6,7 +6,7 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 
 - **20 Specialized Agents** - From planning to deployment
 - **27+ Slash Commands** - Workflow automation with flag support
-- **30+ Skills** - Framework, language, methodology, and optimization expertise
+- **38 Skills** - Framework, language, methodology, patterns, and optimization expertise (all with YAML frontmatter and bundled resources)
 - **7 Behavioral Modes** - Task-specific response optimization
 - **Command Flag System** - Combinable `--flag` syntax for customization
 - **Token Optimization** - 30-70% cost savings with compressed output modes
@@ -29,11 +29,18 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 ├── commands/              # 27+ workflow commands
 ├── modes/                 # 7 behavioral mode definitions
 ├── mcp/                   # MCP server configurations
-└── skills/                # Framework, language, and methodology skills
-    ├── frameworks/        # FastAPI, Next.js, React, etc.
+└── skills/                # 38 skills with YAML frontmatter & bundled resources
+    ├── api/               # OpenAPI specification patterns
+    ├── databases/         # PostgreSQL, MongoDB
+    ├── devops/            # Docker, GitHub Actions
+    ├── frameworks/        # FastAPI, Django, Next.js, React
+    ├── frontend/          # Tailwind CSS, shadcn/ui
     ├── languages/         # Python, TypeScript, JavaScript
-    ├── methodology/       # TDD, debugging, planning (14 skills)
-    └── optimization/      # Token efficiency patterns
+    ├── methodology/       # TDD, debugging, planning, review (14 skills)
+    ├── optimization/      # Token efficiency patterns
+    ├── patterns/          # Error handling, state, logging, caching, auth, API client
+    ├── security/          # OWASP security patterns
+    └── testing/           # pytest, vitest
 ```
 
 ## Agents
@@ -112,34 +119,55 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 /spawn [task]           # Launch parallel background task
 ```
 
-## Skills
+## Skills (38 Total)
+
+Every skill includes YAML frontmatter for reliable triggering, "When to Use" / "When NOT to Use" sections, core patterns with code examples, best practices, common pitfalls, cross-references, and bundled resources (reference docs, templates, scripts).
 
 ### Languages
-- Python, TypeScript, JavaScript
+- **Python** — Type hints, async, dataclasses, Pydantic, decorators, pattern matching
+- **TypeScript** — Advanced types, generics, Zod, discriminated unions, branded types
+- **JavaScript** — ES6+, async patterns, Proxy/Reflect, generators, modules
 
 ### Frameworks
-- FastAPI, Django, Next.js, React
+- **FastAPI** — Routes, dependency injection, middleware, WebSocket, testing
+- **Django** — ORM, views, migrations, DRF, signals, admin
+- **Next.js** — App Router, server/client components, caching, middleware
+- **React** — Hooks, custom hooks, context, Suspense, error boundaries, performance
 
 ### Databases
-- PostgreSQL, MongoDB
+- **PostgreSQL** — Schema, indexing (B-tree/GIN/GiST), migrations, CTEs, JSONB
+- **MongoDB** — Schema design, aggregation pipelines, indexing, transactions
 
 ### DevOps
-- Docker, GitHub Actions
+- **Docker** — Multi-stage builds, Compose, security hardening, layer caching
+- **GitHub Actions** — CI/CD, matrix strategy, reusable workflows, deployment
 
 ### Frontend
-- Tailwind CSS, shadcn/ui
+- **Tailwind CSS** — Responsive, dark mode, animations, theme customization
+- **shadcn/ui** — Components, forms, data tables, theming, toast
+
+### API
+- **OpenAPI** — 3.1 spec, pagination, versioning, error schemas, webhooks
 
 ### Security
-- OWASP best practices
+- **OWASP** — Top 10, auth, CORS, CSP, secret management, rate limiting
 
 ### Testing
-- pytest, vitest
+- **pytest** — Fixtures, parametrize, mocking, async, coverage
+- **vitest** — React Testing Library, mocking, MSW, snapshots, configuration
 
 ### Optimization
-- Token-efficient output patterns
-- Sequential thinking methodology
+- **Token-efficient** — Compressed output modes (30-70% cost savings)
 
-### Methodology (Superpowers)
+### Developer Patterns (New)
+- **error-handling** — Custom errors, retry patterns, Result type, error boundaries
+- **state-management** — React state, Zustand, TanStack Query, form state, URL state
+- **logging** — Structured logging, log levels, correlation IDs, redaction
+- **caching** — Memoization, HTTP cache, Redis, CDN, cache invalidation
+- **api-client** — HTTP clients, interceptors, retry, type-safe clients
+- **authentication** — JWT, OAuth2, sessions, RBAC, MFA, password hashing
+
+### Methodology (14 Skills)
 
 | Category | Skills |
 |----------|--------|
@@ -147,6 +175,7 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 | **Testing** | test-driven-development, verification-before-completion, testing-anti-patterns |
 | **Debugging** | systematic-debugging, root-cause-tracing, defense-in-depth |
 | **Collaboration** | dispatching-parallel-agents, requesting-code-review, receiving-code-review, finishing-development-branch |
+| **Reasoning** | sequential-thinking |
 
 Key methodology principles:
 - **TDD Strict**: No production code without failing test first
@@ -154,6 +183,16 @@ Key methodology principles:
 - **Quality Gates**: Code review between every task
 - **Bite-sized Tasks**: 2-5 minute increments with exact code
 - **Sequential Thinking**: Step-by-step reasoning with confidence scores
+
+### Bundled Resources
+
+Skills include progressive-disclosure resources loaded on demand:
+
+| Resource Type | Purpose | Examples |
+|---------------|---------|----------|
+| **references/** | Cheat sheets, decision trees, pattern catalogs | OWASP Top 10, index decision tree, auth flows |
+| **templates/** | Starter files, boilerplate, configs | OpenAPI spec, Dockerfile, CI workflows, conftest.py |
+| **scripts/** | Executable helpers for deterministic tasks | Security audit scanner, OpenAPI validator |
 
 ## Behavioral Modes
 
@@ -307,16 +346,45 @@ Use $ARGUMENTS for command arguments.
 
 Create a new skill in `.claude/skills/category/skillname/SKILL.md`:
 
-```markdown
-# Skill Name
+```yaml
+---
+name: my-skill
+description: >
+  What this skill does and when to trigger it. Be specific — list
+  contexts, keywords, and scenarios. 2-4 pushy sentences.
+---
+```
 
-## Description
-Brief description for matching.
+```markdown
+# My Skill
+
+Brief overview.
+
+## When to Use
+- Scenario 1
+- Scenario 2
+
+## When NOT to Use
+- Anti-trigger scenario
 
 ---
 
-## Patterns
-Your patterns and examples here.
+## Core Patterns
+### Pattern Name
+Code examples with good/bad comparisons.
+
+## Best Practices
+## Common Pitfalls
+## Related Skills
+```
+
+Optionally add bundled resources:
+```
+my-skill/
+├── SKILL.md
+├── references/    # Loaded into context on demand
+├── scripts/       # Executed without loading into context
+└── templates/     # Scaffolded into user's project
 ```
 
 ## Workflow Chains
