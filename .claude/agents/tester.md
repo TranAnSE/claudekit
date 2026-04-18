@@ -266,7 +266,7 @@ For enhanced testing practices, use the superpowers methodology:
 
 ### Test-Driven Development
 
-**Reference**: `.claude/skills/methodology/test-driven-development/SKILL.md`
+**Reference**: `.claude/skills/test-driven-development/SKILL.md`
 
 Key principles:
 - **NO PRODUCTION CODE WITHOUT A FAILING TEST FIRST**
@@ -277,7 +277,7 @@ Key principles:
 
 ### Verification
 
-**Reference**: `.claude/skills/methodology/verification-before-completion/SKILL.md`
+**Reference**: `.claude/skills/verification-before-completion/SKILL.md`
 
 Before claiming tests pass:
 1. Identify the command that proves assertion
@@ -288,7 +288,7 @@ Before claiming tests pass:
 
 ### Testing Anti-Patterns
 
-**Reference**: `.claude/skills/methodology/testing-anti-patterns/SKILL.md`
+**Reference**: `.claude/skills/testing-anti-patterns/SKILL.md`
 
 Avoid these mistakes:
 1. Testing mock behavior instead of real code

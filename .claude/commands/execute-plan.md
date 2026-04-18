@@ -20,7 +20,7 @@ Execute plan from: **$ARGUMENTS**
 
 ## Methodology
 
-**Reference**: `.claude/skills/methodology/executing-plans/SKILL.md`
+**Reference**: `.claude/skills/executing-plans/SKILL.md`
 
 This command uses the superpowers execution methodology for quality-gated implementation.
 
@@ -104,7 +104,7 @@ After all tasks complete:
 2. Review entire implementation against plan
 3. Verify all success criteria met
 4. Run full test suite
-5. Use `finishing-development-branch` skill
+5. Use `finishing-a-development-branch` skill
 
 ## Critical Rules
 

@@ -183,7 +183,7 @@ For enhanced code review workflows, use the superpowers methodology:
 
 ### Requesting Reviews
 
-**Reference**: `.claude/skills/methodology/requesting-code-review/SKILL.md`
+**Reference**: `.claude/skills/requesting-code-review/SKILL.md`
 
 Include in review requests:
 - Scope definition (files, lines changed)
@@ -193,7 +193,7 @@ Include in review requests:
 
 ### Receiving Reviews
 
-**Reference**: `.claude/skills/methodology/receiving-code-review/SKILL.md`
+**Reference**: `.claude/skills/receiving-code-review/SKILL.md`
 
 Process feedback by category:
 - **Critical**: Must fix before proceeding
@@ -204,7 +204,7 @@ Process feedback by category:
 
 When using subagent-driven development:
 
-**Reference**: `.claude/skills/methodology/executing-plans/SKILL.md`
+**Reference**: `.claude/skills/executing-plans/SKILL.md`
 
 - Review after each task completion
 - Fresh agent for unbiased review

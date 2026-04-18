@@ -176,7 +176,7 @@ Modes adjust communication style, output format, and problem-solving approach.
 |------|-------------|----------|
 | `default` | Balanced standard behavior | General tasks |
 | `brainstorm` | Creative exploration, questions | Design, ideation |
-| `token-efficient` | Compressed, concise output | High-volume, cost savings |
+| `writing-concisely` | Compressed, concise output | High-volume, cost savings |
 | `deep-research` | Thorough analysis, citations | Investigation, audits |
 | `implementation` | Code-focused, minimal prose | Executing plans |
 | `review` | Critical analysis, finding issues | Code review, QA |
@@ -241,7 +241,7 @@ Control output verbosity for cost optimization.
 /mode token-efficient         # Enable for entire session
 ```
 
-Reference: `.claude/skills/optimization/token-efficient/SKILL.md`
+Reference: `.claude/skills/writing-concisely/SKILL.md`
 
 ## Context Management
 
@@ -328,31 +328,32 @@ To use subagent mode: `/execute-plan [plan-file]`
 
 For strict TDD enforcement (no production code without failing test):
 - Use `/tdd [feature]` command
-- Reference: `.claude/skills/methodology/test-driven-development/SKILL.md`
+- Reference: `.claude/skills/test-driven-development/SKILL.md`
 
 ### Verification Requirements
 
 Enable mandatory verification before completion claims:
-- Reference: `.claude/skills/methodology/verification-before-completion/SKILL.md`
+- Reference: `.claude/skills/verification-before-completion/SKILL.md`
 
 ### Available Skills
 
 | Category | Skills |
 |----------|--------|
-| **Languages** | python, typescript, javascript |
-| **Frameworks** | fastapi, django, nextjs, react |
-| **Databases** | postgresql, mongodb |
-| **DevOps** | docker, github-actions |
-| **Frontend** | tailwind, shadcn-ui |
+| **Languages** | languages (Python, TypeScript, JavaScript) |
+| **Backend** | backend-frameworks (FastAPI, Django, NestJS, Express) |
+| **Frontend** | frontend (React, Next.js, shadcn/ui), frontend-styling (Tailwind, accessibility) |
+| **Databases** | databases (PostgreSQL, MongoDB, Redis, migrations) |
+| **DevOps** | devops (Docker, GitHub Actions, Cloudflare Workers) |
 | **Security** | owasp |
 | **API** | openapi |
-| **Testing** | pytest, vitest |
-| **Optimization** | token-efficient |
-| **Developer Patterns** | error-handling, state-management, logging, caching, api-client, authentication |
-| **Methodology - Planning** | brainstorming, writing-plans, executing-plans |
+| **Testing** | testing (pytest, vitest, Jest), playwright |
+| **Optimization** | writing-concisely |
+| **Developer Patterns** | error-handling, state-management, logging, caching, api-client, authentication, background-jobs |
+| **Methodology - Planning** | brainstorming, writing-plans, executing-plans, writing-skills |
 | **Methodology - Testing** | test-driven-development, verification-before-completion, testing-anti-patterns |
 | **Methodology - Debugging** | systematic-debugging, root-cause-tracing, defense-in-depth |
-| **Methodology - Collaboration** | dispatching-parallel-agents, requesting-code-review, receiving-code-review, finishing-development-branch |
+| **Methodology - Collaboration** | dispatching-parallel-agents, requesting-code-review, receiving-code-review, finishing-a-development-branch |
+| **Methodology - Execution** | subagent-driven-development, using-git-worktrees, condition-based-waiting |
 | **Methodology - Reasoning** | sequential-thinking |
 
 Skills location: `.claude/skills/`
@@ -367,7 +368,7 @@ Each skill includes:
 ### Sequential Thinking
 
 For complex problems requiring step-by-step analysis:
-- Reference: `.claude/skills/methodology/sequential-thinking/SKILL.md`
+- Reference: `.claude/skills/sequential-thinking/SKILL.md`
 - Activation: `/research --sequential [topic]` or use deep-research mode
 
 ## Environment Configuration
@@ -455,9 +456,9 @@ pnpm install
 ## Kit Version
 
 - **Claude Kit Version**: 3.0.0
-- **Last Updated**: 2026-03-30
+- **Last Updated**: 2026-04-18
 - **Compatible with**: Claude Code 1.0+
-- **Total Skills**: 38 (with YAML frontmatter, bundled resources)
+- **Total Skills**: 36 (with YAML frontmatter, bundled resources)
 - **Total Commands**: 27+
 - **Total Agents**: 20
 - **Behavioral Modes**: 7

@@ -71,7 +71,7 @@ Add more test cases and repeat the cycle.
 
 ## Superpowers TDD Methodology
 
-**Reference**: `.claude/skills/methodology/test-driven-development/SKILL.md`
+**Reference**: `.claude/skills/test-driven-development/SKILL.md`
 
 ### Non-Negotiable Rule
 
@@ -90,7 +90,7 @@ RIGHT: Delete the code, write test, rewrite implementation
 
 ### Verification Before Completion
 
-**Reference**: `.claude/skills/methodology/verification-before-completion/SKILL.md`
+**Reference**: `.claude/skills/verification-before-completion/SKILL.md`
 
 Before claiming tests pass:
 1. **Identify** the command that proves assertion
@@ -108,7 +108,7 @@ Never use without verification:
 
 ### Testing Anti-Patterns to Avoid
 
-**Reference**: `.claude/skills/methodology/testing-anti-patterns/SKILL.md`
+**Reference**: `.claude/skills/testing-anti-patterns/SKILL.md`
 
 1. Testing mock behavior instead of real code
 2. Polluting production with test-only methods

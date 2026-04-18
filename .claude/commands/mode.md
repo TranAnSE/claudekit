@@ -14,7 +14,7 @@ Switch to the specified behavioral mode.
 |------|-------------|----------|
 | `default` | Balanced standard behavior | General tasks |
 | `brainstorm` | Creative exploration, more questions | Design, ideation |
-| `token-efficient` | Compressed, concise output | High-volume, cost savings |
+| `writing-concisely` | Compressed, concise output | High-volume, cost savings |
 | `deep-research` | Thorough analysis, citations | Investigation, audits |
 | `implementation` | Code-focused, minimal prose | Executing plans |
 | `review` | Critical analysis, finding issues | Code review, QA |

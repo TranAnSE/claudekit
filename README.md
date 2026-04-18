@@ -6,7 +6,7 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 
 - **20 Specialized Agents** - From planning to deployment
 - **27+ Slash Commands** - Workflow automation with flag support
-- **38 Skills** - Framework, language, methodology, patterns, and optimization expertise (all with YAML frontmatter and bundled resources)
+- **36 Skills** - Framework, language, methodology, patterns, and optimization expertise (all with YAML frontmatter and bundled resources)
 - **7 Behavioral Modes** - Task-specific response optimization
 - **Command Flag System** - Combinable `--flag` syntax for customization
 - **Token Optimization** - 30-70% cost savings with compressed output modes
@@ -29,18 +29,11 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 ├── commands/              # 27+ workflow commands
 ├── modes/                 # 7 behavioral mode definitions
 ├── mcp/                   # MCP server configurations
-└── skills/                # 38 skills with YAML frontmatter & bundled resources
-    ├── api/               # OpenAPI specification patterns
-    ├── databases/         # PostgreSQL, MongoDB
-    ├── devops/            # Docker, GitHub Actions
-    ├── frameworks/        # FastAPI, Django, Next.js, React
-    ├── frontend/          # Tailwind CSS, shadcn/ui
-    ├── languages/         # Python, TypeScript, JavaScript
-    ├── methodology/       # TDD, debugging, planning, review (14 skills)
-    ├── optimization/      # Token efficiency patterns
-    ├── patterns/          # Error handling, state, logging, caching, auth, API client
-    ├── security/          # OWASP security patterns
-    └── testing/           # pytest, vitest
+└── skills/                # 36 flat skills (router pattern)
+    ├── <skill-name>/      # Each skill is a top-level directory
+    │   ├── SKILL.md       # Trigger description + core patterns
+    │   └── references/    # Deep content loaded on demand
+    └── ...
 ```
 
 ## Agents
@@ -119,62 +112,52 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 /spawn [task]           # Launch parallel background task
 ```
 
-## Skills (38 Total)
+## Skills (36 Total)
 
-Every skill includes YAML frontmatter for reliable triggering, "When to Use" / "When NOT to Use" sections, core patterns with code examples, best practices, common pitfalls, cross-references, and bundled resources (reference docs, templates, scripts).
+Every skill follows a flat directory structure with a router pattern: short `SKILL.md` for triggering + `references/` for deep content loaded on demand.
 
-### Languages
-- **Python** — Type hints, async, dataclasses, Pydantic, decorators, pattern matching
-- **TypeScript** — Advanced types, generics, Zod, discriminated unions, branded types
-- **JavaScript** — ES6+, async patterns, Proxy/Reflect, generators, modules
+### Tech Stack Skills (7 merged routers)
 
-### Frameworks
-- **FastAPI** — Routes, dependency injection, middleware, WebSocket, testing
-- **Django** — ORM, views, migrations, DRF, signals, admin
-- **Next.js** — App Router, server/client components, caching, middleware
-- **React** — Hooks, custom hooks, context, Suspense, error boundaries, performance
+| Skill | Covers | Key Topics |
+|-------|--------|------------|
+| **languages** | Python, TypeScript, JavaScript | Type hints, generics, async, Pydantic, Zod, ES6+ |
+| **backend-frameworks** | FastAPI, Django, NestJS, Express | Routes, DI, middleware, ORM, guards, pipes |
+| **frontend** | React, Next.js, shadcn/ui | Hooks, App Router, server components, Suspense |
+| **frontend-styling** | Tailwind CSS, accessibility | Responsive, dark mode, WCAG, ARIA, focus management |
+| **databases** | PostgreSQL, MongoDB, Redis, migrations | Schema, indexing, aggregation, caching, Alembic/Prisma |
+| **devops** | Docker, GitHub Actions, Cloudflare Workers | Multi-stage builds, CI/CD, edge deployment |
+| **testing** | pytest, vitest, Jest | Fixtures, mocking, MSW, coverage, parametrize |
 
-### Databases
-- **PostgreSQL** — Schema, indexing (B-tree/GIN/GiST), migrations, CTEs, JSONB
-- **MongoDB** — Schema design, aggregation pipelines, indexing, transactions
+### Domain Skills (8)
 
-### DevOps
-- **Docker** — Multi-stage builds, Compose, security hardening, layer caching
-- **GitHub Actions** — CI/CD, matrix strategy, reusable workflows, deployment
+| Skill | Description |
+|-------|-------------|
+| **openapi** | OpenAPI 3.1 spec, pagination, versioning, error schemas, webhooks |
+| **owasp** | Top 10, auth, CORS, CSP, secret management, rate limiting |
+| **playwright** | E2E testing, page objects, visual regression, cross-browser |
+| **error-handling** | Custom errors, retry patterns, Result type, error boundaries |
+| **state-management** | React state, Zustand, TanStack Query, form state, URL state |
+| **logging** | Structured logging, log levels, correlation IDs, redaction |
+| **caching** | Memoization, HTTP cache, Redis, CDN, cache invalidation |
+| **api-client** | HTTP clients, interceptors, retry, type-safe clients |
 
-### Frontend
-- **Tailwind CSS** — Responsive, dark mode, animations, theme customization
-- **shadcn/ui** — Components, forms, data tables, theming, toast
+### Pattern Skills (3)
 
-### API
-- **OpenAPI** — 3.1 spec, pagination, versioning, error schemas, webhooks
+| Skill | Description |
+|-------|-------------|
+| **authentication** | JWT, OAuth2, sessions, RBAC, MFA, password hashing |
+| **background-jobs** | Celery, BullMQ, task queues, scheduled tasks, async workers |
+| **writing-concisely** | Compressed output modes (30-70% token savings) |
 
-### Security
-- **OWASP** — Top 10, auth, CORS, CSP, secret management, rate limiting
-
-### Testing
-- **pytest** — Fixtures, parametrize, mocking, async, coverage
-- **vitest** — React Testing Library, mocking, MSW, snapshots, configuration
-
-### Optimization
-- **Token-efficient** — Compressed output modes (30-70% cost savings)
-
-### Developer Patterns (New)
-- **error-handling** — Custom errors, retry patterns, Result type, error boundaries
-- **state-management** — React state, Zustand, TanStack Query, form state, URL state
-- **logging** — Structured logging, log levels, correlation IDs, redaction
-- **caching** — Memoization, HTTP cache, Redis, CDN, cache invalidation
-- **api-client** — HTTP clients, interceptors, retry, type-safe clients
-- **authentication** — JWT, OAuth2, sessions, RBAC, MFA, password hashing
-
-### Methodology (14 Skills)
+### Methodology Skills (18)
 
 | Category | Skills |
 |----------|--------|
-| **Planning** | brainstorming, writing-plans, executing-plans |
+| **Planning** | brainstorming, writing-plans, executing-plans, writing-skills |
 | **Testing** | test-driven-development, verification-before-completion, testing-anti-patterns |
 | **Debugging** | systematic-debugging, root-cause-tracing, defense-in-depth |
-| **Collaboration** | dispatching-parallel-agents, requesting-code-review, receiving-code-review, finishing-development-branch |
+| **Collaboration** | dispatching-parallel-agents, requesting-code-review, receiving-code-review, finishing-a-development-branch |
+| **Execution** | subagent-driven-development, using-git-worktrees, condition-based-waiting |
 | **Reasoning** | sequential-thinking |
 
 Key methodology principles:
@@ -191,7 +174,7 @@ Skills include progressive-disclosure resources loaded on demand:
 | Resource Type | Purpose | Examples |
 |---------------|---------|----------|
 | **references/** | Cheat sheets, decision trees, pattern catalogs | OWASP Top 10, index decision tree, auth flows |
-| **templates/** | Starter files, boilerplate, configs | OpenAPI spec, Dockerfile, CI workflows, conftest.py |
+| **templates/** | Starter files, boilerplate, configs | OpenAPI spec, Dockerfile, CI workflows |
 | **scripts/** | Executable helpers for deterministic tasks | Security audit scanner, OpenAPI validator |
 
 ## Behavioral Modes
@@ -344,7 +327,7 @@ Use $ARGUMENTS for command arguments.
 
 ### Adding Custom Skills
 
-Create a new skill in `.claude/skills/category/skillname/SKILL.md`:
+Create a new skill in `.claude/skills/<name>/SKILL.md`:
 
 ```yaml
 ---

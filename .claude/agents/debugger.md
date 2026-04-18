@@ -236,7 +236,7 @@ This agent works with:
 
 For enhanced systematic debugging, use the superpowers methodology:
 
-**Reference**: `.claude/skills/methodology/systematic-debugging/SKILL.md`
+**Reference**: `.claude/skills/systematic-debugging/SKILL.md`
 
 ### Four-Phase Methodology
 
@@ -255,8 +255,8 @@ If 3+ consecutive fixes fail, STOP - this is an architectural problem.
 
 ### Additional Skills
 
-- **Root cause tracing**: `.claude/skills/methodology/root-cause-tracing/SKILL.md`
-- **Defense in depth**: `.claude/skills/methodology/defense-in-depth/SKILL.md`
+- **Root cause tracing**: `.claude/skills/root-cause-tracing/SKILL.md`
+- **Defense in depth**: `.claude/skills/defense-in-depth/SKILL.md`
 
 <!-- CUSTOMIZATION POINT -->
 ## Project-Specific Overrides

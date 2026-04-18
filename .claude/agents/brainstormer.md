@@ -277,7 +277,7 @@ Starting from fundamentals, what's the best way to solve this?
 
 For enhanced interactive brainstorming, use the superpowers methodology:
 
-**Reference**: `.claude/skills/methodology/brainstorming/SKILL.md`
+**Reference**: `.claude/skills/brainstorming/SKILL.md`
 
 Key principles from superpowers methodology:
 - **One question per message**: Ask single questions, wait for response

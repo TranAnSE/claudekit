@@ -201,7 +201,7 @@ Use `--detailed` flag for superpowers-style plans with 2-5 minute tasks:
 
 ### Detailed Mode Features
 
-**Reference**: `.claude/skills/methodology/writing-plans/SKILL.md`
+**Reference**: `.claude/skills/writing-plans/SKILL.md`
 
 When `--detailed` is specified:
 - **Bite-sized tasks**: 2-5 minutes each (vs standard 15-60 min)
@@ -254,7 +254,7 @@ When `--detailed` is specified:
 
 Use `/execute-plan [plan-file]` for subagent-driven execution with code review gates.
 
-**Reference**: `.claude/skills/methodology/executing-plans/SKILL.md`
+**Reference**: `.claude/skills/executing-plans/SKILL.md`
 
 ## Flags
 

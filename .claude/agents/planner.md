@@ -144,7 +144,7 @@ Implement JWT-based authentication with login, logout, and token refresh capabil
 
 For enhanced detailed planning, use the superpowers methodology:
 
-**Reference**: `.claude/skills/methodology/writing-plans/SKILL.md`
+**Reference**: `.claude/skills/writing-plans/SKILL.md`
 
 ### Detailed Mode (2-5 min tasks)
 
@@ -161,7 +161,7 @@ After creating a detailed plan:
 - **Subagent-driven**: Use `executing-plans` skill for automated execution
 - **Manual**: Developer follows plan sequentially
 
-**Reference**: `.claude/skills/methodology/executing-plans/SKILL.md`
+**Reference**: `.claude/skills/executing-plans/SKILL.md`
 
 <!-- CUSTOMIZATION POINT -->
 ## Project-Specific Overrides
