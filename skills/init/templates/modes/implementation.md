@@ -101,12 +101,6 @@ When encountering choices during implementation:
 | Ambiguity | Flag and continue with assumption |
 | Blocker | Stop and report immediately |
 
-### Flagging Format
-```
-⚠️ Assumed: [assumption made]
-Continuing with [choice]. Let me know if you'd prefer different.
-```
-
 ---
 
 ## Tool Usage

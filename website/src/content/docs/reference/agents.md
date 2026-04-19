@@ -9,7 +9,7 @@ Agents are specialized subagents that Claude can dispatch for focused tasks. Eac
 
 ## How Agents Work
 
-Agents are defined as markdown files in `.claude/agents/`. When Claude dispatches a subagent, it starts a fresh context focused entirely on the task at hand:
+Agents are bundled with the Claude Kit plugin. When Claude dispatches a subagent, it starts a fresh context focused entirely on the task at hand:
 
 ```
 You: "Review this code for security issues"

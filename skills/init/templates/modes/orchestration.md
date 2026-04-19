@@ -60,22 +60,22 @@ Total work: [description]
 
 | Task | Agent Type | Status |
 |------|------------|--------|
-| Task A | researcher | 🔄 Running |
-| Task B | tester | 🔄 Running |
-| Task C | code-reviewer | 🔄 Running |
+| Task A | researcher | Running |
+| Task B | tester | Running |
+| Task C | code-reviewer | Running |
 ```
 
 ### Phase 3: Aggregation
 ```markdown
 ## Results
 
-### Task A: Complete ✅
+### Task A: Complete
 - Findings: [summary]
 
-### Task B: Complete ✅
+### Task B: Complete
 - Results: [summary]
 
-### Task C: Complete ✅
+### Task C: Complete
 - Findings: [summary]
 
 ### Synthesis
@@ -91,9 +91,9 @@ For launching parallel background tasks using the Agent tool:
 ```markdown
 Dispatching parallel agents:
 
-1. Agent(researcher, "Research authentication patterns") → Background #1
-2. Agent(security-auditor, "Analyze current security") → Background #2
-3. Agent(scout-external, "Review competitor approaches") → Background #3
+1. Agent(researcher, "Research authentication patterns") -> Background #1
+2. Agent(security-auditor, "Analyze current security") -> Background #2
+3. Agent(scout-external, "Review competitor approaches") -> Background #3
 
 Monitoring progress...
 
@@ -136,11 +136,11 @@ Use natural language:
 
 | Condition | Parallelize? |
 |-----------|--------------|
-| No shared files | ✅ Yes |
-| Independent modules | ✅ Yes |
-| Shared dependencies | ❌ No |
-| Order matters | ❌ No |
-| Can merge results | ✅ Yes |
+| No shared files | Yes |
+| Independent modules | Yes |
+| Shared dependencies | No |
+| Order matters | No |
+| Can merge results | Yes |
 
 ---
 
@@ -152,22 +152,6 @@ Between parallel phases:
 3. Review combined results
 4. Run integration tests
 5. Proceed to next phase
-
-```markdown
-## Quality Gate: Phase 1 → Phase 2
-
-### Completion Check
-- [x] Agent A: Complete
-- [x] Agent B: Complete
-- [x] Agent C: Complete
-
-### Conflict Check
-- [x] No file conflicts
-- [x] No logical conflicts
-- [x] Results consistent
-
-### Proceeding to Phase 2...
-```
 
 ---
 

@@ -5,15 +5,16 @@ description: Learn what Claude Kit is and how it accelerates your development wo
 
 # Introduction to Claude Kit
 
-Claude Kit is an open-source toolkit that transforms Claude Code into a production-ready AI development team. It provides auto-triggered skills, specialized agents, and intelligent modes that accelerate your development workflow.
+Claude Kit is an open-source Claude Code plugin that transforms Claude Code into a production-ready AI development team. It provides auto-triggered skills, specialized agents, and an interactive setup wizard that accelerates your development workflow.
 
 ## What is Claude Kit?
 
-Claude Kit is a `.claude` folder you add to your project containing:
+Claude Kit is a Claude Code plugin you install via a marketplace:
 
-- **43 Skills** — Knowledge modules that auto-trigger based on what you're doing (debugging, planning, testing, etc.)
+- **44 Skills** — Knowledge modules that auto-trigger based on what you're doing (debugging, planning, testing, etc.)
 - **20 Agents** — Specialized subagents for focused tasks (code review, security audit, database design, etc.)
-- **7 Modes** — Behavioral configurations that optimize Claude for specific task types
+- **7 Modes** — Behavioral configurations installed via `/claudekit:init`
+- **Setup Wizard** — `/claudekit:init` scaffolds rules, modes, hooks, and MCP servers into your project
 
 Skills activate automatically based on keywords in your conversation. No commands to memorize — just describe what you want to do.
 
@@ -60,6 +61,6 @@ No slash commands needed — Claude reads your intent and activates the right sk
 
 ## Next Steps
 
-1. [Install Claude Kit](/claudekit/getting-started/installation/) — Add it to your project
-2. [Configuration](/claudekit/getting-started/configuration/) — Customize for your project
-3. [Skills Reference](/claudekit/reference/skills/) — Browse all 43 skills
+1. [Install Claude Kit](/claudekit/getting-started/installation/) — Install the plugin
+2. [Configuration](/claudekit/getting-started/configuration/) — Run `/claudekit:init` to customize
+3. [Skills Reference](/claudekit/reference/skills/) — Browse all 44 skills

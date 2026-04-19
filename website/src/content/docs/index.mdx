@@ -1,9 +1,9 @@
 ---
 title: Claude Kit
-description: The open-source AI dev toolkit for Claude Code. 43 skills, 20 agents, 7 modes — structure that makes Claude Code production-ready. Free forever.
+description: The open-source AI dev toolkit for Claude Code. 44 skills, 20 agents, 7 modes — install as a plugin and go. Free forever.
 template: splash
 hero:
-  tagline: The open-source AI dev toolkit for Claude Code. 43 skills, 20 agents, 7 modes — structure that makes Claude Code production-ready. Free forever.
+  tagline: The open-source AI dev toolkit for Claude Code. 44 skills, 20 agents, 7 modes — install as a plugin and go. Free forever.
   image:
     dark: ../../assets/hero-dark.svg
     light: ../../assets/hero-light.svg
@@ -25,7 +25,7 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 Claude Kit transforms Claude Code into a production-ready AI development team. Pre-built skills, specialized agents, and intelligent modes — all open source.
 
 <CardGrid>
-  <Card title="43 Skills" icon="puzzle">
+  <Card title="44 Skills" icon="puzzle">
     Auto-triggered knowledge for Python, TypeScript, React, FastAPI, TDD, debugging, security, and more. Claude knows your stack without being told.
   </Card>
   <Card title="20 Agents" icon="rocket">
@@ -46,15 +46,14 @@ Claude Kit transforms Claude Code into a production-ready AI development team. P
 Get up and running in under 2 minutes:
 
 ```bash
-# Clone the repository
-git clone https://github.com/duthaho/claudekit.git
+# Add the marketplace
+/plugin marketplace add duthaho/claudekit-marketplace
 
-# Copy the kit to your project
-cp -r claudekit/.claude your-project/
+# Install the plugin
+/plugin install claudekit
 
-# Start using it
-cd your-project
-claude
+# Configure your project (optional)
+/claudekit:init
 ```
 
 Skills trigger automatically based on what you're doing. Ask Claude to brainstorm a feature, write a plan, debug an error, or review code — the right skills activate without any commands needed.
@@ -100,7 +99,7 @@ Claude Kit uses three layers that work together:
 <CardGrid>
   <LinkCard
     title="Skills"
-    description="43 knowledge modules that auto-trigger based on keywords. Cover languages, frameworks, testing, debugging, security, and development methodology."
+    description="44 knowledge modules that auto-trigger based on keywords. Cover languages, frameworks, testing, debugging, security, and development methodology."
     href="/claudekit/reference/skills/"
   />
   <LinkCard
@@ -146,7 +145,7 @@ Claude Kit connects skills and agents into complete workflows:
   />
   <LinkCard
     title="Skills Reference"
-    description="All 43 skills organized by category"
+    description="All 44 skills organized by category"
     href="/claudekit/reference/skills/"
   />
   <LinkCard

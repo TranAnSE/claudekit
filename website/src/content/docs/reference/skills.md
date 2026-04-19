@@ -1,6 +1,6 @@
 ---
 title: Skills Reference
-description: All 43 skills in Claude Kit, organized by category.
+description: All 44 skills in Claude Kit, organized by category.
 ---
 
 # Skills Reference
@@ -18,7 +18,7 @@ Each skill has a trigger description with keywords. When you say something that 
 "switch to brainstorm"   → mode-switching, brainstorming
 ```
 
-Skills live in `.claude/skills/` and can be customized or extended.
+Skills are bundled with the plugin and auto-trigger when installed. You can also create project-level skills in `.claude/skills/`.
 
 ---
 
@@ -106,3 +106,9 @@ Skills for multi-agent workflows and team processes.
 | **receiving-code-review** | Processing review feedback systematically | Review comments, PR feedback |
 | **finishing-a-development-branch** | Branch completion: verify, review, merge/PR options | "ship it", "ready to merge" |
 | **writing-skills** | Creating and editing skills for this kit | "create a skill", "new skill" |
+
+## Setup
+
+| Skill | Description | Triggers On |
+|-------|-------------|-------------|
+| **init** | Interactive setup wizard — scaffolds rules, modes, hooks, MCP configs | `/claudekit:init` (user-invocable) |

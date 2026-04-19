@@ -41,12 +41,12 @@ Critical analysis mode optimized for code review, auditing, and quality assessme
 
 ### Severity Levels
 
-| Level | Icon | Description | Action |
-|-------|------|-------------|--------|
-| Critical | 🔴 | Bugs, security issues | Must fix before merge |
-| Important | 🟠 | Code smells, performance | Should fix |
-| Minor | 🟡 | Style, naming | Consider fixing |
-| Nitpick | ⚪ | Preferences | Optional |
+| Level | Description | Action |
+|-------|-------------|--------|
+| Critical | Bugs, security issues | Must fix before merge |
+| Important | Code smells, performance | Should fix |
+| Minor | Style, naming | Consider fixing |
+| Nitpick | Preferences | Optional |
 
 ### Review Areas
 
@@ -69,21 +69,21 @@ Critical analysis mode optimized for code review, auditing, and quality assessme
 ### Summary
 [1-2 sentence overview]
 
-### Critical Issues 🔴
+### Critical Issues
 1. **[Issue]** (line X)
    - Problem: [description]
    - Fix: [suggestion]
 
-### Important Issues 🟠
+### Important Issues
 1. **[Issue]** (line X)
    - Problem: [description]
    - Suggestion: [improvement]
 
-### Minor Issues 🟡
+### Minor Issues
 - Line X: [issue and suggestion]
 - Line Y: [issue and suggestion]
 
-### Positive Notes ✅
+### Positive Notes
 - [What was done well]
 
 ### Verdict
@@ -100,42 +100,6 @@ Use natural language:
 "switch to review mode"
 "review this code critically"
 "do a security-focused review"
-```
-
-Or invoke the `review` skill directly:
-```
-/review [PR number or branch]
-/security-review
-```
-
-### Review Focus Areas
-
-| Focus | Description |
-|-------|-------------|
-| `security` | OWASP, vulnerabilities, auth |
-| `performance` | Efficiency, caching, queries |
-| `architecture` | Patterns, coupling, design |
-| `testing` | Coverage, test quality |
-
----
-
-## Checklist Template
-
-```markdown
-### Pre-Review Checklist
-- [ ] Tests pass
-- [ ] Lint clean
-- [ ] No security warnings
-- [ ] Coverage maintained
-
-### Review Checklist
-- [ ] Logic correctness verified
-- [ ] Edge cases handled
-- [ ] Error handling adequate
-- [ ] Security patterns followed
-- [ ] Performance acceptable
-- [ ] Code readable/maintainable
-- [ ] Tests cover new code
 ```
 
 ---
@@ -167,14 +131,6 @@ Apply consistent review standards:
 - Recall past review decisions
 - Remember approved patterns
 - Track recurring issues
-```
-
-### Filesystem
-```
-For thorough code examination:
-- Use read_file to examine code
-- Use search_files to find related patterns
-- Check consistency across codebase
 ```
 
 ## Combines Well With

@@ -1,139 +1,37 @@
 ---
 title: Configuration
-description: How to customize Claude Kit for your project.
+description: How to configure Claude Kit for your project using the init wizard.
 ---
 
 # Configuration
 
-Claude Kit works out of the box, but customizing it for your project makes it significantly more effective.
+Claude Kit works out of the box after installing the plugin. Run `/claudekit:init` to scaffold project-level configuration for rules, modes, hooks, and MCP servers.
 
-## CLAUDE.md
+## The Init Wizard
 
-The main configuration file is `.claude/CLAUDE.md`. This tells Claude about your project so skills can provide relevant guidance.
-
-### Key Sections
-
-#### Tech Stack
-
-```markdown
-## Tech Stack
-- **Languages**: Python 3.11, TypeScript 5.0
-- **Backend Framework**: FastAPI with SQLAlchemy
-- **Frontend Framework**: Next.js 14 with App Router
-- **Database**: PostgreSQL 15
-- **Testing**: pytest, vitest, Playwright
-- **Deployment**: Docker, GitHub Actions
+```
+/claudekit:init
 ```
 
-#### Code Conventions
+The wizard walks you through four steps, asking one question at a time:
 
-```markdown
-## Code Conventions
+### Step 1: Rules
 
-### Naming
-| Type | Python | TypeScript |
-|------|--------|------------|
-| Files | `snake_case.py` | `kebab-case.ts` |
-| Functions | `snake_case` | `camelCase` |
-| Classes | `PascalCase` | `PascalCase` |
-| Constants | `UPPER_SNAKE` | `UPPER_SNAKE` |
-```
+Rules enforce standards when Claude works on specific file types:
 
-#### Security Standards
+| Rule | Applies To | What It Enforces |
+|------|-----------|------------------|
+| `api.md` | API routes, controllers | Input validation, error responses, rate limiting |
+| `frontend.md` | `.tsx`, `.jsx`, components | PascalCase, Server Components, accessibility |
+| `migrations.md` | Migration files | Reversible migrations, indexes, transactions |
+| `security.md` | All files | No hardcoded secrets, parameterized queries, no `eval()` |
+| `testing.md` | Test files | Naming conventions, coverage thresholds, no `.only()` |
 
-```markdown
-## Security Standards
+Rules are installed to `.claude/rules/`.
 
-### Forbidden
-- No hardcoded secrets
-- No `eval()` or dynamic code execution
-- No SQL string concatenation
-- No `any` types in TypeScript
+### Step 2: Modes
 
-### Required
-- Input validation on all user inputs
-- Authentication on protected endpoints
-- Secrets via environment variables only
-```
-
-#### Git Conventions
-
-```markdown
-## Git Conventions
-
-### Branch Naming
-- `feature/[ticket]-[description]`
-- `fix/[ticket]-[description]`
-- `hotfix/[description]`
-
-### Commit Messages
-Format: `type(scope): subject`
-Types: feat, fix, docs, style, refactor, test, chore
-```
-
-## settings.json
-
-The `.claude/settings.json` file controls Claude Code permissions and hooks:
-
-```json
-{
-  "permissions": {
-    "allow": [
-      "git status", "git diff", "git log",
-      "npm test", "npm run lint",
-      "pytest", "ruff check"
-    ]
-  }
-}
-```
-
-### Auto-Linting Hooks
-
-Claude Kit includes PostToolUse hooks that auto-lint files after edits:
-
-```json
-{
-  "hooks": {
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "ruff check --fix $FILE",
-            "match_files": "*.py"
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-## Agent Behavior Overrides
-
-Customize how specialized agents behave in your CLAUDE.md:
-
-```markdown
-## Agent Behavior Overrides
-
-### Planner Agent
-- Break tasks into 15-60 minute chunks
-- Always identify testing requirements
-
-### Code-Reviewer Agent
-- Enforce strict typing
-- Security-first reviews
-- Check for test coverage
-
-### Tester Agent
-- Use pytest for Python, vitest for TypeScript
-- Generate edge case tests
-```
-
-## Modes
-
-Set default modes or customize their behavior. Mode files live in `.claude/modes/`:
+Modes change how Claude communicates and solves problems:
 
 | Mode | Best For |
 |------|----------|
@@ -145,15 +43,48 @@ Set default modes or customize their behavior. Mode files live in `.claude/modes
 | `deep-research` | Investigation, audits |
 | `orchestration` | Multi-agent coordination |
 
-Switch modes naturally: "switch to brainstorm mode" or "use implementation mode".
+Modes are installed to `.claude/modes/`. Switch with natural language: "switch to brainstorm mode".
 
-## Example Complete Configuration
+### Step 3: Hooks
+
+Hooks run automatically in response to Claude Code events:
+
+| Hook | Event | What It Does |
+|------|-------|-------------|
+| `auto-format` | After Write/Edit | Runs ruff (Python) or eslint (JS/TS) on changed files |
+| `block-dangerous-commands` | Before Bash | Blocks `rm -rf /`, force push to main, `DROP TABLE`, etc. |
+| `notify` | Notification | Cross-platform desktop notifications |
+
+Hooks are installed to `.claude/hooks/` with config in `settings.local.json` (gitignored).
+
+### Step 4: MCP Servers
+
+MCP servers extend Claude with external tools:
+
+| Server | Purpose |
+|--------|---------|
+| Context7 | Real-time library documentation |
+| Sequential Thinking | Structured step-by-step reasoning |
+| Playwright | Browser automation for E2E testing |
+| Memory | Persistent knowledge graph |
+| Filesystem | Secure file operations |
+
+MCP servers are configured in `.mcp.json` with automatic platform detection (Windows vs macOS/Linux).
+
+### Install Everything
+
+Skip all prompts and install everything:
+
+```
+/claudekit:init --all
+```
+
+## Project-Level CLAUDE.md
+
+After running init, you may want to create your own `.claude/CLAUDE.md` for project-specific instructions. This is independent of Claude Kit — it's a standard Claude Code feature:
 
 ```markdown
 # My SaaS Project
-
-## Overview
-A B2B SaaS platform for project management.
 
 ## Tech Stack
 - **Backend**: FastAPI + PostgreSQL
@@ -161,34 +92,38 @@ A B2B SaaS platform for project management.
 - **Auth**: Clerk
 - **Payments**: Stripe
 
-## Architecture
-src/
-├── api/        # FastAPI routes
-├── services/   # Business logic
-├── models/     # SQLAlchemy models
-├── frontend/   # Next.js app
-└── tests/      # Test files
-
 ## Code Conventions
 - Python: PEP 8, type hints required
 - TypeScript: Strict mode, Zod for validation
 
-## Security
-- All inputs validated with Pydantic/Zod
-- SQL via SQLAlchemy ORM only
-- Secrets in environment variables
-
 ## Testing
 - Python: pytest with 80% coverage minimum
 - Frontend: vitest + Playwright
+```
 
-## Git
-- Branches: feature/*, fix/*, hotfix/*
-- Commits: conventional commits format
+## Agent Behavior Overrides
+
+You can customize agent behavior in your CLAUDE.md:
+
+```markdown
+## Agent Behavior Overrides
+
+### claudekit:planner
+- Break tasks into 15-60 minute chunks
+- Always identify testing requirements
+
+### claudekit:code-reviewer
+- Enforce strict typing
+- Security-first reviews
+- Check for test coverage
+
+### claudekit:tester
+- Use pytest for Python, vitest for TypeScript
+- Generate edge case tests
 ```
 
 ## Next Steps
 
 - [Workflows](/claudekit/workflows/planning-and-building/) — See how skills work together
-- [Skills Reference](/claudekit/reference/skills/) — Browse all 43 skills
+- [Skills Reference](/claudekit/reference/skills/) — Browse all 44 skills
 - [Creating Skills](/claudekit/customization/creating-skills/) — Build your own

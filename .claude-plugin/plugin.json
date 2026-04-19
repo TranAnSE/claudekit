@@ -1,0 +1,20 @@
+{
+  "name": "claudekit",
+  "version": "3.0.0",
+  "description": "Comprehensive toolkit for Claude Code — 44 skills, 20 agents, and an interactive setup wizard for rules, modes, hooks, and MCP servers.",
+  "author": {
+    "name": "duthaho",
+    "url": "https://github.com/duthaho"
+  },
+  "repository": "https://github.com/duthaho/claudekit",
+  "license": "MIT",
+  "keywords": [
+    "claudekit",
+    "skills",
+    "agents",
+    "workflow",
+    "tdd",
+    "debugging",
+    "planning"
+  ]
+}

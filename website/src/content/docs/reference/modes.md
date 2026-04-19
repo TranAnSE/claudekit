@@ -17,7 +17,7 @@ Switch modes naturally in conversation:
 "go into review mode"
 ```
 
-Mode files live in `.claude/modes/`. Each defines communication style, output format, and problem-solving approach.
+Modes are installed into your project's `.claude/modes/` via `/claudekit:init`. Each defines communication style, output format, and problem-solving approach.
 
 ---
 
@@ -174,4 +174,4 @@ Claude coordinates multiple agents:
 
 ## Customizing Modes
 
-Mode files are markdown in `.claude/modes/`. You can edit existing modes or create new ones. See [Creating Agents & Modes](/claudekit/customization/creating-agents-and-modes/) for details.
+After running `/claudekit:init`, mode files are markdown in `.claude/modes/`. You can edit the installed modes or create new ones. See [Creating Agents & Modes](/claudekit/customization/creating-agents-and-modes/) for details.

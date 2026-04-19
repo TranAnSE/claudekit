@@ -11,7 +11,7 @@ Claude Kit includes optional [Model Context Protocol (MCP)](https://modelcontext
 
 MCP servers give Claude access to tools it doesn't have natively — browser automation, persistent memory, real-time documentation, and structured reasoning. They run as local processes that Claude communicates with during your session.
 
-Server configurations live in `.claude/mcp/`.
+MCP servers are configured via `/claudekit:init`, which adds them to your project's `.mcp.json` with automatic platform detection (Windows vs macOS/Linux).
 
 ---
 
@@ -32,7 +32,7 @@ Claude fetches current Next.js 15 docs via Context7
 
 **Best for**: API syntax, configuration, version migration, library-specific debugging.
 
-**Config**: `.claude/mcp/context7.json`
+**Setup**: Run `/claudekit:init` and select Context7
 
 ---
 
@@ -52,7 +52,7 @@ Complex debugging scenario:
 
 **Best for**: Complex debugging, architecture decisions, security analysis.
 
-**Config**: `.claude/mcp/sequential.json`
+**Setup**: Run `/claudekit:init` and select Sequential Thinking
 
 ---
 
@@ -111,29 +111,21 @@ Claude launches browser via Playwright MCP:
 
 MCP servers require Node.js installed on your system.
 
-### Enabling a Server
+### Enabling Servers
 
-1. Check the config file in `.claude/mcp/` for the server you want
-2. Install any required dependencies (noted in the config)
-3. Restart Claude Code
+Run the setup wizard and select which servers to configure:
 
-### Configuration Format
-
-Each server has a JSON config file:
-
-```json
-{
-  "mcpServers": {
-    "server-name": {
-      "command": "npx",
-      "args": ["-y", "@package/server-name"],
-      "env": {}
-    }
-  }
-}
+```
+/claudekit:init
 ```
 
-See `.claude/mcp/README.md` for detailed setup instructions.
+Or install all servers at once:
+
+```
+/claudekit:init --all
+```
+
+The wizard automatically detects your platform and configures the correct command format in `.mcp.json`. Restart Claude Code after configuration.
 
 ## Skills That Use MCP
 

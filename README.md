@@ -1,36 +1,74 @@
 # Claude Kit
 
-A comprehensive toolkit for Claude Code to accelerate development workflows for teams working with Python and JavaScript/TypeScript.
+A comprehensive Claude Code plugin to accelerate development workflows for teams working with Python and JavaScript/TypeScript.
 
 ## Features
 
+- **44 Skills** - Auto-triggered by context: framework, language, methodology, patterns, workflows, optimization (all with YAML frontmatter and bundled resources)
 - **20 Specialized Agents** - From planning to deployment
-- **43 Skills** - Auto-triggered by context: framework, language, methodology, patterns, workflows, optimization (all with YAML frontmatter and bundled resources)
-- **7 Behavioral Modes** - Task-specific response optimization
+- **Interactive Setup Wizard** - `/claudekit:init` scaffolds rules, modes, hooks, and MCP configs into your project
+- **7 Behavioral Modes** - Task-specific response optimization (installed via init)
 - **Token Optimization** - 30-70% cost savings with compressed output modes
-- **MCP Integrations** - Context7, Sequential Thinking, Playwright, Memory, Filesystem
-- **Context Management** - Project indexing, checkpoints, parallel tasks
+- **MCP Integrations** - Context7, Sequential Thinking, Playwright, Memory, Filesystem (configured via init)
 
 ## Quick Start
 
-1. Copy the `.claude` folder to your project root
-2. Customize `.claude/CLAUDE.md` for your project
-3. Start working — skills auto-trigger based on what you ask ("implement X", "fix Y", "review Z")
+### Install via Marketplace
 
-## Directory Structure
+1. Add the claudekit marketplace:
+   ```
+   /plugin marketplace add duthaho/claudekit-marketplace
+   ```
+
+2. Install the plugin:
+   ```
+   /plugin install claudekit
+   ```
+
+3. Run the setup wizard to configure your project:
+   ```
+   /claudekit:init
+   ```
+
+   Or install everything at once:
+   ```
+   /claudekit:init --all
+   ```
+
+### Local Development
+
+Test the plugin locally without installing:
+```
+claude --plugin-dir ./path/to/claudekit
+```
+
+## What `/claudekit:init` Configures
+
+The setup wizard interactively scaffolds project-level configuration:
+
+| Category | What | Location |
+|----------|------|----------|
+| **Rules** | API, frontend, migrations, security, testing | `.claude/rules/` |
+| **Modes** | brainstorm, deep-research, default, implementation, orchestration, review, token-efficient | `.claude/modes/` |
+| **Hooks** | auto-format, block-dangerous-commands, notifications | `.claude/hooks/` + `settings.local.json` |
+| **MCP Servers** | Context7, Sequential, Playwright, Memory, Filesystem | `.mcp.json` |
+
+## Plugin Structure
 
 ```
-.claude/
-├── CLAUDE.md              # Project context (customize this!)
-├── settings.json          # Hooks, permissions, and MCP config
-├── agents/                # 20 specialized agents
-├── modes/                 # 7 behavioral mode definitions
-├── mcp/                   # MCP server configurations
-└── skills/                # 43 flat skills (router pattern)
-    ├── <skill-name>/      # Each skill is a top-level directory
-    │   ├── SKILL.md       # Trigger description + core patterns
-    │   └── references/    # Deep content loaded on demand
-    └── ...
+claudekit/
+├── .claude-plugin/
+│   └── plugin.json            # Plugin manifest
+├── skills/                    # 44 skills (auto-triggered)
+│   ├── init/                  # Setup wizard (/claudekit:init)
+│   │   ├── SKILL.md
+│   │   └── templates/         # Rules, modes, hooks, MCP templates
+│   ├── brainstorming/
+│   ├── systematic-debugging/
+│   └── ...
+├── agents/                    # 20 specialized agents
+├── scripts/                   # Hook scripts (installed via init)
+└── website/                   # Documentation site
 ```
 
 ## Agents
@@ -38,51 +76,43 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 ### Core Development
 | Agent | Description |
 |-------|-------------|
-| `planner` | Task decomposition and planning |
-| `researcher` | Technology research |
-| `debugger` | Error analysis and fixing |
-| `tester` | Test generation |
-| `code-reviewer` | Code review with security focus |
-| `scout` | Codebase exploration |
+| `claudekit:planner` | Task decomposition and planning |
+| `claudekit:debugger` | Error analysis and fixing |
+| `claudekit:tester` | Test generation |
+| `claudekit:code-reviewer` | Code review with security focus |
+| `claudekit:scout` | Codebase exploration |
 
 ### Operations
 | Agent | Description |
 |-------|-------------|
-| `git-manager` | Git operations and PRs |
-| `docs-manager` | Documentation generation |
-| `project-manager` | Progress tracking |
-| `database-admin` | Schema and migrations |
-| `ui-ux-designer` | UI component creation |
+| `claudekit:git-manager` | Git operations and PRs |
+| `claudekit:docs-manager` | Documentation generation |
+| `claudekit:project-manager` | Progress tracking |
+| `claudekit:database-admin` | Schema and migrations |
+| `claudekit:ui-ux-designer` | UI component creation |
+
+### Content & Research
+| Agent | Description |
+|-------|-------------|
+| `claudekit:researcher` | Technology research |
+| `claudekit:scout-external` | External resource exploration |
+| `claudekit:copywriter` | Marketing copy and release notes |
+| `claudekit:journal-writer` | Development journals and decision logs |
 
 ### Extended
 | Agent | Description |
 |-------|-------------|
-| `cicd-manager` | CI/CD pipeline management |
-| `security-auditor` | Security reviews |
-| `api-designer` | API design and OpenAPI |
-| `vulnerability-scanner` | Security scanning |
-| `pipeline-architect` | Pipeline optimization |
+| `claudekit:cicd-manager` | CI/CD pipeline management |
+| `claudekit:security-auditor` | Security reviews |
+| `claudekit:api-designer` | API design and OpenAPI |
+| `claudekit:vulnerability-scanner` | Security scanning |
+| `claudekit:pipeline-architect` | Pipeline optimization |
 
-## Skills as Commands
+## Skills (44 Total)
 
-All former slash commands have been migrated to skills that auto-trigger based on context:
+Skills auto-trigger based on context. After plugin install, invoke manually with `/claudekit:<skill-name>`.
 
-```bash
-# Skills auto-trigger — just describe what you want:
-"implement user authentication"     # → feature-workflow + authentication
-"this endpoint is slow"             # → performance-optimization
-"commit these changes"              # → git-workflows
-"refactor this function"            # → refactoring
-"add docs to this module"           # → documentation
-"scan for security issues"          # → owasp
-"switch to brainstorm mode"         # → mode-switching
-```
-
-## Skills (43 Total)
-
-Every skill follows a flat directory structure with a router pattern: short `SKILL.md` for triggering + `references/` for deep content loaded on demand. Skills auto-trigger based on context — no slash commands needed.
-
-### Tech Stack Skills (7 merged routers)
+### Tech Stack Skills (7)
 
 | Skill | Covers | Key Topics |
 |-------|--------|------------|
@@ -115,11 +145,11 @@ Every skill follows a flat directory structure with a router pattern: short `SKI
 | **background-jobs** | Celery, BullMQ, task queues, scheduled tasks, async workers |
 | **writing-concisely** | Compressed output modes (30-70% token savings) |
 
-### Workflow Skills (7 — migrated from commands)
+### Workflow Skills (7)
 
 | Skill | Description |
 |-------|-------------|
-| **feature-workflow** | End-to-end feature development: requirements → planning → implementation → testing → review |
+| **feature-workflow** | End-to-end feature development: requirements -> planning -> implementation -> testing -> review |
 | **git-workflows** | Conventional commits, shipping, PRs, changelogs |
 | **documentation** | Docstrings, JSDoc, API docs, README generation |
 | **refactoring** | Code smell detection, extract/rename/simplify patterns, safe refactoring workflow |
@@ -138,12 +168,11 @@ Every skill follows a flat directory structure with a router pattern: short `SKI
 | **Execution** | subagent-driven-development, using-git-worktrees, condition-based-waiting |
 | **Reasoning** | sequential-thinking |
 
-Key methodology principles:
-- **TDD Strict**: No production code without failing test first
-- **Verification**: Evidence-based completion claims
-- **Quality Gates**: Code review between every task
-- **Bite-sized Tasks**: 2-5 minute increments with exact code
-- **Sequential Thinking**: Step-by-step reasoning with confidence scores
+### Setup Skill (1)
+
+| Skill | Description |
+|-------|-------------|
+| **init** | Interactive setup wizard — scaffolds rules, modes, hooks, MCP configs |
 
 ### Bundled Resources
 
@@ -157,7 +186,7 @@ Skills include progressive-disclosure resources loaded on demand:
 
 ## Behavioral Modes
 
-Switch modes to optimize responses for different task types:
+Installed via `/claudekit:init`. Switch modes to optimize responses:
 
 | Mode | Description | Best For |
 |------|-------------|----------|
@@ -170,24 +199,13 @@ Switch modes to optimize responses for different task types:
 | `orchestration` | Multi-task coordination | Parallel work |
 
 ```
-"switch to brainstorm mode"   # → mode-switching skill activates
-"let's focus on implementation" # → implementation mode
+"switch to brainstorm mode"     # -> mode-switching skill activates
+"let's focus on implementation" # -> implementation mode
 ```
-
-## Token Optimization
-
-Reduce costs by 30-70% with compressed output modes:
-
-| Level | Activation | Savings |
-|-------|------------|---------|
-| Standard | (default) | 0% |
-| Concise | Ask for concise output | 30-40% |
-| Ultra | Ask for code-only responses | 60-70% |
-| Session | "switch to token-efficient mode" | 30-70% |
 
 ## MCP Integrations
 
-MCP servers extend Claude Kit with powerful capabilities. They are **automatically used** when configured.
+Configured via `/claudekit:init`. MCP servers extend Claude Kit with powerful capabilities.
 
 | Server | Package | Purpose |
 |--------|---------|---------|
@@ -197,137 +215,29 @@ MCP servers extend Claude Kit with powerful capabilities. They are **automatical
 | Memory | `@modelcontextprotocol/server-memory` | Persistent knowledge graph |
 | Filesystem | `@modelcontextprotocol/server-filesystem` | Secure file operations |
 
-### How MCP Servers Enhance Skills
-
-| Skill | MCP Servers Used | Enhancement |
-|-------|------------------|-------------|
-| feature-workflow | Context7, Sequential, Filesystem | Accurate docs, structured planning, safe file ops |
-| systematic-debugging | Sequential, Memory, Playwright | Step-by-step debugging, context recall, browser testing |
-| testing, playwright | Playwright, Filesystem | E2E browser tests, test file management |
-| writing-plans | Sequential, Memory | Structured breakdown, remembers decisions |
-| brainstorming | Sequential, Memory, Context7 | Creative exploration, persistent ideas |
-| session-management | Filesystem, Memory | Project scanning, context persistence |
-
-### Example: Full Feature Development
-
-```
-"Add user profile with avatar upload"
-```
-
-1. **feature-workflow** skill activates → orchestrates the workflow
-2. **Context7** → Fetches latest React/Next.js file upload docs
-3. **Sequential** → Plans component structure step-by-step
-4. **Memory** → Recalls your UI patterns from previous sessions
-5. **Playwright** → Tests the upload flow in browser
-
-Setup: See `.claude/mcp/README.md`
-
-## Customization
-
-### CLAUDE.md
-
-The `.claude/CLAUDE.md` file is your project context. Customize it with:
-
-```markdown
-# Project: Your Project Name
-
-## Tech Stack
-- **Backend**: FastAPI
-- **Frontend**: Next.js
-- **Database**: PostgreSQL
-
-## Conventions
-- Use type hints
-- 80% test coverage
-- Conventional commits
-
-## Agent Overrides
-### Tester
-- Framework: pytest
-- Coverage: 90%
-```
-
-### Adding Custom Skills
-
-Create a new skill in `.claude/skills/<name>/SKILL.md`:
-
-```yaml
----
-name: my-skill
-description: >
-  What this skill does and when to trigger it. Be specific — list
-  contexts, keywords, and scenarios. 2-4 pushy sentences.
----
-```
-
-```markdown
-# My Skill
-
-Brief overview.
-
-## When to Use
-- Scenario 1
-- Scenario 2
-
-## When NOT to Use
-- Anti-trigger scenario
-
----
-
-## Core Patterns
-### Pattern Name
-Code examples with good/bad comparisons.
-
-## Best Practices
-## Common Pitfalls
-## Related Skills
-```
-
-Optionally add bundled resources:
-```
-my-skill/
-├── SKILL.md
-├── references/    # Loaded into context on demand
-├── scripts/       # Executed without loading into context
-└── templates/     # Scaffolded into user's project
-```
-
 ## Workflow Chains
 
-Skills chain automatically based on context. Here are common flows:
+Skills chain automatically based on context:
 
 ### Feature Development
 ```
-brainstorming → writing-plans → feature-workflow → requesting-code-review → git-workflows
+brainstorming -> writing-plans -> feature-workflow -> requesting-code-review -> git-workflows
 ```
 
 ### Bug Fix
 ```
-systematic-debugging → root-cause-tracing → test-driven-development → verification-before-completion
+systematic-debugging -> root-cause-tracing -> test-driven-development -> verification-before-completion
 ```
 
 ### Ship Code
 ```
-verification-before-completion → requesting-code-review → git-workflows → finishing-a-development-branch
+verification-before-completion -> requesting-code-review -> git-workflows -> finishing-a-development-branch
 ```
-
-### Superpowers Workflow (Detailed)
-```
-brainstorming → writing-plans → executing-plans → git-workflows
-```
-Uses one-question-at-a-time design, 2-5 min tasks with exact code, subagent execution with code review gates.
 
 ### Parallel Work
 ```
-dispatching-parallel-agents → subagent-driven-development → verification-before-completion
+dispatching-parallel-agents -> subagent-driven-development -> verification-before-completion
 ```
-Launch multiple agents for independent tasks, then verify results.
-
-### Cost-Optimized Session
-```
-"switch to token-efficient mode" → [work on tasks] → "switch to default mode"
-```
-Enable compressed outputs for high-volume sessions.
 
 ## Requirements
 
@@ -341,4 +251,4 @@ MIT
 
 ---
 
-Built with duthaho
+Built by duthaho

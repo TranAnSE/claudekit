@@ -9,7 +9,7 @@ Skills are the core building block of Claude Kit. You can create custom skills f
 
 ## Skill Structure
 
-Each skill is a directory in `.claude/skills/` containing a `SKILL.md` file:
+Plugin skills live in the `skills/` directory at the plugin root. For project-specific skills, create them in `.claude/skills/`:
 
 ```
 .claude/skills/
@@ -103,7 +103,7 @@ description: Authentication skill for handling auth stuff.
 For complex skills, include reference documents in a `resources/` subdirectory:
 
 ```
-.claude/skills/my-framework/
+my-framework/
 ├── SKILL.md
 └── resources/
     ├── api-reference.md      # Framework API docs
@@ -190,5 +190,5 @@ description: Use when deploying to Fly.io or configuring Fly.io
 
 ## Related Pages
 
-- [Skills Reference](/claudekit/reference/skills/) — All 43 built-in skills
+- [Skills Reference](/claudekit/reference/skills/) — All 44 built-in skills
 - [Creating Agents & Modes](/claudekit/customization/creating-agents-and-modes/) — Custom agents and modes

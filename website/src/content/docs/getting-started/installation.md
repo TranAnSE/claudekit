@@ -1,122 +1,118 @@
 ---
 title: Installation
-description: How to install Claude Kit in your project.
+description: How to install Claude Kit as a Claude Code plugin.
 ---
 
 # Installation
 
-Claude Kit installs in under 2 minutes. Choose your preferred method below.
+Claude Kit installs as a Claude Code plugin via a marketplace. Setup takes under 2 minutes.
 
 ## Prerequisites
 
 - [Claude Code](https://claude.ai/code) installed and authenticated
-- Git (for cloning the repository)
+- Node.js (for MCP servers, if you choose to configure them)
 
-## Method 1: Clone and Copy (Recommended)
+## Install the Plugin
 
-```bash
-# Clone Claude Kit
-git clone https://github.com/duthaho/claudekit.git
+### Step 1: Add the Marketplace
 
-# Copy the .claude folder to your project
-cp -r claudekit/.claude /path/to/your-project/
-
-# Navigate to your project
-cd /path/to/your-project
-
-# Start Claude Code
-claude
+```
+/plugin marketplace add duthaho/claudekit-marketplace
 ```
 
-## Method 2: Download ZIP
+### Step 2: Install Claude Kit
 
-1. Go to [github.com/duthaho/claudekit](https://github.com/duthaho/claudekit)
-2. Click **Code** > **Download ZIP**
-3. Extract the ZIP file
-4. Copy the `.claude` folder to your project root
-
-## Method 3: Git Submodule
-
-Track Claude Kit updates via Git:
-
-```bash
-# Add as submodule
-git submodule add https://github.com/duthaho/claudekit.git .claudekit
-
-# Create symlink to .claude folder
-ln -s .claudekit/.claude .claude
-
-# Commit the changes
-git add .claudekit .claude
-git commit -m "Add Claude Kit"
+```
+/plugin install claudekit
 ```
 
-To update later:
+That's it — all 44 skills and 20 agents are now available. Skills auto-trigger based on context, and agents can be dispatched as `claudekit:<agent-name>`.
+
+### Step 3: Configure Your Project (Optional)
+
+Run the setup wizard to scaffold project-level configuration:
+
+```
+/claudekit:init
+```
+
+The wizard interactively installs:
+
+| Category | What | Location |
+|----------|------|----------|
+| **Rules** | API, frontend, migrations, security, testing | `.claude/rules/` |
+| **Modes** | brainstorm, deep-research, default, implementation, orchestration, review, token-efficient | `.claude/modes/` |
+| **Hooks** | auto-format, block-dangerous-commands, notifications | `.claude/hooks/` + `settings.local.json` |
+| **MCP Servers** | Context7, Sequential, Playwright, Memory, Filesystem | `.mcp.json` |
+
+Or install everything at once:
+
+```
+/claudekit:init --all
+```
+
+## Local Development
+
+To test the plugin locally without the marketplace:
 
 ```bash
-git submodule update --remote .claudekit
+claude --plugin-dir ./path/to/claudekit
 ```
+
+Use `/reload-plugins` to pick up changes without restarting.
 
 ## Verify Installation
 
-```bash
-cd your-project
-claude
-```
-
-Skills trigger automatically based on your conversation. Try asking Claude to brainstorm a feature or debug an error — the relevant skills will activate.
-
-## Folder Structure
-
-After installation, your project should have:
+After installing, skills trigger automatically based on your conversation:
 
 ```
-your-project/
-├── .claude/
-│   ├── CLAUDE.md          # Project instructions
-│   ├── agents/            # 20 specialized subagents
-│   │   ├── code-reviewer.md
-│   │   ├── debugger.md
-│   │   └── ...
-│   ├── modes/             # 7 behavioral modes
-│   │   ├── brainstorm.md
-│   │   ├── implementation.md
-│   │   └── ...
-│   ├── skills/            # 43 knowledge modules
-│   │   ├── brainstorming/
-│   │   ├── testing/
-│   │   ├── languages/
-│   │   └── ...
-│   ├── mcp/               # MCP server configs
-│   └── settings.json      # Claude Code settings
-└── ... (your project files)
+You: "I need to add user authentication to our app"
+     → triggers: claudekit:brainstorming, claudekit:authentication
+
+You: "There's a TypeError in the UserService"
+     → triggers: claudekit:systematic-debugging
+```
+
+You can also invoke skills manually:
+
+```
+/claudekit:brainstorming
+/claudekit:init
+```
+
+## Updating
+
+Update to the latest version:
+
+```
+/plugin marketplace update
 ```
 
 ## Troubleshooting
 
 ### Skills not triggering
 
-Make sure the `.claude` folder is in your project root (same level as `package.json` or `pyproject.toml`).
+Make sure the plugin is installed and enabled:
 
-### Permission errors
-
-On Unix systems, ensure the files are readable:
-
-```bash
-chmod -R 644 .claude/
+```
+/plugin list
 ```
 
-### Claude Code not finding CLAUDE.md
+You should see `claudekit` in the list.
 
-Restart Claude Code after adding the `.claude` folder:
+### MCP servers not working
 
-```bash
-# Exit Claude Code (Ctrl+C or /exit)
-# Restart
-claude
+MCP servers are only available after running `/claudekit:init` and selecting them. Verify your `.mcp.json` has the correct entries, then restart Claude Code.
+
+### Plugin not found in marketplace
+
+Make sure you've added the marketplace first:
+
+```
+/plugin marketplace add duthaho/claudekit-marketplace
 ```
 
 ## Next Steps
 
-1. [Configuration](/claudekit/getting-started/configuration/) — Customize for your project
+1. [Configuration](/claudekit/getting-started/configuration/) — Customize rules, modes, and more via `/claudekit:init`
 2. [Workflows](/claudekit/workflows/planning-and-building/) — See how skills work together

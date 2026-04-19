@@ -6,15 +6,15 @@
  */
 "use strict";
 
-const { execSync } = require("child_process");
+const { execFileSync } = require("child_process");
 const path = require("path");
 
 const FORMATTERS = {
-  ".py": (f) => `ruff check --fix "${f}"`,
-  ".ts": (f) => `npx eslint --fix "${f}"`,
-  ".tsx": (f) => `npx eslint --fix "${f}"`,
-  ".js": (f) => `npx eslint --fix "${f}"`,
-  ".jsx": (f) => `npx eslint --fix "${f}"`,
+  ".py": (f) => ({ cmd: "ruff", args: ["check", "--fix", f] }),
+  ".ts": (f) => ({ cmd: "npx", args: ["eslint", "--fix", f] }),
+  ".tsx": (f) => ({ cmd: "npx", args: ["eslint", "--fix", f] }),
+  ".js": (f) => ({ cmd: "npx", args: ["eslint", "--fix", f] }),
+  ".jsx": (f) => ({ cmd: "npx", args: ["eslint", "--fix", f] }),
 };
 
 async function main() {
@@ -30,7 +30,8 @@ async function main() {
     const formatter = FORMATTERS[ext];
     if (!formatter) return;
 
-    execSync(formatter(filePath), {
+    const { cmd, args } = formatter(filePath);
+    execFileSync(cmd, args, {
       stdio: "ignore",
       timeout: 10000,
     });

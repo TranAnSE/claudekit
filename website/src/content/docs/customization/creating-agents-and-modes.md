@@ -15,13 +15,11 @@ Agents are specialized subagents that Claude dispatches for independent, focused
 
 ### Agent Structure
 
-Agent files live in `.claude/agents/`:
+Plugin agents live in the `agents/` directory at the plugin root. For project-specific agents, create them in `.claude/agents/`:
 
 ```
 .claude/agents/
-├── code-reviewer.md
-├── debugger.md
-└── my-custom-agent.md
+├── my-custom-agent.md
 ```
 
 ### Agent File Format
@@ -105,13 +103,13 @@ Modes change Claude's communication style, output format, and problem-solving ap
 
 ### Mode Structure
 
-Mode files live in `.claude/modes/`:
+After running `/claudekit:init`, built-in modes are installed to `.claude/modes/`. You can add custom modes alongside them:
 
 ```
 .claude/modes/
-├── brainstorm.md
-├── implementation.md
-└── my-custom-mode.md
+├── brainstorm.md          # Installed by /claudekit:init
+├── implementation.md      # Installed by /claudekit:init
+└── my-custom-mode.md      # Your custom mode
 ```
 
 ### Mode File Format
