@@ -35,20 +35,13 @@ description: >
 
 ## Mode Activation
 
-```
-/mode brainstorm              # Switch for session
-/mode                         # Show current mode
-/mode default                 # Reset
-```
-
-## Per-Command Override
-
-Modes can be overridden for a single command without changing the session mode:
+Use natural language to switch modes for the session:
 
 ```
-/feature --mode=implementation "add user profiles"
-/review --mode=deep-research src/auth/
-/plan --mode=brainstorm "design payment flow"
+"switch to brainstorm mode"       # Creative exploration
+"use implementation mode"         # Code-focused execution
+"switch to token-efficient mode"  # Compressed output
+"back to default mode"            # Reset
 ```
 
 ## Recommended Workflows
@@ -89,3 +82,5 @@ Customize modes by editing these files. Each mode adjusts:
 
 - `writing-concisely` — The token-efficient mode activates this skill's patterns
 - `brainstorming` — The brainstorm mode uses this skill's questioning approach
+- `executing-plans` — Implementation mode pairs with plan execution
+- `sequential-thinking` — Deep research mode leverages structured reasoning

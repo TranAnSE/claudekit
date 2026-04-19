@@ -84,16 +84,16 @@ Total work: [description]
 
 ---
 
-## Spawn Pattern
+## Agent Dispatch Pattern
 
-For launching parallel background tasks:
+For launching parallel background tasks using the Agent tool:
 
 ```markdown
-Spawning parallel agents:
+Dispatching parallel agents:
 
-1. `/spawn "Research authentication patterns"` → Agent #1
-2. `/spawn "Analyze current security"` → Agent #2
-3. `/spawn "Review competitor approaches"` → Agent #3
+1. Agent(researcher, "Research authentication patterns") → Background #1
+2. Agent(security-auditor, "Analyze current security") → Background #2
+3. Agent(scout-external, "Review competitor approaches") → Background #3
 
 Monitoring progress...
 
@@ -109,14 +109,11 @@ Synthesizing...
 
 ## Activation
 
+Use natural language:
 ```
-Use mode: orchestration
-```
-
-Or use command flag:
-```
-/feature --mode=orchestration [desc]
-/plan --mode=orchestration [task]
+"switch to orchestration mode"
+"coordinate these tasks in parallel"
+"use parallel agents for this"
 ```
 
 ---
@@ -176,7 +173,7 @@ Between parallel phases:
 
 ## Combines Well With
 
-- `/spawn` command
-- `/execute-plan` command
-- Dispatching-parallel-agents skill
+- `dispatching-parallel-agents` skill (structured parallel task dispatch)
+- `executing-plans` skill (plan execution with quality gates)
+- `subagent-driven-development` skill (automated agent coordination)
 - Complex feature development

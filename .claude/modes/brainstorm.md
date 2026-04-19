@@ -38,14 +38,11 @@ Creative exploration mode optimized for ideation, design discussions, and explor
 
 ## Activation
 
+Use natural language:
 ```
-Use mode: brainstorm
-```
-
-Or use command flag:
-```
-/plan --mode=brainstorm [task]
-/feature --mode=brainstorm [desc]
+"switch to brainstorm mode"
+"let's brainstorm [topic]"
+"explore options for [feature]"
 ```
 
 ---
@@ -110,6 +107,6 @@ For informed technology choices:
 
 ## Combines Well With
 
-- `/brainstorm` command
-- `/plan` command
+- `brainstorming` skill (auto-triggered for creative exploration)
+- `writing-plans` skill (transition from exploration to planning)
 - Deep research mode (for informed exploration)

@@ -95,20 +95,23 @@ Critical analysis mode optimized for code review, auditing, and quality assessme
 
 ## Activation
 
+Use natural language:
 ```
-Use mode: review
-```
-
-Or use command flag:
-```
-/review --mode=review [file]
-/review --persona=security [file]
+"switch to review mode"
+"review this code critically"
+"do a security-focused review"
 ```
 
-### Persona Options
+Or invoke the `review` skill directly:
+```
+/review [PR number or branch]
+/security-review
+```
 
-| Persona | Focus |
-|---------|-------|
+### Review Focus Areas
+
+| Focus | Description |
+|-------|-------------|
 | `security` | OWASP, vulnerabilities, auth |
 | `performance` | Efficiency, caching, queries |
 | `architecture` | Patterns, coupling, design |
@@ -176,7 +179,7 @@ For thorough code examination:
 
 ## Combines Well With
 
-- `/review` command
+- `review` skill (user-invocable PR review)
+- `security-review` skill (user-invocable security audit)
 - Deep research mode (for thorough audits)
-- Security auditor agent
-- Code reviewer agent
+- `security-auditor` agent, `code-reviewer` agent

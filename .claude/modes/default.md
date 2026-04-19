@@ -33,18 +33,15 @@ This mode is active by default unless another mode is explicitly specified.
 
 This mode is active by default. No activation needed.
 
-To switch to another mode:
+To switch to another mode, use natural language:
 ```
-Use mode: [mode-name]
-```
-
-Or use command flags:
-```
-/command --mode=default
+"switch to brainstorm mode"
+"use implementation mode"
+"switch to token-efficient mode"
 ```
 
 ---
 
 ## Compatible With
 
-All commands and workflows. This mode provides baseline behavior that other modes modify.
+All skills and workflows. This mode provides baseline behavior that other modes modify.

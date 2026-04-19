@@ -81,14 +81,11 @@ Done. Created 3 files, all tests passing.
 
 ## Activation
 
+Use natural language:
 ```
-Use mode: implementation
-```
-
-Or use command flag:
-```
-/feature --mode=implementation [desc]
-/execute-plan --mode=implementation [file]
+"switch to implementation mode"
+"just code it"
+"execute the plan"
 ```
 
 ---
@@ -112,28 +109,27 @@ Continuing with [choice]. Let me know if you'd prefer different.
 
 ---
 
-## MCP Integration
+## Tool Usage
 
-This mode leverages MCP servers for efficient implementation:
-
-### Filesystem (Primary)
+### Built-in Tools (Primary)
 ```
-ALWAYS use Filesystem in implementation mode:
-- Use read_file to check existing code
-- Use write_file to create new files
-- Use edit_file for modifications
-- Use search_files to find patterns to follow
+Use Claude Code built-in tools for file operations:
+- Read to check existing code
+- Write to create new files
+- Edit for modifications
+- Grep/Glob to find patterns to follow
 ```
 
-### Context7
+### MCP Integration
+
+#### Context7
 ```
 For accurate library usage:
 - Fetch current API documentation
-- Use mode='code' for API references
 - Get correct patterns and examples
 ```
 
-### Memory
+#### Memory
 ```
 Recall implementation context:
 - Remember established patterns
@@ -143,7 +139,7 @@ Recall implementation context:
 
 ## Combines Well With
 
-- `/execute-plan` command
+- `executing-plans` skill (structured plan execution)
+- `test-driven-development` skill (TDD workflow)
 - Token-efficient mode (for maximum efficiency)
 - After brainstorm/planning phases
-- TDD workflow

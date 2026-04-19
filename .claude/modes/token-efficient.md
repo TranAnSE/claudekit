@@ -72,22 +72,19 @@ Fix: Add email validation
 
 ## Activation
 
+Use natural language:
 ```
-Use mode: token-efficient
-```
-
-Or use command flag:
-```
-/fix --format=concise [error]
-/feature --format=ultra [desc]
+"switch to token-efficient mode"
+"be concise"
+"code only"
 ```
 
-### Format Levels
+### Verbosity Levels
 
-| Level | Flag | Savings |
-|-------|------|---------|
-| Concise | `--format=concise` | 30-40% |
-| Ultra | `--format=ultra` | 60-70% |
+| Level | Trigger | Savings |
+|-------|---------|---------|
+| Concise | "be concise" | 30-40% |
+| Ultra | "code only" | 60-70% |
 
 ---
 

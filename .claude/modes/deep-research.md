@@ -102,14 +102,11 @@ Thorough analysis mode for comprehensive investigation. Prioritizes completeness
 
 ## Activation
 
+Use natural language:
 ```
-Use mode: deep-research
-```
-
-Or use command flag:
-```
-/research --mode=deep-research [topic]
-/review --depth=5 [file]
+"switch to deep-research mode"
+"research [topic] thoroughly"
+"do a deep investigation of [area]"
 ```
 
 ### Depth Levels
@@ -155,7 +152,7 @@ Build persistent research knowledge:
 
 ## Combines Well With
 
-- `/research` command
-- Sequential thinking skill
+- `sequential-thinking` skill (structured step-by-step analysis)
+- `researcher` agent (comprehensive technology research)
 - Security audits
 - Performance optimization
