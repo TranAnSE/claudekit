@@ -5,50 +5,18 @@ description: How to customize Claude Kit for your project.
 
 # Configuration
 
-Claude Kit is highly customizable. This guide covers all configuration options.
+Claude Kit works out of the box, but customizing it for your project makes it significantly more effective.
 
 ## CLAUDE.md
 
-The main configuration file is `.claude/CLAUDE.md`. This file defines:
-
-- Project context and architecture
-- Code conventions
-- Tech stack details
-- Custom instructions
-
-### Basic Structure
-
-```markdown
-# Project Name
-
-## Overview
-Brief description of your project.
-
-## Tech Stack
-- **Languages**: Python, TypeScript
-- **Backend**: FastAPI
-- **Frontend**: Next.js
-- **Database**: PostgreSQL
-
-## Architecture
-Describe your project structure.
-
-## Code Conventions
-Define naming conventions, style guides, etc.
-
-## Custom Instructions
-Any project-specific rules for Claude.
-```
+The main configuration file is `.claude/CLAUDE.md`. This tells Claude about your project so skills can provide relevant guidance.
 
 ### Key Sections
 
 #### Tech Stack
 
-Tell Claude what technologies you're using:
-
 ```markdown
 ## Tech Stack
-
 - **Languages**: Python 3.11, TypeScript 5.0
 - **Backend Framework**: FastAPI with SQLAlchemy
 - **Frontend Framework**: Next.js 14 with App Router
@@ -58,8 +26,6 @@ Tell Claude what technologies you're using:
 ```
 
 #### Code Conventions
-
-Define your project's coding standards:
 
 ```markdown
 ## Code Conventions
@@ -71,15 +37,9 @@ Define your project's coding standards:
 | Functions | `snake_case` | `camelCase` |
 | Classes | `PascalCase` | `PascalCase` |
 | Constants | `UPPER_SNAKE` | `UPPER_SNAKE` |
-
-### Style
-- Python: Follow PEP 8, use type hints
-- TypeScript: Strict mode, no `any` types
 ```
 
 #### Security Standards
-
-Define security requirements:
 
 ```markdown
 ## Security Standards
@@ -96,106 +56,7 @@ Define security requirements:
 - Secrets via environment variables only
 ```
 
-## Environment-Specific Config
-
-### Development
-
-```markdown
-## Development Environment
-
-\`\`\`bash
-# Python
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-
-# Node.js
-pnpm install
-pnpm dev
-\`\`\`
-```
-
-### Testing
-
-```markdown
-## Testing
-
-\`\`\`bash
-# Python
-pytest -v --cov=src
-
-# Node.js
-pnpm test
-pnpm test:coverage
-\`\`\`
-
-### Coverage Requirements
-- Minimum: 80%
-- Critical paths: 95%
-```
-
-## Agent Behavior Overrides
-
-Customize how specific agents behave:
-
-```markdown
-## Agent Behavior Overrides
-
-### Planner Agent
-- Break tasks into 15-60 minute chunks
-- Always identify testing requirements
-- Flag external dependencies
-
-### Code-Reviewer Agent
-- Enforce strict typing
-- Security-first reviews
-- Check for test coverage
-
-### Tester Agent
-- Use pytest for Python, vitest for TypeScript
-- Generate edge case tests
-- Include error scenario tests
-```
-
-## Mode Configuration
-
-Set default modes for different situations:
-
-```markdown
-## Behavioral Modes
-
-### Default Mode
-Use `implementation` mode for coding tasks.
-
-### Review Mode Settings
-- Depth: 4 (thorough)
-- Personas: security, performance
-
-### Planning Mode Settings
-- Task size: 15-60 minutes
-- Include testing requirements
-```
-
-## Command Flags Defaults
-
-Set default flags for commands:
-
-```markdown
-## Command Defaults
-
-### /feature
-- Default mode: implementation
-- Include tests: yes
-- Include review: yes
-
-### /review
-- Default persona: security
-- Default depth: 3
-```
-
-## Git Configuration
-
-Configure Git-related behavior:
+#### Git Conventions
 
 ```markdown
 ## Git Conventions
@@ -207,18 +68,86 @@ Configure Git-related behavior:
 
 ### Commit Messages
 Format: `type(scope): subject`
-
 Types: feat, fix, docs, style, refactor, test, chore
-
-### PR Requirements
-- Descriptive title and description
-- Linked to issue
-- All tests passing
 ```
 
-## Example Complete Configuration
+## settings.json
 
-Here's a complete CLAUDE.md example:
+The `.claude/settings.json` file controls Claude Code permissions and hooks:
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "git status", "git diff", "git log",
+      "npm test", "npm run lint",
+      "pytest", "ruff check"
+    ]
+  }
+}
+```
+
+### Auto-Linting Hooks
+
+Claude Kit includes PostToolUse hooks that auto-lint files after edits:
+
+```json
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ruff check --fix $FILE",
+            "match_files": "*.py"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+## Agent Behavior Overrides
+
+Customize how specialized agents behave in your CLAUDE.md:
+
+```markdown
+## Agent Behavior Overrides
+
+### Planner Agent
+- Break tasks into 15-60 minute chunks
+- Always identify testing requirements
+
+### Code-Reviewer Agent
+- Enforce strict typing
+- Security-first reviews
+- Check for test coverage
+
+### Tester Agent
+- Use pytest for Python, vitest for TypeScript
+- Generate edge case tests
+```
+
+## Modes
+
+Set default modes or customize their behavior. Mode files live in `.claude/modes/`:
+
+| Mode | Best For |
+|------|----------|
+| `default` | General tasks |
+| `brainstorm` | Design, ideation |
+| `implementation` | Code-focused, minimal prose |
+| `review` | Critical analysis |
+| `token-efficient` | High-volume work, cost savings |
+| `deep-research` | Investigation, audits |
+| `orchestration` | Multi-agent coordination |
+
+Switch modes naturally: "switch to brainstorm mode" or "use implementation mode".
+
+## Example Complete Configuration
 
 ```markdown
 # My SaaS Project
@@ -233,19 +162,16 @@ A B2B SaaS platform for project management.
 - **Payments**: Stripe
 
 ## Architecture
-\`\`\`
 src/
 ├── api/        # FastAPI routes
 ├── services/   # Business logic
 ├── models/     # SQLAlchemy models
 ├── frontend/   # Next.js app
 └── tests/      # Test files
-\`\`\`
 
 ## Code Conventions
 - Python: PEP 8, type hints required
 - TypeScript: Strict mode, Zod for validation
-- Files: snake_case for Python, kebab-case for TS
 
 ## Security
 - All inputs validated with Pydantic/Zod
@@ -255,16 +181,14 @@ src/
 ## Testing
 - Python: pytest with 80% coverage minimum
 - Frontend: vitest + Playwright
-- Run: `pnpm test` or `pytest`
 
 ## Git
 - Branches: feature/*, fix/*, hotfix/*
 - Commits: conventional commits format
-- PRs require review before merge
 ```
 
 ## Next Steps
 
-- [Commands Overview](/claudekit/commands/overview/) — Learn available commands
-- [Creating Commands](/claudekit/customization/creating-commands/) — Make your own commands
-- [Creating Modes](/claudekit/customization/creating-modes/) — Make custom modes
+- [Workflows](/claudekit/workflows/planning-and-building/) — See how skills work together
+- [Skills Reference](/claudekit/reference/skills/) — Browse all 43 skills
+- [Creating Skills](/claudekit/customization/creating-skills/) — Build your own

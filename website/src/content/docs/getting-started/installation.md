@@ -14,8 +14,6 @@ Claude Kit installs in under 2 minutes. Choose your preferred method below.
 
 ## Method 1: Clone and Copy (Recommended)
 
-The simplest way to get started:
-
 ```bash
 # Clone Claude Kit
 git clone https://github.com/duthaho/claudekit.git
@@ -32,16 +30,14 @@ claude
 
 ## Method 2: Download ZIP
 
-If you prefer not to use Git:
-
 1. Go to [github.com/duthaho/claudekit](https://github.com/duthaho/claudekit)
-2. Click **Code** → **Download ZIP**
+2. Click **Code** > **Download ZIP**
 3. Extract the ZIP file
 4. Copy the `.claude` folder to your project root
 
-## Method 3: Git Submodule (For Version Control)
+## Method 3: Git Submodule
 
-If you want to track Claude Kit updates:
+Track Claude Kit updates via Git:
 
 ```bash
 # Add as submodule
@@ -63,18 +59,12 @@ git submodule update --remote .claudekit
 
 ## Verify Installation
 
-After installation, verify everything is working:
-
 ```bash
-# Start Claude Code in your project
 cd your-project
 claude
-
-# Try a simple command
-> /help
 ```
 
-You should see the Claude Kit help output listing available commands.
+Skills trigger automatically based on your conversation. Try asking Claude to brainstorm a feature or debug an error — the relevant skills will activate.
 
 ## Folder Structure
 
@@ -84,26 +74,27 @@ After installation, your project should have:
 your-project/
 ├── .claude/
 │   ├── CLAUDE.md          # Project instructions
-│   ├── commands/          # Slash commands
-│   │   ├── feature.md
-│   │   ├── fix.md
+│   ├── agents/            # 20 specialized subagents
+│   │   ├── code-reviewer.md
+│   │   ├── debugger.md
 │   │   └── ...
-│   ├── modes/             # Behavioral modes
+│   ├── modes/             # 7 behavioral modes
 │   │   ├── brainstorm.md
 │   │   ├── implementation.md
 │   │   └── ...
-│   ├── skills/            # Knowledge modules
+│   ├── skills/            # 43 knowledge modules
+│   │   ├── brainstorming/
+│   │   ├── testing/
 │   │   ├── languages/
-│   │   ├── frameworks/
-│   │   ├── methodology/
 │   │   └── ...
+│   ├── mcp/               # MCP server configs
 │   └── settings.json      # Claude Code settings
 └── ... (your project files)
 ```
 
 ## Troubleshooting
 
-### Commands not recognized
+### Skills not triggering
 
 Make sure the `.claude` folder is in your project root (same level as `package.json` or `pyproject.toml`).
 
@@ -127,7 +118,5 @@ claude
 
 ## Next Steps
 
-Now that Claude Kit is installed:
-
-1. [Quick Start](/claudekit/getting-started/quick-start/) — Run your first command
-2. [Configuration](/claudekit/getting-started/configuration/) — Customize for your project
+1. [Configuration](/claudekit/getting-started/configuration/) — Customize for your project
+2. [Workflows](/claudekit/workflows/planning-and-building/) — See how skills work together

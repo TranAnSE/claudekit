@@ -1,9 +1,9 @@
 ---
 title: Claude Kit
-description: The open-source AI dev toolkit for Claude Code. Ship faster with 27+ commands, 7 modes, and 34+ skills. Free forever.
+description: The open-source AI dev toolkit for Claude Code. 43 skills, 20 agents, 7 modes — structure that makes Claude Code production-ready. Free forever.
 template: splash
 hero:
-  tagline: The open-source AI dev toolkit for Claude Code. Ship faster with 27+ commands, 7 modes, and 34+ skills. Free forever.
+  tagline: The open-source AI dev toolkit for Claude Code. 43 skills, 20 agents, 7 modes — structure that makes Claude Code production-ready. Free forever.
   image:
     dark: ../../assets/hero-dark.svg
     light: ../../assets/hero-light.svg
@@ -22,20 +22,20 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 ## Ship Faster. For Free.
 
-Claude Kit transforms Claude Code into a production-ready AI development team. Pre-built commands, intelligent modes, and battle-tested skills — all open source.
+Claude Kit transforms Claude Code into a production-ready AI development team. Pre-built skills, specialized agents, and intelligent modes — all open source.
 
 <CardGrid>
-  <Card title="27+ Commands" icon="terminal">
-    From `/feature` to `/ship`, automate your entire development workflow with battle-tested commands.
+  <Card title="43 Skills" icon="puzzle">
+    Auto-triggered knowledge for Python, TypeScript, React, FastAPI, TDD, debugging, security, and more. Claude knows your stack without being told.
+  </Card>
+  <Card title="20 Agents" icon="rocket">
+    Specialized subagents for code review, testing, database design, security auditing, UI/UX, and more — each with focused expertise.
   </Card>
   <Card title="7 Modes" icon="setting">
-    Switch between brainstorm, implementation, review, and more. Each mode optimizes Claude's behavior for your task.
+    Switch between brainstorm, implementation, review, deep research, and more. Each mode optimizes Claude's behavior for your task.
   </Card>
-  <Card title="34+ Skills" icon="puzzle">
-    Pre-built knowledge for Python, TypeScript, React, FastAPI, testing, security, and more.
-  </Card>
-  <Card title="5 MCP Servers" icon="rocket">
-    Real-time docs, persistent memory, browser testing, and more via Model Context Protocol.
+  <Card title="MCP Servers" icon="external">
+    Real-time docs via Context7, persistent memory, browser testing, and structured reasoning via Model Context Protocol.
   </Card>
 </CardGrid>
 
@@ -52,11 +52,12 @@ git clone https://github.com/duthaho/claudekit.git
 # Copy the kit to your project
 cp -r claudekit/.claude your-project/
 
-# Start using commands
+# Start using it
 cd your-project
 claude
-> /feature "add user authentication"
 ```
+
+Skills trigger automatically based on what you're doing. Ask Claude to brainstorm a feature, write a plan, debug an error, or review code — the right skills activate without any commands needed.
 
 ---
 
@@ -68,71 +69,70 @@ Working with Claude Code is powerful, but raw Claude has limitations:
 
 - **Context Spirals** — Token budgets run out, context gets lost mid-task
 - **Inconsistent Output** — Quality varies between sessions
-- **Manual Workflows** — Same prompts copied between projects
 - **No Structure** — Every session starts from scratch
+- **Missing Expertise** — Claude doesn't know your team's patterns and standards
 
 ### The Solution
 
 Claude Kit provides the structure, patterns, and automation that makes Claude Code production-ready:
 
 <CardGrid>
-  <Card title="Structured Workflows" icon="rocket">
-    Commands like `/feature` orchestrate multi-phase development: planning → implementation → testing → review → ship.
+  <Card title="Auto-Triggered Skills" icon="puzzle">
+    Say "fix this bug" and the systematic-debugging skill activates. Say "plan this feature" and brainstorming + writing-plans kick in. No commands to memorize.
   </Card>
-  <Card title="Context Control" icon="document">
-    Modes and skills give Claude the exact context it needs. No more explaining your stack every session.
+  <Card title="Specialized Agents" icon="rocket">
+    Delegate code review, security audits, testing, and documentation to focused subagents that work in parallel.
   </Card>
   <Card title="Consistent Quality" icon="approve-check">
-    Built-in code review, testing standards, and security checks ensure every output meets your standards.
+    Built-in TDD enforcement, verification before completion, and code review workflows ensure every output meets your standards.
   </Card>
   <Card title="Fully Customizable" icon="pencil">
-    Add your own commands, modes, and skills. Claude Kit is a template, not a black box.
+    Add your own skills, agents, and modes. Claude Kit is a template, not a black box.
   </Card>
 </CardGrid>
 
 ---
 
-## Featured Commands
+## How It Works
+
+Claude Kit uses three layers that work together:
 
 <CardGrid>
   <LinkCard
-    title="/feature"
-    description="End-to-end feature development: plan, implement, test, review, ship."
-    href="/claudekit/commands/feature/"
+    title="Skills"
+    description="43 knowledge modules that auto-trigger based on keywords. Cover languages, frameworks, testing, debugging, security, and development methodology."
+    href="/claudekit/reference/skills/"
   />
   <LinkCard
-    title="/fix"
-    description="Smart debugging: analyze errors, find root cause, implement fix, add regression test."
-    href="/claudekit/commands/fix/"
+    title="Agents"
+    description="20 specialized subagents you can dispatch for focused tasks: code review, testing, database design, security audits, and more."
+    href="/claudekit/reference/agents/"
   />
   <LinkCard
-    title="/review"
-    description="Comprehensive code review: quality, security, performance, maintainability."
-    href="/claudekit/commands/review/"
+    title="Modes"
+    description="7 behavioral configurations that change how Claude communicates and solves problems: brainstorm, implementation, review, and more."
+    href="/claudekit/reference/modes/"
   />
   <LinkCard
-    title="/ship"
-    description="Git automation: commit, create PR, ready for merge."
-    href="/claudekit/commands/ship/"
+    title="MCP Servers"
+    description="Optional integrations for real-time library docs, persistent memory, browser automation, and structured reasoning."
+    href="/claudekit/reference/mcp-servers/"
   />
 </CardGrid>
 
-[View all commands →](/claudekit/commands/overview/)
-
 ---
 
-## Modes for Every Task
+## Development Workflows
 
-| Mode | Best For | Description |
-|------|----------|-------------|
-| **Default** | General tasks | Balanced behavior |
-| **Brainstorm** | Design, ideation | Explores alternatives, asks questions |
-| **Token-Efficient** | High-volume work | Compressed output, 30-70% savings |
-| **Implementation** | Coding | Jump straight to code |
-| **Review** | Quality checks | Critical analysis, finds issues |
-| **Deep Research** | Investigation | Thorough analysis with citations |
+Claude Kit connects skills and agents into complete workflows:
 
-[Learn about modes →](/claudekit/modes/overview/)
+| Workflow | What Happens |
+|----------|-------------|
+| **Planning & Building** | Brainstorm requirements, write implementation plans, execute with subagents |
+| **Testing & Debugging** | TDD enforcement, systematic debugging, root cause tracing, verification |
+| **Reviewing & Shipping** | Code review, git workflows, PR creation, changelog generation |
+
+[Explore workflows →](/claudekit/workflows/planning-and-building/)
 
 ---
 
@@ -145,18 +145,18 @@ Claude Kit provides the structure, patterns, and automation that makes Claude Co
     href="/claudekit/getting-started/installation/"
   />
   <LinkCard
-    title="Command Reference"
-    description="Complete documentation for all 27+ commands"
-    href="/claudekit/commands/overview/"
+    title="Skills Reference"
+    description="All 43 skills organized by category"
+    href="/claudekit/reference/skills/"
   />
   <LinkCard
-    title="MCP Integrations"
-    description="Extend Claude Kit with real-time docs, memory, and browser testing"
-    href="/claudekit/mcp/overview/"
+    title="Agents Reference"
+    description="All 20 specialized subagents"
+    href="/claudekit/reference/agents/"
   />
   <LinkCard
     title="Customization"
-    description="Create your own commands, modes, and skills"
-    href="/claudekit/customization/overview/"
+    description="Create your own skills, agents, and modes"
+    href="/claudekit/customization/creating-skills/"
   />
 </CardGrid>
