@@ -1,5 +1,6 @@
 ---
 name: writing-plans
+argument-hint: "[task description]"
 description: >
   Use when a multi-step implementation task needs to be broken down before coding begins. Activate for keywords like "plan", "break down", "implementation steps", "task list", "how to implement", "write a plan", or when a feature spans multiple files or components. Also trigger when handing off work to another developer, when the user says "let's plan this out", or when a task is complex enough that jumping straight to code would be risky. If in doubt, plan first.
 ---

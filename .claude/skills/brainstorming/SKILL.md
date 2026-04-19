@@ -1,5 +1,6 @@
 ---
 name: brainstorming
+argument-hint: "[topic]"
 description: >
   Use when the user wants to design, explore, or ideate on ANY new feature, architecture decision, or unclear requirement. Activate for keywords like "brainstorm", "design", "explore", "what if", "how should we", "options for", "trade-offs", or any open-ended question about implementation approach. Also trigger when requirements are vague, ambiguous, or when multiple valid solutions exist -- err on the side of brainstorming before jumping into code.
 ---

@@ -1,5 +1,6 @@
 ---
 name: writing-concisely
+user-invocable: false
 description: >
   Use this skill when optimizing token usage, reducing response verbosity, or working in high-volume development sessions. Trigger for any mention of token savings, cost optimization, concise output, compressed responses, or the --format=concise/ultra flags. Also applies during repetitive tasks, quick iterations, simple clear requests, or when the user activates token-efficient mode. This is a cross-cutting optimization that applies to all other skills.
 ---

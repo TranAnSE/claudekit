@@ -1,5 +1,6 @@
 ---
 name: defense-in-depth
+user-invocable: false
 description: >
   Use when fixing any data-related bug, when building validation for critical data paths, or when a single validation point has already failed in production. Also activate whenever you hear "it slipped through," "the check was bypassed," or "it worked in tests but not production." Apply aggressively to any scenario involving data integrity, input validation across layers, or preventing bug recurrence through structural guarantees rather than single-point fixes.
 ---

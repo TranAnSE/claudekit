@@ -1,7 +1,7 @@
 ---
 name: dispatching-parallel-agents
 description: >
-  Use when facing 3 or more independent failures across different domains, when multiple subsystems are broken with no shared state, or when test failures span unrelated modules. Also activate whenever you see independent bugs in auth, cart, user, or other separate domains that can be fixed concurrently. Activate aggressively for any scenario where parallel work would reduce total resolution time without creating merge conflicts.
+  Use when facing 3 or more independent failures across different domains, when multiple subsystems are broken with no shared state, or when test failures span unrelated modules. Also activate whenever you see independent bugs in auth, cart, user, or other separate domains that can be fixed concurrently. Use for launching parallel background tasks like research, analysis, or code review across independent areas. Activate aggressively for any scenario where parallel work would reduce total resolution time without creating merge conflicts.
 ---
 
 # Dispatching Parallel Agents

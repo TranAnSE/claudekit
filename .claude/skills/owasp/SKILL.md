@@ -1,7 +1,7 @@
 ---
 name: owasp
 description: >
-  Use when reviewing code for security vulnerabilities, implementing authentication or authorization flows, handling user input validation, or building web endpoints exposed to untrusted data. Trigger on keywords like XSS, SQL injection, CSRF, input sanitization, password hashing, and security headers. Also apply when auditing existing code for OWASP Top 10 compliance or conducting security-focused code reviews.
+  Use when reviewing code for security vulnerabilities, implementing authentication or authorization flows, handling user input validation, or building web endpoints exposed to untrusted data. Trigger on keywords like XSS, SQL injection, CSRF, input sanitization, password hashing, security headers, "security scan", "vulnerability scan", "npm audit", or "pip-audit". Also apply when auditing existing code for OWASP Top 10 compliance, scanning dependencies for known vulnerabilities, detecting hardcoded secrets, or conducting security-focused code reviews.
 ---
 
 # OWASP Security Patterns
@@ -14,6 +14,8 @@ description: >
 - Preventing XSS, SQL injection, CSRF, or SSRF
 - Auditing authentication or authorization flows
 - Building endpoints that handle untrusted data
+- Scanning dependencies for known vulnerabilities (`npm audit`, `pip-audit`)
+- Detecting hardcoded secrets, API keys, or tokens in code
 
 ## When NOT to Use
 

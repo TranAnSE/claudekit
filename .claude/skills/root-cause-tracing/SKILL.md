@@ -1,5 +1,6 @@
 ---
 name: root-cause-tracing
+user-invocable: false
 description: >
   Use when a bug manifests far from its origin, when stack traces show multiple layers of indirection, or when data corruption appears with no obvious source. Use for any scenario involving "it was already wrong by the time it got here," deep execution stack errors, constraint violations caused by upstream failures, or mysterious data state issues. Always prefer this over surface-level fixes when the error location differs from the bug location.
 ---

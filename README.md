@@ -5,10 +5,8 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 ## Features
 
 - **20 Specialized Agents** - From planning to deployment
-- **27+ Slash Commands** - Workflow automation with flag support
-- **36 Skills** - Framework, language, methodology, patterns, and optimization expertise (all with YAML frontmatter and bundled resources)
+- **43 Skills** - Auto-triggered by context: framework, language, methodology, patterns, workflows, optimization (all with YAML frontmatter and bundled resources)
 - **7 Behavioral Modes** - Task-specific response optimization
-- **Command Flag System** - Combinable `--flag` syntax for customization
 - **Token Optimization** - 30-70% cost savings with compressed output modes
 - **MCP Integrations** - Context7, Sequential Thinking, Playwright, Memory, Filesystem
 - **Context Management** - Project indexing, checkpoints, parallel tasks
@@ -17,7 +15,7 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 
 1. Copy the `.claude` folder to your project root
 2. Customize `.claude/CLAUDE.md` for your project
-3. Start using commands like `/feature`, `/review`, `/test`
+3. Start working — skills auto-trigger based on what you ask ("implement X", "fix Y", "review Z")
 
 ## Directory Structure
 
@@ -26,10 +24,9 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 ├── CLAUDE.md              # Project context (customize this!)
 ├── settings.json          # Hooks, permissions, and MCP config
 ├── agents/                # 20 specialized agents
-├── commands/              # 27+ workflow commands
 ├── modes/                 # 7 behavioral mode definitions
 ├── mcp/                   # MCP server configurations
-└── skills/                # 36 flat skills (router pattern)
+└── skills/                # 43 flat skills (router pattern)
     ├── <skill-name>/      # Each skill is a top-level directory
     │   ├── SKILL.md       # Trigger description + core patterns
     │   └── references/    # Deep content loaded on demand
@@ -66,55 +63,24 @@ A comprehensive toolkit for Claude Code to accelerate development workflows for 
 | `vulnerability-scanner` | Security scanning |
 | `pipeline-architect` | Pipeline optimization |
 
-## Commands
+## Skills as Commands
 
-### Development Workflow
+All former slash commands have been migrated to skills that auto-trigger based on context:
+
 ```bash
-/feature [description]   # Full feature development
-/fix [error]            # Debug and fix bugs
-/review [file]          # Code review
-/test [scope]           # Generate tests
-/tdd [feature]          # Test-driven development
+# Skills auto-trigger — just describe what you want:
+"implement user authentication"     # → feature-workflow + authentication
+"this endpoint is slow"             # → performance-optimization
+"commit these changes"              # → git-workflows
+"refactor this function"            # → refactoring
+"add docs to this module"           # → documentation
+"scan for security issues"          # → owasp
+"switch to brainstorm mode"         # → mode-switching
 ```
 
-### Git & Deployment
-```bash
-/commit [message]       # Smart commit
-/ship [message]         # Commit + PR
-/pr [title]             # Create pull request
-/deploy [env]           # Deploy to environment
-```
+## Skills (43 Total)
 
-### Documentation & Planning
-```bash
-/plan [task]            # Create implementation plan
-/plan --detailed [task] # Detailed plan (2-5 min tasks)
-/brainstorm [topic]     # Interactive design session
-/execute-plan [file]    # Subagent-driven execution
-/doc [target]           # Generate documentation
-/research [topic]       # Research technology
-```
-
-### Security & Quality
-```bash
-/security-scan          # Scan for vulnerabilities
-/api-gen [resource]     # Generate API code
-/refactor [file]        # Improve code structure
-/optimize [file]        # Performance optimization
-```
-
-### Context & Modes (New)
-```bash
-/mode [name]            # Switch behavioral mode
-/index                  # Generate project index
-/load [component]       # Load project context
-/checkpoint [action]    # Save/restore session state
-/spawn [task]           # Launch parallel background task
-```
-
-## Skills (36 Total)
-
-Every skill follows a flat directory structure with a router pattern: short `SKILL.md` for triggering + `references/` for deep content loaded on demand.
+Every skill follows a flat directory structure with a router pattern: short `SKILL.md` for triggering + `references/` for deep content loaded on demand. Skills auto-trigger based on context — no slash commands needed.
 
 ### Tech Stack Skills (7 merged routers)
 
@@ -148,6 +114,18 @@ Every skill follows a flat directory structure with a router pattern: short `SKI
 | **authentication** | JWT, OAuth2, sessions, RBAC, MFA, password hashing |
 | **background-jobs** | Celery, BullMQ, task queues, scheduled tasks, async workers |
 | **writing-concisely** | Compressed output modes (30-70% token savings) |
+
+### Workflow Skills (7 — migrated from commands)
+
+| Skill | Description |
+|-------|-------------|
+| **feature-workflow** | End-to-end feature development: requirements → planning → implementation → testing → review |
+| **git-workflows** | Conventional commits, shipping, PRs, changelogs |
+| **documentation** | Docstrings, JSDoc, API docs, README generation |
+| **refactoring** | Code smell detection, extract/rename/simplify patterns, safe refactoring workflow |
+| **performance-optimization** | Profiling (cProfile, DevTools), N+1 queries, bundle size, memory leaks, benchmarking |
+| **mode-switching** | Session behavioral modes (brainstorm, token-efficient, deep-research, implementation, review) |
+| **session-management** | Checkpoints, project indexing, context loading, status checking |
 
 ### Methodology Skills (18)
 
@@ -191,39 +169,10 @@ Switch modes to optimize responses for different task types:
 | `review` | Critical analysis, finding issues | Code review |
 | `orchestration` | Multi-task coordination | Parallel work |
 
-```bash
-/mode brainstorm              # Switch for session
-/feature --mode=implementation # Override per command
 ```
-
-## Command Flags
-
-All commands support combinable flags:
-
-```bash
-# Mode and depth
-/plan --mode=brainstorm --depth=5 "feature design"
-
-# Persona-based review
-/review --persona=security --format=detailed src/auth/
-
-# Token optimization
-/fix --format=concise "error message"
-
-# Save output
-/research --save=docs/research.md "auth libraries"
+"switch to brainstorm mode"   # → mode-switching skill activates
+"let's focus on implementation" # → implementation mode
 ```
-
-### Available Flags
-
-| Flag | Description |
-|------|-------------|
-| `--mode=[mode]` | Behavioral mode |
-| `--depth=[1-5]` | Thoroughness (1=quick, 5=exhaustive) |
-| `--format=[fmt]` | Output format (concise/detailed/json) |
-| `--persona=[type]` | Expertise focus (security/performance/architecture) |
-| `--save=[path]` | Save output to file |
-| `--checkpoint` | Create state checkpoint |
 
 ## Token Optimization
 
@@ -231,9 +180,10 @@ Reduce costs by 30-70% with compressed output modes:
 
 | Level | Activation | Savings |
 |-------|------------|---------|
-| Concise | `--format=concise` | 30-40% |
-| Ultra | `--format=ultra` | 60-70% |
-| Session | `/mode token-efficient` | 30-70% |
+| Standard | (default) | 0% |
+| Concise | Ask for concise output | 30-40% |
+| Ultra | Ask for code-only responses | 60-70% |
+| Session | "switch to token-efficient mode" | 30-70% |
 
 ## MCP Integrations
 
@@ -247,38 +197,27 @@ MCP servers extend Claude Kit with powerful capabilities. They are **automatical
 | Memory | `@modelcontextprotocol/server-memory` | Persistent knowledge graph |
 | Filesystem | `@modelcontextprotocol/server-filesystem` | Secure file operations |
 
-### How MCP Servers Enhance Commands
+### How MCP Servers Enhance Skills
 
-| Command | MCP Servers Used | Enhancement |
-|---------|------------------|-------------|
-| `/feature` | Context7, Sequential, Filesystem | Accurate docs, structured planning, safe file ops |
-| `/fix` | Sequential, Memory, Playwright | Step-by-step debugging, context recall, browser testing |
-| `/test` | Playwright, Filesystem | E2E browser tests, test file management |
-| `/plan` | Sequential, Memory | Structured breakdown, remembers decisions |
-| `/research` | Context7, Sequential | Real-time docs, thorough analysis |
-| `/brainstorm` | Sequential, Memory | Creative exploration, persistent ideas |
-| `/index` | Filesystem | Project structure scanning |
-
-### MCP + Mode Combinations
-
-| Mode | Primary MCP | Best For |
-|------|-------------|----------|
-| `brainstorm` | Sequential + Memory | Design sessions with persistent ideas |
-| `deep-research` | Sequential + Context7 | Thorough technical investigation |
-| `implementation` | Filesystem + Context7 | Focused coding with accurate docs |
-| `review` | Playwright + Memory | UI review with context |
-| `orchestration` | All 5 | Complex multi-step parallel work |
+| Skill | MCP Servers Used | Enhancement |
+|-------|------------------|-------------|
+| feature-workflow | Context7, Sequential, Filesystem | Accurate docs, structured planning, safe file ops |
+| systematic-debugging | Sequential, Memory, Playwright | Step-by-step debugging, context recall, browser testing |
+| testing, playwright | Playwright, Filesystem | E2E browser tests, test file management |
+| writing-plans | Sequential, Memory | Structured breakdown, remembers decisions |
+| brainstorming | Sequential, Memory, Context7 | Creative exploration, persistent ideas |
+| session-management | Filesystem, Memory | Project scanning, context persistence |
 
 ### Example: Full Feature Development
 
-```bash
-/feature Add user profile with avatar upload
+```
+"Add user profile with avatar upload"
 ```
 
-1. **Context7** → Fetches latest React/Next.js file upload docs
-2. **Sequential** → Plans component structure step-by-step
-3. **Memory** → Recalls your UI patterns from previous sessions
-4. **Filesystem** → Creates files in correct locations
+1. **feature-workflow** skill activates → orchestrates the workflow
+2. **Context7** → Fetches latest React/Next.js file upload docs
+3. **Sequential** → Plans component structure step-by-step
+4. **Memory** → Recalls your UI patterns from previous sessions
 5. **Playwright** → Tests the upload flow in browser
 
 Setup: See `.claude/mcp/README.md`
@@ -306,23 +245,6 @@ The `.claude/CLAUDE.md` file is your project context. Customize it with:
 ### Tester
 - Framework: pytest
 - Coverage: 90%
-```
-
-### Adding Custom Commands
-
-Create a new file in `.claude/commands/`:
-
-```markdown
-# /my-command
-
-## Purpose
-Description of your command.
-
----
-
-Your prompt content here.
-
-Use $ARGUMENTS for command arguments.
 ```
 
 ### Adding Custom Skills
@@ -372,36 +294,38 @@ my-skill/
 
 ## Workflow Chains
 
+Skills chain automatically based on context. Here are common flows:
+
 ### Feature Development
 ```
-/feature → planner → implement → code-reviewer → tester → git-manager
+brainstorming → writing-plans → feature-workflow → requesting-code-review → git-workflows
 ```
 
 ### Bug Fix
 ```
-/fix → debugger → scout → implement → tester → code-reviewer
+systematic-debugging → root-cause-tracing → test-driven-development → verification-before-completion
 ```
 
 ### Ship Code
 ```
-/ship → code-reviewer → tester → security-scan → git-manager
+verification-before-completion → requesting-code-review → git-workflows → finishing-a-development-branch
 ```
 
 ### Superpowers Workflow (Detailed)
 ```
-/brainstorm → /plan --detailed → /execute-plan → /ship
+brainstorming → writing-plans → executing-plans → git-workflows
 ```
 Uses one-question-at-a-time design, 2-5 min tasks with exact code, subagent execution with code review gates.
 
-### Parallel Research
+### Parallel Work
 ```
-/spawn "research auth" → /spawn "analyze security" → /spawn --collect
+dispatching-parallel-agents → subagent-driven-development → verification-before-completion
 ```
-Launch multiple background tasks, then aggregate results.
+Launch multiple agents for independent tasks, then verify results.
 
 ### Cost-Optimized Session
 ```
-/mode token-efficient → [work on tasks] → /mode default
+"switch to token-efficient mode" → [work on tasks] → "switch to default mode"
 ```
 Enable compressed outputs for high-volume sessions.
 

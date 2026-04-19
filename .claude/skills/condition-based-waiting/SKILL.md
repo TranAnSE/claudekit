@@ -1,5 +1,6 @@
 ---
 name: condition-based-waiting
+user-invocable: false
 description: >
   Use when waiting on external conditions like CI pipeline runs, deployments, long builds, database migrations, or test suites. Trigger for keywords like "wait for", "check status", "poll", "monitor", "is it done", "build running", "deploy in progress", or when a background process needs to complete before the next step. Also activate when using run_in_background or Monitor tools in Claude Code.
 ---

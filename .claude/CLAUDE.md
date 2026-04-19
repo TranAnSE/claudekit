@@ -6,38 +6,20 @@ This is a comprehensive Claude Kit for Claude Code, designed to accelerate devel
 
 ## Quick Reference
 
-### Core Commands
+### Key Skills (auto-triggered)
 
-| Command | Description |
-|---------|-------------|
-| `/feature [desc]` | Full feature development workflow |
-| `/fix [error]` | Smart debugging and bug fix |
-| `/review [file]` | Comprehensive code review |
-| `/test [scope]` | Generate tests |
-| `/ship [msg]` | Commit + PR automation |
-| `/plan [task]` | Task decomposition |
-| `/doc [target]` | Documentation generation |
-| `/deploy [env]` | Deployment workflow |
-
-### Enhanced Commands
-
-| Command | Description |
-|---------|-------------|
-| `/plan --detailed [task]` | Detailed plan with 2-5 min tasks |
-| `/brainstorm [topic]` | Interactive design session |
-| `/execute-plan [file]` | Subagent-driven plan execution |
-| `/tdd [feature]` | Test-driven development workflow |
-| `/research [topic]` | Technology research |
-
-### New Commands
-
-| Command | Description |
-|---------|-------------|
-| `/mode [name]` | Switch behavioral mode |
-| `/index` | Generate project structure index |
-| `/load [component]` | Load project context |
-| `/checkpoint [action]` | Save/restore session state |
-| `/spawn [task]` | Launch parallel background task |
+| Skill | Triggers on |
+|-------|------------|
+| `feature-workflow` | "feature", "implement", "build", "add functionality" |
+| `systematic-debugging` | "bug", "error", "failing", "broken", stack traces |
+| `git-workflows` | "commit", "PR", "ship", "changelog" |
+| `writing-plans` | "plan", "break down", "implementation steps" |
+| `brainstorming` | "brainstorm", "design", "explore", "trade-offs" |
+| `documentation` | "document", "docstring", "README", "API docs" |
+| `refactoring` | "refactor", "clean up", "extract", "simplify" |
+| `performance-optimization` | "slow", "performance", "profiling", "N+1" |
+| `mode-switching` | "mode", "switch mode", "token-efficient" |
+| `session-management` | "checkpoint", "index", "load context", "status" |
 
 ## Tech Stack
 
@@ -184,44 +166,12 @@ Modes adjust communication style, output format, and problem-solving approach.
 
 ### Mode Activation
 
-```bash
-/mode brainstorm              # Switch mode for session
-/feature --mode=implementation # Override for single command
-```
+Ask Claude to switch modes naturally:
+- "switch to brainstorm mode" → creative exploration
+- "use implementation mode" → code-focused, minimal prose
+- "switch to token-efficient mode" → compressed output (30-70% savings)
 
 Mode files: `.claude/modes/`
-
-## Command Flags
-
-<!-- CUSTOMIZATION POINT: Set default flag values -->
-
-All commands support combinable flags for flexible customization.
-
-### Universal Flags
-
-| Flag | Description | Values |
-|------|-------------|--------|
-| `--mode=[mode]` | Behavioral mode | default, brainstorm, token-efficient, etc. |
-| `--depth=[1-5]` | Thoroughness level | 1=quick, 5=exhaustive |
-| `--format=[fmt]` | Output format | concise, detailed, json |
-| `--save=[path]` | Save output to file | File path |
-| `--checkpoint` | Create state checkpoint | Boolean |
-
-### Persona Flags
-
-| Flag | Description |
-|------|-------------|
-| `--persona=security` | Security-focused analysis |
-| `--persona=performance` | Performance-focused analysis |
-| `--persona=architecture` | Architecture-focused analysis |
-
-### Examples
-
-```bash
-/review --persona=security --depth=5 src/auth/
-/plan --mode=brainstorm --save=plans/design.md "feature"
-/fix --format=concise "error message"
-```
 
 ## Token Optimization
 
@@ -229,51 +179,23 @@ All commands support combinable flags for flexible customization.
 
 Control output verbosity for cost optimization.
 
-| Level | Flag | Savings | Description |
-|-------|------|---------|-------------|
+| Level | Activation | Savings | Description |
+|-------|-----------|---------|-------------|
 | Standard | (default) | 0% | Full explanations |
-| Concise | `--format=concise` | 30-40% | Reduced explanations |
-| Ultra | `--format=ultra` | 60-70% | Code-only responses |
-
-### Session-Wide Optimization
-
-```bash
-/mode token-efficient         # Enable for entire session
-```
+| Concise | "be concise" | 30-40% | Reduced explanations |
+| Ultra | "code only" | 60-70% | Code-only responses |
+| Session | "switch to token-efficient mode" | 30-70% | Compressed for session |
 
 Reference: `.claude/skills/writing-concisely/SKILL.md`
 
 ## Context Management
 
-### Project Indexing
+These features are provided by the `session-management` skill:
 
-Generate and use project structure index for faster navigation:
-
-```bash
-/index                        # Generate PROJECT_INDEX.md
-/load api                     # Load API context
-/load --all                   # Load full project context
-```
-
-### Session Checkpoints
-
-Save and restore conversation state:
-
-```bash
-/checkpoint save "feature-x"  # Save current state
-/checkpoint list              # List checkpoints
-/checkpoint restore "feature-x" # Restore state
-```
-
-### Parallel Tasks
-
-Launch background tasks for concurrent work:
-
-```bash
-/spawn "research auth patterns"
-/spawn --list                 # Check status
-/spawn --collect              # Gather results
-```
+- **Project Indexing** — "generate a project index" → scans and creates PROJECT_INDEX.md
+- **Context Loading** — "load the API context" → reads relevant files into context
+- **Checkpoints** — "save checkpoint feature-x" → git stash + metadata for session recovery
+- **Status** — "what's the project status?" → git state, tasks, recent commits
 
 ## MCP Integrations
 
@@ -304,7 +226,7 @@ Settings to control the integrated superpowers development methodology.
 | `standard` | 15-60 min | Quick planning, experienced team |
 | `detailed` | 2-5 min | Thorough plans with exact code |
 
-To use detailed mode: `/plan --detailed [task]`
+To use detailed mode: "plan this in detail" or "break this into 2-5 min tasks"
 
 ### Brainstorming Style
 
@@ -313,7 +235,7 @@ To use detailed mode: `/plan --detailed [task]`
 | `standard` | All questions at once |
 | `interactive` | One question per message with validation |
 
-To use interactive mode: `/brainstorm [topic]`
+To use interactive mode: "let's brainstorm [topic]"
 
 ### Execution Mode
 
@@ -322,12 +244,12 @@ To use interactive mode: `/brainstorm [topic]`
 | `manual` | Developer executes tasks from plan |
 | `subagent` | Automated execution with code review gates |
 
-To use subagent mode: `/execute-plan [plan-file]`
+To use subagent mode: "execute the plan" or "run the plan with subagents"
 
 ### TDD Strictness
 
 For strict TDD enforcement (no production code without failing test):
-- Use `/tdd [feature]` command
+- Auto-triggers on implementation tasks
 - Reference: `.claude/skills/test-driven-development/SKILL.md`
 
 ### Verification Requirements
@@ -347,8 +269,10 @@ Enable mandatory verification before completion claims:
 | **Security** | owasp |
 | **API** | openapi |
 | **Testing** | testing (pytest, vitest, Jest), playwright |
-| **Optimization** | writing-concisely |
+| **Optimization** | writing-concisely, performance-optimization |
 | **Developer Patterns** | error-handling, state-management, logging, caching, api-client, authentication, background-jobs |
+| **Workflows** | feature-workflow, git-workflows, documentation, refactoring |
+| **Session** | mode-switching, session-management |
 | **Methodology - Planning** | brainstorming, writing-plans, executing-plans, writing-skills |
 | **Methodology - Testing** | test-driven-development, verification-before-completion, testing-anti-patterns |
 | **Methodology - Debugging** | systematic-debugging, root-cause-tracing, defense-in-depth |
@@ -369,7 +293,7 @@ Each skill includes:
 
 For complex problems requiring step-by-step analysis:
 - Reference: `.claude/skills/sequential-thinking/SKILL.md`
-- Activation: `/research --sequential [topic]` or use deep-research mode
+- Activation: auto-triggers on complex reasoning tasks, or use deep-research mode
 
 ## Environment Configuration
 
@@ -458,7 +382,6 @@ pnpm install
 - **Claude Kit Version**: 3.0.0
 - **Last Updated**: 2026-04-18
 - **Compatible with**: Claude Code 1.0+
-- **Total Skills**: 36 (with YAML frontmatter, bundled resources)
-- **Total Commands**: 27+
+- **Total Skills**: 43 (with YAML frontmatter, bundled resources)
 - **Total Agents**: 20
 - **Behavioral Modes**: 7

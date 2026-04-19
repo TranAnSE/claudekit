@@ -1,7 +1,7 @@
 ---
 name: devops
 description: >
-  Use when containerizing applications, configuring CI/CD pipelines, or deploying to edge — including Docker, Dockerfile, docker-compose, multi-stage builds, GitHub Actions, workflow YAML, matrix builds, workflow_dispatch, Cloudflare Workers, Pages, R2, D1, KV, wrangler, or container registries.
+  Use when containerizing applications, configuring CI/CD pipelines, deploying to environments, or deploying to edge — including Docker, Dockerfile, docker-compose, multi-stage builds, GitHub Actions, workflow YAML, matrix builds, workflow_dispatch, Cloudflare Workers, Pages, R2, D1, KV, wrangler, container registries, or deployment workflows (staging, production, health checks, smoke tests).
 ---
 
 # DevOps
@@ -11,6 +11,8 @@ description: >
 - Containerizing applications with Docker or Docker Compose
 - Setting up CI/CD pipelines with GitHub Actions
 - Deploying to Cloudflare Workers, Pages, R2, D1, or KV
+- Deploying applications to staging or production environments
+- Running pre-deploy checks (build, tests, security audit)
 - Optimizing container images, build caching, or deployment workflows
 - Configuring wrangler.toml, Durable Objects, or Cloudflare Queues
 

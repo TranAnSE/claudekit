@@ -1,5 +1,6 @@
 ---
 name: testing-anti-patterns
+user-invocable: false
 description: >
   Use when writing, reviewing, or debugging tests. Activate for keywords like "mock", "stub", "test helper", "flaky test", "test passes but bug ships", "false positive", "test coverage", or when tests seem unreliable. Also trigger when reviewing test code in PRs, when tests pass but production breaks, when someone proposes heavy mocking, or when test failures are intermittent. If any test smells wrong or feels like it is not actually verifying real behavior, this skill applies.
 ---

@@ -13,6 +13,7 @@ A design-first reference for REST APIs developers want to use. Standardizes on *
 - Designing or documenting a new REST API
 - Generating clients/servers from a spec (FastAPI, Express, NestJS, etc.)
 - Establishing error, pagination, versioning, or auth conventions for a service
+- Generating API endpoints, models, and tests from a resource specification
 - Migrating a spec from OpenAPI 3.0 → 3.1
 - Setting up lint/governance in CI
 
