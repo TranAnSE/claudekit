@@ -114,5 +114,5 @@ Make sure you've added the marketplace first:
 
 ## Next Steps
 
-1. [Configuration](/claudekit/getting-started/configuration/) — Customize rules, modes, and more via `/claudekit:init`
-2. [Workflows](/claudekit/workflows/planning-and-building/) — See how skills work together
+1. [Configuration](/getting-started/configuration/) — Customize rules, modes, and more via `/claudekit:init`
+2. [Workflows](/workflows/planning-and-building/) — See how skills work together

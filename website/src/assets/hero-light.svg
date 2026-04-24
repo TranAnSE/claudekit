@@ -1,46 +1,63 @@
-<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Background terminal window -->
-  <rect x="20" y="20" width="360" height="260" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="2"/>
-
-  <!-- Terminal header -->
-  <rect x="20" y="20" width="360" height="32" rx="12" fill="#f1f5f9"/>
-  <rect x="20" y="40" width="360" height="12" fill="#f1f5f9"/>
-  <circle cx="40" cy="36" r="6" fill="#ef4444"/>
-  <circle cx="60" cy="36" r="6" fill="#eab308"/>
-  <circle cx="80" cy="36" r="6" fill="#22c55e"/>
-
-  <!-- Terminal content -->
-  <text x="40" y="80" font-family="monospace" font-size="14" fill="#94a3b8">$</text>
-  <text x="55" y="80" font-family="monospace" font-size="14" fill="#0891b2">/feature</text>
-  <text x="125" y="80" font-family="monospace" font-size="14" fill="#475569">"add user authentication"</text>
-
-  <!-- Progress indicators -->
-  <text x="40" y="110" font-family="monospace" font-size="12" fill="#22c55e">✓</text>
-  <text x="58" y="110" font-family="monospace" font-size="12" fill="#475569">Planning feature...</text>
-
-  <text x="40" y="135" font-family="monospace" font-size="12" fill="#22c55e">✓</text>
-  <text x="58" y="135" font-family="monospace" font-size="12" fill="#475569">Implementing auth service...</text>
-
-  <text x="40" y="160" font-family="monospace" font-size="12" fill="#22c55e">✓</text>
-  <text x="58" y="160" font-family="monospace" font-size="12" fill="#475569">Writing tests...</text>
-
-  <text x="40" y="185" font-family="monospace" font-size="12" fill="#22c55e">✓</text>
-  <text x="58" y="185" font-family="monospace" font-size="12" fill="#475569">Code review passed</text>
-
-  <text x="40" y="210" font-family="monospace" font-size="12" fill="#0891b2">✓</text>
-  <text x="58" y="210" font-family="monospace" font-size="12" fill="#0891b2">Feature complete!</text>
-
-  <!-- Cursor -->
-  <rect x="40" y="235" width="8" height="16" fill="#0891b2" opacity="0.8">
-    <animate attributeName="opacity" values="0.8;0;0.8" dur="1s" repeatCount="indefinite"/>
-  </rect>
-
-  <!-- Decorative glow -->
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The six-phase Claude Kit workflow: Think, Review, Build, Ship, Maintain, Setup">
   <defs>
-    <radialGradient id="glow-light" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#0891b2" stop-opacity="0.1"/>
-      <stop offset="100%" stop-color="#0891b2" stop-opacity="0"/>
+    <radialGradient id="glow-l" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#d97706" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <ellipse cx="200" cy="150" rx="180" ry="120" fill="url(#glow-light)"/>
+
+  <!-- Ambient wash -->
+  <ellipse cx="200" cy="140" rx="200" ry="130" fill="url(#glow-l)"/>
+
+  <!-- Phase labels (row 1, above nodes) -->
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="500" letter-spacing="0.08em" fill="#57534e" text-anchor="middle">
+    <text x="70" y="80">THINK</text>
+    <text x="200" y="80">REVIEW</text>
+    <text x="330" y="80">BUILD</text>
+  </g>
+
+  <!-- Phase numbers (row 1) -->
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="9" font-weight="500" fill="#a8a29e" text-anchor="middle">
+    <text x="70" y="64">01</text>
+    <text x="200" y="64">02</text>
+    <text x="330" y="64">03</text>
+  </g>
+
+  <!-- Row 1 connector line -->
+  <line x1="82" y1="110" x2="188" y2="110" stroke="#d97706" stroke-width="1.5" stroke-dasharray="2 3"/>
+  <line x1="212" y1="110" x2="318" y2="110" stroke="#d97706" stroke-width="1.5" stroke-dasharray="2 3"/>
+
+  <!-- Row 1 nodes -->
+  <circle cx="70" cy="110" r="7" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <circle cx="200" cy="110" r="7" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <circle cx="330" cy="110" r="7" fill="#d97706"/>
+
+  <!-- Elbow: Build (3) -> Ship (4) -->
+  <path d="M 337 110 Q 360 110 360 150 Q 360 190 337 190" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="2 3"/>
+
+  <!-- Row 2 connector line -->
+  <line x1="318" y1="190" x2="212" y2="190" stroke="#d97706" stroke-width="1.5" stroke-dasharray="2 3"/>
+  <line x1="188" y1="190" x2="82" y2="190" stroke="#d97706" stroke-width="1.5" stroke-dasharray="2 3"/>
+
+  <!-- Row 2 nodes -->
+  <circle cx="330" cy="190" r="7" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <circle cx="200" cy="190" r="7" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+  <circle cx="70" cy="190" r="7" fill="#fffbeb" stroke="#d97706" stroke-width="2"/>
+
+  <!-- Phase labels (row 2, below nodes) -->
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="11" font-weight="500" letter-spacing="0.08em" fill="#57534e" text-anchor="middle">
+    <text x="330" y="222">SHIP</text>
+    <text x="200" y="222">MAINTAIN</text>
+    <text x="70" y="222">SETUP</text>
+  </g>
+
+  <!-- Phase numbers (row 2) -->
+  <g font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="9" font-weight="500" fill="#a8a29e" text-anchor="middle">
+    <text x="330" y="238">04</text>
+    <text x="200" y="238">05</text>
+    <text x="70" y="238">06</text>
+  </g>
+
+  <!-- Footer inscription -->
+  <text x="200" y="270" font-family="'IBM Plex Mono', ui-monospace, monospace" font-size="10" font-weight="400" letter-spacing="0.12em" fill="#a8a29e" text-anchor="middle">35 SKILLS · 24 AGENTS · 7 MODES</text>
 </svg>

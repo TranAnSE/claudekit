@@ -207,6 +207,6 @@ Or reference the mode-switching skill keywords.
 
 ## Related Pages
 
-- [Agents Reference](/claudekit/reference/agents/) — All 24 built-in agents
-- [Modes Reference](/claudekit/reference/modes/) — All 7 built-in modes
-- [Creating Skills](/claudekit/customization/creating-skills/) — Custom skill creation
+- [Agents Reference](/reference/agents/) — All 24 built-in agents
+- [Modes Reference](/reference/modes/) — All 7 built-in modes
+- [Creating Skills](/customization/creating-skills/) — Custom skill creation

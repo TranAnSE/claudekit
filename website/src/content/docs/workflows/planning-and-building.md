@@ -192,6 +192,6 @@ These skills activate automatically during planning and building:
 
 ## Related Pages
 
-- [Testing & Debugging](/claudekit/workflows/testing-and-debugging/) — TDD and debugging workflows
-- [Reviewing & Shipping](/claudekit/workflows/reviewing-and-shipping/) — Code review and git workflows
-- [Skills Reference](/claudekit/reference/skills/) — All 35 skills
+- [Testing & Debugging](/workflows/testing-and-debugging/) — TDD and debugging workflows
+- [Reviewing & Shipping](/workflows/reviewing-and-shipping/) — Code review and git workflows
+- [Skills Reference](/reference/skills/) — All 35 skills

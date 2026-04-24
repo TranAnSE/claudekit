@@ -174,4 +174,4 @@ Claude coordinates multiple agents:
 
 ## Customizing Modes
 
-After running `/claudekit:init`, mode files are markdown in `.claude/modes/`. You can edit the installed modes or create new ones. See [Creating Agents & Modes](/claudekit/customization/creating-agents-and-modes/) for details.
+After running `/claudekit:init`, mode files are markdown in `.claude/modes/`. You can edit the installed modes or create new ones. See [Creating Agents & Modes](/customization/creating-agents-and-modes/) for details.

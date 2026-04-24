@@ -142,6 +142,6 @@ The git-workflows skill generates changelogs from conventional commits:
 
 ## Related Pages
 
-- [Planning & Building](/claudekit/workflows/planning-and-building/) — Brainstorm, plan, execute
-- [Testing & Debugging](/claudekit/workflows/testing-and-debugging/) — TDD and debugging workflows
-- [Skills Reference](/claudekit/reference/skills/) — All 35 skills
+- [Planning & Building](/workflows/planning-and-building/) — Brainstorm, plan, execute
+- [Testing & Debugging](/workflows/testing-and-debugging/) — TDD and debugging workflows
+- [Skills Reference](/reference/skills/) — All 35 skills

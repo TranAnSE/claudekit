@@ -5,8 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://duthaho.github.io',
-  base: '/claudekit',
+  site: 'https://claudekit.duthaho.dev',
   integrations: [
     starlight({
       title: 'Claude Kit',
@@ -21,10 +20,18 @@ export default defineConfig({
       },
       head: [
         {
-          tag: 'meta',
+          tag: 'link',
+          attrs: { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        },
+        {
+          tag: 'link',
+          attrs: { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        },
+        {
+          tag: 'link',
           attrs: {
-            property: 'og:image',
-            content: 'https://duthaho.github.io/claudekit/og-image.png',
+            rel: 'stylesheet',
+            href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap',
           },
         },
       ],

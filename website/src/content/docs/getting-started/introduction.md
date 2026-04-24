@@ -61,6 +61,6 @@ No slash commands needed — Claude reads your intent and activates the right sk
 
 ## Next Steps
 
-1. [Install Claude Kit](/claudekit/getting-started/installation/) — Install the plugin
-2. [Configuration](/claudekit/getting-started/configuration/) — Run `/claudekit:init` to customize
-3. [Skills Reference](/claudekit/reference/skills/) — Browse all 35 skills
+1. [Install Claude Kit](/getting-started/installation/) — Install the plugin
+2. [Configuration](/getting-started/configuration/) — Run `/claudekit:init` to customize
+3. [Skills Reference](/reference/skills/) — Browse all 35 skills
