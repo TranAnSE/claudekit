@@ -538,8 +538,6 @@ describe('Worker', () => {
 
 ## Related Skills
 
-- `openapi` — API design (Workers APIs benefit from the same conventions)
 - `docker` — alternative deployment model (containers vs edge)
 - `github-actions` — CI/CD pipeline for deploying Workers
-- `typescript` — TypeScript patterns (Workers are TypeScript-first)
 - `vitest` — testing Workers with Miniflare pool

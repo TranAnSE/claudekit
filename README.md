@@ -1,15 +1,15 @@
 # Claude Kit
 
-A comprehensive Claude Code plugin to accelerate development workflows for teams working with Python and JavaScript/TypeScript.
+The development-workflow plugin for Claude Code. Opinionated skills and agents that teach Claude how to think, plan, review, and ship — so you don't spend your context window reinventing process.
 
 ## Features
 
-- **44 Skills** - Auto-triggered by context: framework, language, methodology, patterns, workflows, optimization (all with YAML frontmatter and bundled resources)
-- **20 Specialized Agents** - From planning to deployment
-- **Interactive Setup Wizard** - `/claudekit:init` scaffolds rules, modes, hooks, and MCP configs into your project
-- **7 Behavioral Modes** - Task-specific response optimization (installed via init)
-- **Token Optimization** - 30-70% cost savings with compressed output modes
-- **MCP Integrations** - Context7, Sequential Thinking, Playwright, Memory, Filesystem (configured via init)
+- **35 Skills** organized around a 6-phase workflow: Think → Review → Build → Ship → Maintain → Setup
+- **13 user-invocable spine skills** — typed directly as `/claudekit:<name>`, the rest auto-trigger by context
+- **24 Specialized Agents** — planners, reviewers, implementers, and 4 plan-dimension reviewers
+- **Interactive Setup Wizard** — `/claudekit:init` scaffolds rules, modes, hooks, and MCP configs
+- **7 Behavioral Modes** — task-specific response optimization (installed via init)
+- **MCP Integrations** — Context7, Sequential Thinking, Playwright, Memory, Filesystem (configured via init)
 
 ## Quick Start
 
@@ -59,14 +59,14 @@ The setup wizard interactively scaffolds project-level configuration:
 claudekit/
 ├── .claude-plugin/
 │   └── plugin.json            # Plugin manifest
-├── skills/                    # 44 skills (auto-triggered)
+├── skills/                    # 35 skills (auto-triggered; 13 user-invocable)
 │   ├── init/                  # Setup wizard (/claudekit:init)
 │   │   ├── SKILL.md
 │   │   └── templates/         # Rules, modes, hooks, MCP templates
 │   ├── brainstorming/
 │   ├── systematic-debugging/
 │   └── ...
-├── agents/                    # 20 specialized agents
+├── agents/                    # 24 specialized agents
 ├── scripts/                   # Hook scripts (installed via init)
 └── website/                   # Documentation site
 ```
@@ -108,81 +108,76 @@ claudekit/
 | `claudekit:vulnerability-scanner` | Security scanning |
 | `claudekit:pipeline-architect` | Pipeline optimization |
 
-## Skills (44 Total)
+### Plan Review
+| Agent | Description |
+|-------|-------------|
+| `claudekit:ceo-reviewer` | Strategic/scope review of a written plan (ambition, problem clarity, wedge focus, demand reality, future-fit) |
+| `claudekit:eng-reviewer` | Architecture review (data flow, failure modes, edge cases, test matrix, rollback) |
+| `claudekit:design-reviewer` | UX/visual plan review (hierarchy, consistency, states, accessibility, AI-slop avoidance) |
+| `claudekit:devex-reviewer` | Developer-experience review (TTHW, ergonomics, error copy, docs structure, magical moments) |
 
-Skills auto-trigger based on context. After plugin install, invoke manually with `/claudekit:<skill-name>`.
+## Skills
 
-### Tech Stack Skills (7)
+Claude Kit is organized around a **6-phase development workflow**. Each phase has a small set of spine skills you invoke directly (`/claudekit:<name>`); supporting skills auto-trigger behind the scenes when relevant.
 
-| Skill | Covers | Key Topics |
-|-------|--------|------------|
-| **languages** | Python, TypeScript, JavaScript | Type hints, generics, async, Pydantic, Zod, ES6+ |
-| **backend-frameworks** | FastAPI, Django, NestJS, Express | Routes, DI, middleware, ORM, guards, pipes |
-| **frontend** | React, Next.js, shadcn/ui | Hooks, App Router, server components, Suspense |
-| **frontend-styling** | Tailwind CSS, accessibility | Responsive, dark mode, WCAG, ARIA, focus management |
-| **databases** | PostgreSQL, MongoDB, Redis, migrations | Schema, indexing, aggregation, caching, Alembic/Prisma |
-| **devops** | Docker, GitHub Actions, Cloudflare Workers | Multi-stage builds, CI/CD, edge deployment |
-| **testing** | pytest, vitest, Jest | Fixtures, mocking, MSW, coverage, parametrize |
-
-### Domain Skills (8)
+### 🧠 Think — explore ideas, produce a spec
 
 | Skill | Description |
 |-------|-------------|
-| **openapi** | OpenAPI 3.1 spec, pagination, versioning, error schemas, webhooks |
-| **owasp** | Top 10, auth, CORS, CSP, secret management, rate limiting |
-| **playwright** | E2E testing, page objects, visual regression, cross-browser |
-| **error-handling** | Custom errors, retry patterns, Result type, error boundaries |
-| **state-management** | React state, Zustand, TanStack Query, form state, URL state |
-| **logging** | Structured logging, log levels, correlation IDs, redaction |
-| **caching** | Memoization, HTTP cache, Redis, CDN, cache invalidation |
-| **api-client** | HTTP clients, interceptors, retry, type-safe clients |
+| **brainstorming** | Interactive idea exploration, one question at a time. Includes Startup Mode (6 forcing questions) for new product ideas |
+| **writing-plans** | Break a spec into bite-sized tasks with exact code, file paths, and test commands |
 
-### Pattern Skills (3)
+### 🔍 Review — pressure-test the plan before coding
 
 | Skill | Description |
 |-------|-------------|
-| **authentication** | JWT, OAuth2, sessions, RBAC, MFA, password hashing |
-| **background-jobs** | Celery, BullMQ, task queues, scheduled tasks, async workers |
-| **writing-concisely** | Compressed output modes (30-70% token savings) |
+| **autoplan** | Run all 4 plan-review dimensions in parallel, consolidate into one fix gate |
+| **plan-ceo-review** | Strategy review — ambition, problem clarity, wedge focus, demand reality, future-fit |
+| **plan-eng-review** | Architecture review — data flow, failure modes, edge cases, test matrix, rollback |
+| **plan-design-review** | UX review — information hierarchy, visual consistency, state coverage, accessibility |
+| **plan-devex-review** | Developer experience review — TTHW, API/CLI ergonomics, error copy, docs, magical moments |
 
-### Workflow Skills (7)
+Each plan-review skill dispatches a dimension-specific reviewer agent, scores 0-10 on 5 sub-dimensions, proposes concrete fixes, and applies user-selected fixes to the plan.
+
+### 🔨 Build — implement with discipline
 
 | Skill | Description |
 |-------|-------------|
-| **feature-workflow** | End-to-end feature development: requirements -> planning -> implementation -> testing -> review |
-| **git-workflows** | Conventional commits, shipping, PRs, changelogs |
-| **documentation** | Docstrings, JSDoc, API docs, README generation |
-| **refactoring** | Code smell detection, extract/rename/simplify patterns, safe refactoring workflow |
-| **performance-optimization** | Profiling (cProfile, DevTools), N+1 queries, bundle size, memory leaks, benchmarking |
-| **mode-switching** | Session behavioral modes (brainstorm, token-efficient, deep-research, implementation, review) |
-| **session-management** | Checkpoints, project indexing, context loading, status checking |
+| **feature-workflow** | End-to-end orchestrator: requirements → plan → review → implement → test → review |
+| **test-driven-development** | Red-green-refactor cycle — no production code without a failing test first |
+| **systematic-debugging** | 4-phase root-cause investigation — gather, hypothesize, test, prove |
+| **verification-before-completion** | Mandatory pre-completion gate — evidence before assertions |
 
-### Methodology Skills (18)
+### 🎛️ Session & Setup
+
+| Skill | Description |
+|-------|-------------|
+| **mode-switching** | Switch behavioral modes (brainstorm, token-efficient, deep-research, implementation, review) |
+| **init** | Interactive wizard — scaffolds rules, modes, hooks, and MCP configs into your project |
+
+### Also Included — 22 supporting skills (auto-trigger, non-user-invocable)
+
+These activate silently when Claude detects a matching context. You don't invoke them directly, but they shape how Claude works.
 
 | Category | Skills |
 |----------|--------|
-| **Planning** | brainstorming, writing-plans, executing-plans, writing-skills |
-| **Testing** | test-driven-development, verification-before-completion, testing-anti-patterns |
-| **Debugging** | systematic-debugging, root-cause-tracing, defense-in-depth |
-| **Collaboration** | dispatching-parallel-agents, requesting-code-review, receiving-code-review, finishing-a-development-branch |
-| **Execution** | subagent-driven-development, using-git-worktrees, condition-based-waiting |
-| **Reasoning** | sequential-thinking |
-
-### Setup Skill (1)
-
-| Skill | Description |
-|-------|-------------|
-| **init** | Interactive setup wizard — scaffolds rules, modes, hooks, MCP configs |
+| **Execution & Parallelism** | executing-plans, subagent-driven-development, using-git-worktrees, finishing-a-development-branch, dispatching-parallel-agents, condition-based-waiting |
+| **Testing Discipline** | testing, playwright, testing-anti-patterns |
+| **Debug Techniques** | root-cause-tracing, defense-in-depth |
+| **Review Etiquette** | requesting-code-review, receiving-code-review |
+| **Reasoning & Meta** | sequential-thinking, writing-concisely, writing-skills, refactoring |
+| **Operations** | devops, git-workflows, performance-optimization, session-management |
+| **Security** | owasp |
 
 ### Bundled Resources
 
-Skills include progressive-disclosure resources loaded on demand:
+Spine and supporting skills include progressive-disclosure resources loaded on demand:
 
-| Resource Type | Purpose | Examples |
-|---------------|---------|----------|
-| **references/** | Cheat sheets, decision trees, pattern catalogs | OWASP Top 10, index decision tree, auth flows |
-| **templates/** | Starter files, boilerplate, configs | OpenAPI spec, Dockerfile, CI workflows |
-| **scripts/** | Executable helpers for deterministic tasks | Security audit scanner, OpenAPI validator |
+| Resource Type | Purpose |
+|---------------|---------|
+| **references/** | Cheat sheets, decision trees, pattern catalogs |
+| **templates/** | Starter files, boilerplate, configs |
+| **scripts/** | Executable helpers for deterministic tasks |
 
 ## Behavioral Modes
 
@@ -221,8 +216,10 @@ Skills chain automatically based on context:
 
 ### Feature Development
 ```
-brainstorming -> writing-plans -> feature-workflow -> requesting-code-review -> git-workflows
+brainstorming -> writing-plans -> autoplan -> feature-workflow -> requesting-code-review -> git-workflows
 ```
+
+> `autoplan` pressure-tests the plan on strategy, architecture, design, and DX before implementation begins — optional but recommended for non-trivial features.
 
 ### Bug Fix
 ```

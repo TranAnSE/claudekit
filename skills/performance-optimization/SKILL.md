@@ -111,6 +111,6 @@ npx vitest bench
 
 ## Related Skills
 
-- `caching` — Caching strategies (memoization, HTTP, Redis, CDN)
-- `databases` — Query optimization, indexing, connection pooling
-- `frontend` — React rendering optimization patterns
+- `systematic-debugging` — Investigating slow paths with root-cause rigor
+- `testing` — Benchmarking and perf regression tests
+- `devops` — Deploy-time perf checks

@@ -1,5 +1,6 @@
 ---
 name: systematic-debugging
+user-invocable: true
 description: >
   Use when encountering ANY bug, error, test failure, or unexpected behavior. Activate for keywords like "bug", "error", "failing", "broken", "doesn't work", "unexpected", "crash", "exception", "TypeError", "undefined", stack traces, or any error message. Also trigger when tests fail unexpectedly, when behavior differs from expectations, when investigating production incidents, or when flaky/intermittent issues appear. ALWAYS investigate root cause before proposing fixes -- never guess at solutions.
 ---

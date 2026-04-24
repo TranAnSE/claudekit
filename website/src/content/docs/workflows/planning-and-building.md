@@ -5,7 +5,7 @@ description: How Claude Kit guides you from idea to implementation using brainst
 
 # Planning & Building
 
-Claude Kit provides a structured workflow for turning ideas into working code: **Brainstorm > Plan > Execute > Verify**.
+Claude Kit provides a structured workflow for turning ideas into working code: **Brainstorm > Plan > Review > Execute > Verify**.
 
 ## The Workflow
 
@@ -21,6 +21,12 @@ Claude Kit provides a structured workflow for turning ideas into working code: *
 ┌─────────────────┐
 │  Writing Plans   │  Break into tasks, exact file paths,
 │                  │  code samples, verification steps
+└────────┬────────┘
+         ▼
+┌─────────────────┐
+│    Autoplan      │  Parallel 4-angle plan review:
+│  (optional but   │  strategy, architecture, design, DX.
+│   recommended)   │  Single fix-gate before implementation.
 └────────┬────────┘
          ▼
 ┌─────────────────┐
@@ -93,6 +99,43 @@ The writing-plans skill creates detailed implementation plans with:
 5. Commit
 ```
 
+## Phase 2.5: Plan Review (Optional but recommended)
+
+**Triggers on**: "autoplan", "auto review", "review my plan", "think bigger", "does this design make sense", "DX review"
+
+Before jumping into execution, pressure-test the plan from four complementary angles. Each reviewer returns a 0-10 scorecard per dimension and proposes concrete fixes. Fixes are presented in a single multi-select prompt — you pick which ones to apply, and they're written directly into the plan file.
+
+| Skill | Dimensions scored | When to invoke |
+|-------|------------------|----------------|
+| `plan-ceo-review` | Ambition, problem clarity, wedge focus, demand reality, future-fit | Plan scope / strategy pressure-test |
+| `plan-eng-review` | Data flow, failure modes, edge cases, test matrix, rollback | Architecture audit before coding |
+| `plan-design-review` | Hierarchy, visual consistency, states, accessibility, AI-slop avoidance | Plans with UI surfaces |
+| `plan-devex-review` | Time to Hello World, ergonomics, error copy, docs structure, magical moments | Plans shipping APIs / CLIs / SDKs |
+| `autoplan` | All 4 above, fanned out in parallel, single consolidated fix gate | Full gauntlet before handoff |
+
+### Example
+
+```
+You: "/claudekit:autoplan"
+
+Claude: [dispatches 4 reviewers in parallel]
+
+# Autoplan Review: 2026-04-24-feature-x-plan
+Overall Scores:
+  CEO:    6.2/10 (lowest: Wedge focus 4/10)
+  ENG:    7.8/10 (lowest: Rollback 5/10)
+  DESIGN: 8.4/10
+  DEVEX:  5.6/10 (lowest: Time to Hello World 3/10)
+
+Critical Issues (worst first):
+  [DEVEX] Time to Hello World: no quickstart specified
+  [CEO]   Wedge focus: covers 3 personas simultaneously
+  [ENG]   Rollback: no undo path for Phase 2 migration
+  ...
+
+> Which fixes to apply? [multi-select]
+```
+
 ## Phase 3: Executing Plans
 
 **Triggers on**: "execute the plan", "run the plan", "implement the plan"
@@ -130,11 +173,10 @@ These skills activate automatically during planning and building:
 |-------|---------------|
 | `feature-workflow` | End-to-end feature development |
 | `sequential-thinking` | Complex decisions needing step-by-step reasoning |
-| `languages` | Python/TypeScript/JavaScript idioms and patterns |
-| `backend-frameworks` | FastAPI, Django, NestJS, Express patterns |
-| `frontend` | React, Next.js component architecture |
-| `databases` | Schema design, queries, migrations |
-| `state-management` | Choosing between useState, Zustand, TanStack Query |
+| `subagent-driven-development` | Fresh subagent per task with two-stage review |
+| `using-git-worktrees` | Isolated branch work for parallel development |
+| `dispatching-parallel-agents` | Launching independent parallel agents |
+| `refactoring` | Improving code structure before shipping |
 
 ## Supporting Agents
 
@@ -143,9 +185,13 @@ These skills activate automatically during planning and building:
 | `planner` | Research and create implementation plans |
 | `brainstormer` | Explore solutions and evaluate trade-offs |
 | `researcher` | Research technologies and best practices |
+| `ceo-reviewer` | Strategic/scope pressure test on a written plan |
+| `eng-reviewer` | Architecture review on a written plan |
+| `design-reviewer` | UX/visual review on a written plan |
+| `devex-reviewer` | Developer-experience review on a written plan |
 
 ## Related Pages
 
 - [Testing & Debugging](/claudekit/workflows/testing-and-debugging/) — TDD and debugging workflows
 - [Reviewing & Shipping](/claudekit/workflows/reviewing-and-shipping/) — Code review and git workflows
-- [Skills Reference](/claudekit/reference/skills/) — All 44 skills
+- [Skills Reference](/claudekit/reference/skills/) — All 35 skills

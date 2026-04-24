@@ -11,8 +11,8 @@ Claude Kit is an open-source Claude Code plugin that transforms Claude Code into
 
 Claude Kit is a Claude Code plugin you install via a marketplace:
 
-- **44 Skills** — Knowledge modules that auto-trigger based on what you're doing (debugging, planning, testing, etc.)
-- **20 Agents** — Specialized subagents for focused tasks (code review, security audit, database design, etc.)
+- **35 Skills** — Organized around a 6-phase development workflow. 13 user-invocable spine skills (typed as `/claudekit:<name>`) plus 22 supporting skills that auto-trigger by context
+- **24 Agents** — Specialized subagents for focused tasks (code review, security audit, database design, plan review, etc.)
 - **7 Modes** — Behavioral configurations installed via `/claudekit:init`
 - **Setup Wizard** — `/claudekit:init` scaffolds rules, modes, hooks, and MCP servers into your project
 
@@ -42,7 +42,7 @@ Skills are the core of Claude Kit. They trigger automatically based on keywords:
 
 ```
 You: "I need to add user authentication to our app"
-     ↓ triggers: brainstorming, authentication, backend-frameworks
+     ↓ triggers: brainstorming, writing-plans
 
 You: "There's a TypeError in the UserService"
      ↓ triggers: systematic-debugging, root-cause-tracing
@@ -63,4 +63,4 @@ No slash commands needed — Claude reads your intent and activates the right sk
 
 1. [Install Claude Kit](/claudekit/getting-started/installation/) — Install the plugin
 2. [Configuration](/claudekit/getting-started/configuration/) — Run `/claudekit:init` to customize
-3. [Skills Reference](/claudekit/reference/skills/) — Browse all 44 skills
+3. [Skills Reference](/claudekit/reference/skills/) — Browse all 35 skills

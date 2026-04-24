@@ -131,7 +131,7 @@ The wizard automatically detects your platform and configures the correct comman
 
 | MCP Server | Skills That Benefit |
 |------------|-------------------|
-| Context7 | All framework/library skills (frontend, backend-frameworks, databases) |
+| Context7 | All framework/library lookups (fetches current docs for any library) |
 | Sequential | sequential-thinking, systematic-debugging, brainstorming |
 | Memory | session-management, brainstorming (persisting design decisions) |
 | Playwright | playwright, verification-before-completion |

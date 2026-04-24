@@ -97,6 +97,7 @@ Use TodoWrite to create structured task list with clear, action-oriented task de
 ## Methodology Skills
 
 - **Detailed Planning**: `.claude/skills/writing-plans/SKILL.md` — 2-5 min tasks with exact file paths and code
+- **Plan Review**: `.claude/skills/autoplan/SKILL.md` (or individual `plan-ceo-review` / `plan-eng-review` / `plan-design-review` / `plan-devex-review`) — pressure-test the plan on 4 dimensions before handoff to execution
 - **Execution**: `.claude/skills/executing-plans/SKILL.md` — subagent-driven automated execution
 
 You **DO NOT** start the implementation yourself but respond with the summary and the file path of the comprehensive plan.

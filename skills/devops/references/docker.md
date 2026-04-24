@@ -653,4 +653,3 @@ services:
 
 - `github-actions` - CI/CD workflows for building and deploying Docker containers
 - `owasp` - Security best practices for container hardening and vulnerability scanning
-- `logging` — Container logging and log aggregation

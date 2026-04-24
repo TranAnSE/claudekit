@@ -1,6 +1,6 @@
 ---
 title: Agents Reference
-description: All 20 specialized subagents in Claude Kit.
+description: All 24 specialized subagents in Claude Kit.
 ---
 
 # Agents Reference
@@ -82,6 +82,17 @@ Agents run independently and return results to the main conversation. They can b
 |-------|-------------|----------|
 | **scout** | Rapidly maps internal codebase — files, patterns, dependencies | Finding code locations, understanding structure |
 | **scout-external** | Explores external resources, APIs, open-source projects | Researching external APIs or libraries |
+
+## Plan Review
+
+Dispatched by the `plan-*-review` and `autoplan` skills to score a written implementation plan on 5 dimensions (0-10) with concrete fixes. Read-only — reviewers propose, the skill applies.
+
+| Agent | Description | Use When |
+|-------|-------------|----------|
+| **ceo-reviewer** | Strategic/scope review — ambition, problem clarity, wedge focus, demand reality, future-fit | Pressure-testing a plan's scope and ambition before implementation |
+| **eng-reviewer** | Architecture review — data flow, failure modes, edge cases, test matrix, rollback | Locking in architecture before code is written |
+| **design-reviewer** | UX/visual plan review — hierarchy, consistency, states, accessibility, polish vs AI slop | Plans with UI surfaces needing a designer's-eye critique |
+| **devex-reviewer** | Developer-experience review — TTHW, ergonomics, error copy, docs, magical moments | Plans shipping APIs, CLIs, SDKs, or docs |
 
 ---
 

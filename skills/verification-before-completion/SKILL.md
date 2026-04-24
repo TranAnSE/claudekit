@@ -1,5 +1,6 @@
 ---
 name: verification-before-completion
+user-invocable: true
 description: >
   Use when about to claim ANY work is complete, fixed, passing, or done. Activate whenever you are tempted to say "done", "fixed", "tests pass", "build succeeds", "deployed", or any completion claim. Also trigger before committing code, before creating PRs, before responding to the user that a task is finished, or when reviewing agent-produced work. This is mandatory -- NEVER claim completion without running verification commands and reading their output. Evidence before assertions, always.
 ---

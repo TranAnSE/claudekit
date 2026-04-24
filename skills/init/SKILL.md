@@ -128,8 +128,8 @@ Claudekit setup complete!
   MCP:     5 configured → .mcp.json
 
 Next steps:
-  - Skills are available as /claudekit:<name> (44 skills)
-  - Agents are available as claudekit:<name> (20 agents)
+  - Skills are available as /claudekit:<name> (13 user-invocable spine + 22 auto-trigger supporting = 35 total)
+  - Agents are available as claudekit:<name> (24 agents)
   - Switch modes: "switch to brainstorm mode"
 ```
 

@@ -10,7 +10,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Claude Kit',
-      description: 'The open-source AI dev toolkit for Claude Code. 43 skills, 20 agents, 7 modes — structure that makes Claude Code production-ready. Free forever.',
+      description: 'The development-workflow plugin for Claude Code. 35 skills organized around a 6-phase workflow (Think → Review → Build → Ship → Maintain → Setup), 24 agents, 7 modes. Free forever.',
       social: [
         { icon: 'github', label: 'GitHub', href: 'https://github.com/duthaho/claudekit' }
       ],

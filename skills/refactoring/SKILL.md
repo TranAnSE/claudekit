@@ -109,5 +109,4 @@ description: >
 ## Related Skills
 
 - `testing` — Ensure test coverage before refactoring
-- `languages` — Language-specific idioms and patterns
 - `writing-concisely` — Refactoring responses can be terse (show before/after)

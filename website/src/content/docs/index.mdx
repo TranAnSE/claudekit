@@ -1,9 +1,9 @@
 ---
 title: Claude Kit
-description: The open-source AI dev toolkit for Claude Code. 44 skills, 20 agents, 7 modes — install as a plugin and go. Free forever.
+description: The development-workflow plugin for Claude Code. 35 skills across a 6-phase workflow, 24 agents, 7 modes — install as a plugin and go. Free forever.
 template: splash
 hero:
-  tagline: The open-source AI dev toolkit for Claude Code. 44 skills, 20 agents, 7 modes — install as a plugin and go. Free forever.
+  tagline: The development-workflow plugin for Claude Code. 35 skills across a 6-phase workflow, 24 agents, 7 modes — install as a plugin and go. Free forever.
   image:
     dark: ../../assets/hero-dark.svg
     light: ../../assets/hero-light.svg
@@ -25,11 +25,11 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 Claude Kit transforms Claude Code into a production-ready AI development team. Pre-built skills, specialized agents, and intelligent modes — all open source.
 
 <CardGrid>
-  <Card title="44 Skills" icon="puzzle">
-    Auto-triggered knowledge for Python, TypeScript, React, FastAPI, TDD, debugging, security, and more. Claude knows your stack without being told.
+  <Card title="35 Skills" icon="puzzle">
+    A 6-phase workflow spine (Think → Review → Build → Ship → Maintain → Setup). 13 user-invocable spine skills plus 22 supporting skills that auto-trigger by context.
   </Card>
-  <Card title="20 Agents" icon="rocket">
-    Specialized subagents for code review, testing, database design, security auditing, UI/UX, and more — each with focused expertise.
+  <Card title="24 Agents" icon="rocket">
+    Specialized subagents for code review, testing, database design, security auditing, UI/UX, plan review, and more — each with focused expertise.
   </Card>
   <Card title="7 Modes" icon="setting">
     Switch between brainstorm, implementation, review, deep research, and more. Each mode optimizes Claude's behavior for your task.
@@ -99,12 +99,12 @@ Claude Kit uses three layers that work together:
 <CardGrid>
   <LinkCard
     title="Skills"
-    description="44 knowledge modules that auto-trigger based on keywords. Cover languages, frameworks, testing, debugging, security, and development methodology."
+    description="35 skills organized around a 6-phase workflow. 13 spine skills user-invocable as /claudekit:<name>, plus supporting skills that auto-trigger behind the scenes."
     href="/claudekit/reference/skills/"
   />
   <LinkCard
     title="Agents"
-    description="20 specialized subagents you can dispatch for focused tasks: code review, testing, database design, security audits, and more."
+    description="24 specialized subagents you can dispatch for focused tasks: code review, testing, database design, security audits, plan review, and more."
     href="/claudekit/reference/agents/"
   />
   <LinkCard
@@ -145,12 +145,12 @@ Claude Kit connects skills and agents into complete workflows:
   />
   <LinkCard
     title="Skills Reference"
-    description="All 44 skills organized by category"
+    description="All 35 skills organized by workflow phase"
     href="/claudekit/reference/skills/"
   />
   <LinkCard
     title="Agents Reference"
-    description="All 20 specialized subagents"
+    description="All 24 specialized subagents"
     href="/claudekit/reference/agents/"
   />
   <LinkCard

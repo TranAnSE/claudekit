@@ -547,7 +547,5 @@ Run `npm audit --audit-level=high` and `pip-audit --strict` in CI (e.g., GitHub 
 
 ## Related Skills
 
-- `authentication` - Authentication and authorization implementation patterns
-- `error-handling` - Secure error handling that avoids leaking sensitive information
 - `docker` — Container security hardening
 - `defense-in-depth` — Multi-layer security validation

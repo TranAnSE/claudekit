@@ -61,6 +61,6 @@ description: >
 
 ## Related Skills
 
-- `backend-frameworks` — Application code that gets containerized
-- `databases` — Database services in Docker Compose
 - `owasp` — Security hardening for containers and CI
+- `git-workflows` — Commits and PRs feeding CI/CD pipelines
+- `performance-optimization` — Deploy-time benchmarks and regression checks

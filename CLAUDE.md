@@ -1,11 +1,11 @@
 # Claudekit Plugin
 
-This is the claudekit plugin — a comprehensive toolkit for Claude Code with 44 skills, 20 agents, and an interactive setup wizard.
+The development-workflow plugin for Claude Code. 35 skills organized around a 6-phase workflow spine (Think → Review → Build → Ship → Maintain → Setup), plus 24 specialized agents and an interactive setup wizard.
 
 ## Plugin Structure
 
-- `skills/` — 44 auto-triggered skills (invoked as `/claudekit:<name>`)
-- `agents/` — 20 specialized agents (invoked as `claudekit:<name>`)
+- `skills/` — 35 skills (13 user-invocable spine + 22 auto-trigger supporting)
+- `agents/` — 24 specialized agents (invoked as `claudekit:<name>`)
 - `scripts/` — Hook scripts installed via `/claudekit:init`
 - `skills/init/templates/` — Templates for rules, modes, hooks, and MCP configs
 
@@ -13,15 +13,17 @@ This is the claudekit plugin — a comprehensive toolkit for Claude Code with 44
 
 After installing the plugin, run `/claudekit:init` to scaffold project-level configuration (rules, modes, hooks, MCP servers) into your project's `.claude/` directory.
 
-## Skills
+## Skills — 6-phase spine
 
-Skills auto-trigger based on context. Key categories:
+13 user-invocable spine skills, typed as `/claudekit:<name>`:
 
-- **Tech Stack**: languages, backend-frameworks, frontend, frontend-styling, databases, devops, testing
-- **Domain**: openapi, owasp, playwright, error-handling, state-management, logging, caching, api-client
-- **Patterns**: authentication, background-jobs, writing-concisely
-- **Workflows**: feature-workflow, git-workflows, documentation, refactoring, performance-optimization, mode-switching, session-management
-- **Methodology**: brainstorming, writing-plans, executing-plans, test-driven-development, systematic-debugging, verification-before-completion, and more
+- **Think** — brainstorming, writing-plans
+- **Review** — autoplan, plan-ceo-review, plan-eng-review, plan-design-review, plan-devex-review
+- **Build** — feature-workflow, test-driven-development, systematic-debugging, verification-before-completion
+- **Session** — mode-switching
+- **Setup** — init
+
+22 supporting skills auto-trigger by context: execution & parallelism (executing-plans, subagent-driven-development, using-git-worktrees, finishing-a-development-branch, dispatching-parallel-agents, condition-based-waiting), testing (testing, playwright, testing-anti-patterns), debug (root-cause-tracing, defense-in-depth), review (requesting-code-review, receiving-code-review), meta (sequential-thinking, writing-concisely, writing-skills, refactoring), ops (devops, git-workflows, performance-optimization, session-management), security (owasp).
 
 ## Conventions
 

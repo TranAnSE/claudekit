@@ -23,6 +23,40 @@ description: >
 
 ---
 
+## Startup Mode (for new product / standalone ideas)
+
+**Activation**: user's topic is a new product or standalone initiative, not a feature inside an existing codebase.
+
+**Detection signals**:
+
+- Keywords: "is this worth building", "should I build", "startup idea", "product idea", "I have an idea for"
+- No existing codebase context; user is describing a concept pre-code
+
+**Gate question** (first clarifier, always):
+
+> Is this (a) a feature inside an existing codebase, or (b) a new product / standalone idea?
+> - (b) → Startup Mode replaces Phase 1 (Understanding)
+> - (a) → normal Phase 1
+
+**Six forcing questions** (asked one at a time, per existing conventions):
+
+1. **Demand reality** — "How do you *know* people want this? Give me evidence, not intuition."
+2. **Status quo** — "What do people do today to solve this? Why isn't that enough?"
+3. **Desperate specificity** — "Who is your very first user? Name, role, where you find them — be concrete."
+4. **Narrowest wedge** — "What's the smallest thing you could ship this week that delivers real value to that one user?"
+5. **Observation** — "Have you watched someone struggle with this problem? What did you see?"
+6. **Future-fit** — "If this works, what does v3 look like in two years? Does that excite you enough to commit?"
+
+**Output gate** (after Q6) — produce a traffic-light assessment per question (🟢/🟡/🔴) plus a recommendation:
+
+- 5-6 green → proceed to Phase 2 (Exploration)
+- 2-4 green → proceed but flag red/yellow items as design-time risks
+- 0-1 green → pause; suggest more user-discovery work before designing
+
+**After Startup Mode**: continue with the existing Phase 2 (Exploration) and Phase 3 (Design Presentation). YAGNI, multiple-choice questioning, and design-doc output are unchanged.
+
+---
+
 ## Three-Phase Process
 
 ### Phase 1: Understanding
@@ -120,7 +154,15 @@ When possible, provide structured options:
 
 ## Output Format
 
-After design validation, document to timestamped markdown:
+**Save location**: After design validation, write the design document to:
+
+```
+docs/claudekit/specs/YYYY-MM-DD-<topic>-design.md
+```
+
+Create the `docs/claudekit/specs/` directory if it does not exist. Use today's date (YYYY-MM-DD) and a short, kebab-case topic slug.
+
+Document to timestamped markdown:
 
 ```markdown
 # Design: [Feature Name]

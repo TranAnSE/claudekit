@@ -1,6 +1,7 @@
 ---
 name: feature-workflow
 argument-hint: "[feature description or issue]"
+user-invocable: true
 description: >
   Use when implementing a complete feature end-to-end — from requirements analysis through planning, implementation, testing, and review. Trigger for keywords like "feature", "implement", "build", "add functionality", "end-to-end", or any task that spans planning through delivery. Also activate when the user provides a feature description, issue reference, or requirement spec that needs a structured development workflow.
 ---
@@ -39,6 +40,7 @@ description: >
 3. Decompose into atomic, verifiable tasks
 4. Order tasks by dependencies
 5. Track all tasks with TodoWrite
+6. (Optional, recommended for non-trivial features) Run `autoplan` on the resulting plan to pressure-test strategy, architecture, design, and DX before Phase 4 (Implementation)
 
 ### Phase 3: Research (if needed)
 

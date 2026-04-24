@@ -127,9 +127,9 @@ The git-workflows skill generates changelogs from conventional commits:
 
 | Skill | When It Helps |
 |-------|---------------|
-| `documentation` | Generating/updating docs after code changes |
 | `refactoring` | Improving code structure before shipping |
 | `writing-concisely` | Token-efficient mode for high-volume review sessions |
+| `verification-before-completion` | Mandatory evidence gate before claiming done |
 
 ## Supporting Agents
 
@@ -144,4 +144,4 @@ The git-workflows skill generates changelogs from conventional commits:
 
 - [Planning & Building](/claudekit/workflows/planning-and-building/) — Brainstorm, plan, execute
 - [Testing & Debugging](/claudekit/workflows/testing-and-debugging/) — TDD and debugging workflows
-- [Skills Reference](/claudekit/reference/skills/) — All 44 skills
+- [Skills Reference](/claudekit/reference/skills/) — All 35 skills

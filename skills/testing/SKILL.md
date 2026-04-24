@@ -61,4 +61,3 @@ description: >
 - `testing-anti-patterns` — Common testing mistakes to avoid
 - `test-driven-development` — TDD workflow
 - `playwright` — End-to-end browser testing
-- `languages` — Language-specific test idioms

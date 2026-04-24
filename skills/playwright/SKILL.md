@@ -420,4 +420,3 @@ Keep E2E tests in a top-level `e2e/` directory, separate from unit/integration t
 - `testing-anti-patterns` — patterns that make tests unreliable (applies to E2E too)
 - `test-driven-development` — TDD methodology (use Playwright for the "integration test" step)
 - `github-actions` — CI/CD pipeline configuration for running E2E
-- `openapi` — API contract testing (complements E2E by verifying the API layer separately)

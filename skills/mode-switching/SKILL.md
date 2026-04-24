@@ -1,6 +1,7 @@
 ---
 name: mode-switching
 argument-hint: "[mode name]"
+user-invocable: true
 description: >
   Use when the user wants to switch behavioral modes for the session — adjusting communication style, output format, and problem-solving approach. Trigger for keywords like "mode", "switch mode", "brainstorm mode", "token-efficient", "deep-research mode", "implementation mode", "review mode", "orchestration mode", or any request to change how Claude responds for the remainder of the session.
 ---

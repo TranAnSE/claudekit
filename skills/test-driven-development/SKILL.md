@@ -1,5 +1,6 @@
 ---
 name: test-driven-development
+user-invocable: true
 description: >
   Use when writing new features, fixing bugs, or changing any behavior in production code. Activate for keywords like "implement", "add feature", "fix bug", "write code", "build", "create endpoint", "add functionality", or any task that will result in production code changes. Also trigger when the user asks to refactor existing code, when tests need to be written, or when someone says "TDD". This skill should be the default for ALL implementation work -- no production code without a failing test first.
 ---

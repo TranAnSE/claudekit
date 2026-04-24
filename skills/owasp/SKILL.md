@@ -61,6 +61,6 @@ description: >
 
 ## Related Skills
 
-- `authentication` — Secure auth implementation patterns
-- `error-handling` — Preventing information leakage through errors
-- `backend-frameworks` — Framework-specific security middleware
+- `defense-in-depth` — Multi-layer validation so a single-point failure can't cause data corruption
+- `testing` — Security test patterns (input validation, authz boundaries)
+- `devops` — Container and CI hardening

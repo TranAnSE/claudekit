@@ -98,7 +98,7 @@ description: Use only when the user says "write a unit test".
 |------|-----------|----------|
 | Methodology | Gerund (verb-ing) | `brainstorming`, `writing-plans`, `systematic-debugging` |
 | Language/Framework | Noun | `python`, `nestjs`, `react`, `postgresql` |
-| Pattern | Noun/compound | `error-handling`, `state-management`, `api-client` |
+| Pattern | Noun/compound | `performance-optimization`, `session-management`, `git-workflows` |
 
 This matches Anthropic's own naming convention for superpowers skills.
 

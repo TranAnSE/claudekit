@@ -7,8 +7,8 @@
   "plugins": [
     {
       "name": "claudekit",
-      "description": "Comprehensive toolkit — 44 skills, 20 agents, interactive setup wizard for rules, modes, hooks, and MCP servers.",
-      "version": "3.0.0",
+      "description": "Development-workflow plugin — 35 skills around a 6-phase workflow, 24 agents, interactive setup wizard for rules, modes, hooks, and MCP servers.",
+      "version": "3.1.0",
       "source": "./"
     }
   ]

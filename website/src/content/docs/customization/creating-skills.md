@@ -190,5 +190,5 @@ description: Use when deploying to Fly.io or configuring Fly.io
 
 ## Related Pages
 
-- [Skills Reference](/claudekit/reference/skills/) — All 44 built-in skills
+- [Skills Reference](/claudekit/reference/skills/) — All 35 built-in skills
 - [Creating Agents & Modes](/claudekit/customization/creating-agents-and-modes/) — Custom agents and modes

@@ -142,4 +142,4 @@ Database layer: Constraints (NOT NULL, UNIQUE, CHECK)
 
 - [Planning & Building](/claudekit/workflows/planning-and-building/) — Brainstorm, plan, execute
 - [Reviewing & Shipping](/claudekit/workflows/reviewing-and-shipping/) — Code review and git workflows
-- [Skills Reference](/claudekit/reference/skills/) — All 44 skills
+- [Skills Reference](/claudekit/reference/skills/) — All 35 skills
