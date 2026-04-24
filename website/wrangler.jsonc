@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "claudekit",
+  "name": "duthaho-claudekit",
   "compatibility_date": "2026-04-24",
   "assets": {
     "directory": "./dist",
